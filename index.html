@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> websbyshreyan · Selected Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Public+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   SHELL — Mobbin-style browse library
+   ========================================================= */
+:root{--bg:#fff;--fg:#0f0f10;--mute:#6b6b73;--soft:#f4f4f5;--soft2:#ececee;--line:#e6e6e9;--r:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid #2f6bff;outline-offset:2px}
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.top .in{max-width:1360px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:17px;white-space:nowrap}
+.brand i{width:30px;height:30px;border-radius:9px;background:var(--fg);color:#fff;display:grid;place-items:center;font-style:normal;font-size:12px}
+.search{flex:1;max-width:520px;margin:0 auto;display:flex;align-items:center;gap:8px;background:var(--soft);border-radius:999px;padding:9px 16px;color:var(--mute)}
+.search input{border:0;background:none;outline:0;flex:1;min-width:0;color:var(--fg)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;font-weight:600;font-size:14px;white-space:nowrap}
+.pill.dark{background:var(--fg);color:#fff}.pill.ghost{background:var(--soft)}
+.wrap{max-width:1360px;margin:0 auto;padding:0 24px}
+.intro{padding:56px 0 28px}
+.intro h1{font-size:clamp(34px,4.4vw,56px);letter-spacing:-.035em;line-height:1.04;font-weight:800;max-width:15em}
+.intro p{color:var(--mute);font-size:17px;max-width:40em;margin-top:14px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:8px 0 22px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.chip{padding:8px 15px;border-radius:999px;background:var(--soft);font-weight:600;font-size:14px;white-space:nowrap;transition:.15s}
+.chip:hover{background:var(--soft2)}.chip[aria-pressed=true]{background:var(--fg);color:#fff}
+.chip small{opacity:.55;margin-left:4px;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:28px 22px;padding-bottom:72px}
+.card{text-align:left;display:block;width:100%}
+.thumb{position:relative;aspect-ratio:4/3;border-radius:var(--r);background:var(--soft);overflow:hidden;transition:background .2s}
+.card:hover .thumb{background:var(--soft2)}
+.card:hover .mk-desk{transform:translateY(-4px)}
+.meta{display:flex;align-items:center;gap:11px;padding:14px 4px 0}
+.ico{width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.meta b{display:block;font-weight:700;font-size:15px;letter-spacing:-.01em}
+.meta small{color:var(--mute);font-size:13px}
+.badge{margin-left:auto;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:#fff1e8;color:#a33a14;white-space:nowrap}
+.empty{grid-column:1/-1;text-align:center;color:var(--mute);padding:60px 0}
+/* mini mockups inside thumbnails */
+.mk-desk{position:absolute;left:7%;top:10%;width:74%;aspect-ratio:16/10.5;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.06),0 14px 34px -12px rgba(0,0,0,.25);overflow:hidden;transition:transform .25s}
+.mk-bar{height:9%;background:#f1f1f3;display:flex;align-items:center;gap:4px;padding-left:7px}
+.mk-bar i{width:6px;height:6px;border-radius:50%;background:#d4d4d8}
+.mk-body{height:91%;position:relative;overflow:hidden}
+.mk-phone{position:absolute;right:6%;bottom:8%;width:23%;aspect-ratio:9/19;border-radius:14px;background:#111;padding:3px;box-shadow:0 18px 30px -12px rgba(0,0,0,.4)}
+.mk-phone>div{width:100%;height:100%;border-radius:11px;overflow:hidden;position:relative}
+.mk-body svg,.mk-phone svg,.mk-body img,.mk-phone img,.mk-body .fb,.mk-phone .fb{display:block;width:100%;height:100%;object-fit:cover}
+.mk-t{position:absolute;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.mk-l{position:absolute;height:5px;border-radius:3px;opacity:.35}
+.mk-b{position:absolute;height:9px;border-radius:3px}
+/* studio section */
+.studio{border-top:1px solid var(--line);padding:64px 0 80px}
+.studio .cols{display:grid;grid-template-columns:1.1fr 1fr;gap:56px}
+.studio h2{font-size:34px;letter-spacing:-.03em;line-height:1.1;font-weight:800}
+.studio p.m{color:var(--mute);margin-top:12px;max-width:34em}
+.offer{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.offer div{background:var(--soft);border-radius:16px;padding:18px}
+.offer b{display:block;margin-bottom:4px}.offer span{color:var(--mute);font-size:14px}
+.cform{background:var(--soft);border-radius:24px;padding:28px;display:grid;gap:12px}
+.cform label{display:grid;gap:6px;font-size:13px;font-weight:600}
+.cform input,.cform textarea,.cform select{border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;outline:0}
+.cform input:focus,.cform textarea:focus{border-color:#111}
+.cform .ok{background:#e8f6ee;color:#14663d;border-radius:12px;padding:14px;font-weight:600}
+footer.sf{border-top:1px solid var(--line);padding:22px 0;color:var(--mute);font-size:13px}
+footer.sf .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:860px){.studio .cols{grid-template-columns:1fr}.top .pill.ghost{display:none}.grid{grid-template-columns:1fr}}
+@media(max-width:560px){.search{display:none}.top .in{justify-content:space-between}.offer{grid-template-columns:1fr}}
+
+/* =========================================================
+   VIEWER
+   ========================================================= */
+.viewer{position:fixed;inset:0;z-index:50;background:#fff;display:none;flex-direction:column}
+.viewer.on{display:flex;animation:vin .22s ease}
+@keyframes vin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.vbar{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.vtitle{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.vtitle .ico{width:34px;height:34px;border-radius:10px;font-size:13px}
+.vtitle b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vtitle small{color:var(--mute);font-size:12.5px}
+.seg{display:inline-flex;background:var(--soft);border-radius:999px;padding:3px}
+.seg button{padding:7px 14px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--mute)}
+.seg button[aria-pressed=true]{background:#fff;color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.ib{width:36px;height:36px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:18px}
+.ib:hover{background:var(--soft2)}
+.vbody{flex:1;min-height:0;position:relative}
+.stage{position:absolute;inset:0;background:var(--soft);display:flex;justify-content:center;padding:18px;overflow:hidden}
+.frame{position:relative;width:100%;max-width:1440px;height:100%;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 20px 50px -20px rgba(0,0,0,.25);container-type:inline-size;container-name:f;transition:max-width .35s cubic-bezier(.2,.8,.2,1)}
+.frame.tab{max-width:820px;border-radius:26px;box-shadow:0 0 0 10px #18181b,0 30px 60px -20px rgba(0,0,0,.4)}
+.frame.mob{max-width:390px;border-radius:40px;box-shadow:0 0 0 10px #18181b,0 30px 60px -20px rgba(0,0,0,.4)}
+.stage.dev{padding:28px}
+.scr{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth}
+.ovl{position:absolute;inset:0;pointer-events:none;z-index:40}
+.ovl>*{pointer-events:auto}
+.case{position:absolute;inset:0;overflow:auto;display:none;background:#fff;z-index:60}
+.vbody.cs-on .stage{visibility:hidden}
+a{color:inherit;text-decoration:none}
+.case.on{display:block}
+.cs{max-width:1100px;margin:0 auto;padding:44px 24px 80px}
+.cs .hd{display:flex;gap:18px;align-items:center}
+.cs .hd .ico{width:64px;height:64px;border-radius:18px;font-size:24px}
+.cs h2{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.03em;line-height:1.08;font-weight:800}
+.cs .lede{color:var(--mute);font-size:17px;max-width:44em;margin:18px 0 30px}
+.cs .cols{display:grid;grid-template-columns:1.25fr 1fr;gap:28px}
+.box{background:var(--soft);border-radius:20px;padding:22px}
+.box h3{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin-bottom:12px}
+.box+.box{margin-top:16px}
+.feat{display:grid;gap:10px}
+.feat li{list-style:none;display:flex;gap:10px}
+.feat li:before{content:"";flex:none;width:18px;height:18px;margin-top:2px;border-radius:50%;background:#111 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/11px no-repeat}
+.flows{display:grid;gap:8px}
+.flow{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 14px;text-align:left;width:100%;transition:.15s}
+.flow:hover{transform:translateX(3px);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.flow em{font-style:normal;width:26px;height:26px;border-radius:8px;background:var(--soft);display:grid;place-items:center;font-size:12px;font-weight:700}
+.flow span{flex:1;font-weight:600}.flow small{color:var(--mute);display:block;font-weight:400;font-size:13px}
+.flow i{font-style:normal;color:var(--mute)}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+.stack span{background:#fff;padding:6px 11px;border-radius:999px;font-size:13px;font-weight:600}
+.how ol{padding-left:18px;display:grid;gap:8px;font-size:14.5px}
+.how p{font-size:14px;color:var(--mute);margin-top:10px}
+@media(max-width:900px){.cs .cols{grid-template-columns:1fr}}
+@media(max-width:700px){#vdev,.vnav{display:none}.stage{padding:0}.frame{border-radius:0}}
+
+/* =========================================================
+   SHARED PROTOTYPE UI (overlays, sheets, toasts)
+   ========================================================= */
+.scrim{position:absolute;inset:0;background:rgba(10,10,12,.5);display:flex;align-items:center;justify-content:center;padding:20px;animation:fd .2s}
+@keyframes fd{from{opacity:0}}
+.sheet{background:#fff;color:#111;width:100%;max-width:520px;border-radius:24px;max-height:calc(100% - 40px);overflow:auto;animation:up .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(30px);opacity:.4}}
+@container f (max-width:640px){
+ .scrim{align-items:flex-end;padding:0}
+ .sheet{border-radius:24px 24px 0 0;max-width:none;max-height:92%}
+ .sheet:before{content:"";display:block;width:40px;height:5px;border-radius:3px;background:#d4d4d8;margin:8px auto 0}
+}
+.drawer{position:absolute;top:0;right:0;bottom:0;width:min(380px,100%);background:#fff;color:#111;display:flex;flex-direction:column;animation:sl .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes sl{from{transform:translateX(40px);opacity:.4}}
+.toast{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);background:#111;color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap;animation:up .25s;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+
+/* =========================================================
+   PROJECT 1 — RED OAK LANDSCAPING (concept redesign)
+   ========================================================= */
+.ro{--oak:#8f2b20;--oak2:#7a2219;--ink:#1d221c;--paper:#f7f6f2;--stone:#ecebe5;--moss:#55693a;--line:#dcdad2;--mute:#5f645c;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+.ro h1,.ro h2,.ro h3,.ro .serif{font-family:Fraunces,Georgia,serif;letter-spacing:-.015em;line-height:1.08;font-weight:700}
+.ro .w{max-width:1200px;margin:0 auto;padding:0 28px}
+.ro .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--oak);color:#fff;padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;transition:.15s;text-decoration:none;white-space:nowrap}
+.ro .btn:hover{background:var(--oak2)}
+.ro .btn.lt{background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.ro .btn.ol{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.ro .util{background:var(--ink);color:#cfd2c8;font-size:13px}
+.ro .util .w{display:flex;justify-content:space-between;padding-top:7px;padding-bottom:7px;gap:12px}
+.ro .note{background:#fff4d6;color:#6b5210;font-size:12.5px;text-align:center;padding:6px 12px}
+.ro nav{position:sticky;top:0;z-index:10;background:rgba(247,246,242,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.ro nav .w{display:flex;align-items:center;height:68px;gap:28px}
+.ro .logo{display:flex;align-items:center;gap:10px;font:700 21px Fraunces,serif;margin-right:auto}
+.ro .logo i{width:30px;height:30px;background:var(--oak);border-radius:50% 0 50% 0}
+.ro .links{display:flex;gap:24px;font-weight:600;font-size:14.5px}
+.ro .links a{cursor:pointer;color:var(--mute)}.ro .links a:hover{color:var(--ink)}
+.ro .hero{background:#1d231c;color:#f1efe8;padding:72px 0 80px;position:relative;overflow:hidden}
+.ro .hero .w{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.ro .eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:600;background:rgba(255,255,255,.08);padding:6px 12px;border-radius:999px;margin-bottom:20px;color:#d9dccf}
+.ro .eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:#8fbf5a}
+.ro .hero h1{font-size:clamp(40px,5.6cqi,70px);margin-bottom:20px}
+.ro .hero p{opacity:.78;font-size:17.5px;max-width:30em;margin-bottom:28px}
+.ro .row{display:flex;gap:10px;flex-wrap:wrap}
+.ro .trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;font-size:14px;color:#c6cabb}
+.ro .trust span:before{content:"✓";color:#8fbf5a;font-weight:800;margin-right:7px}
+.ro .ba{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;user-select:none;--p:50%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.ro .ba .l{position:absolute;inset:0}.ro .ba .l svg,.ro .ba .l img,.ro .ba .l .fb{width:100%;height:100%;display:block;object-fit:cover}
+.ro .ba .bf img{filter:grayscale(.75) sepia(.5) brightness(.78) contrast(.82) saturate(.7)}
+.ro .ba .af{clip-path:inset(0 0 0 var(--p))}
+.ro .ba .tg{position:absolute;top:14px;padding:6px 12px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);color:#fff;font-size:12.5px;font-weight:700;border-radius:999px}
+.ro .ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ro .ba .bar{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:#fff;pointer-events:none}
+.ro .ba .bar b{position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px;border-radius:50%;background:#fff;color:#222;display:grid;place-items:center;font-size:15px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.ro .ba:focus-within{outline:3px solid #8fbf5a}
+.ro section{padding:88px 0}
+.ro .sh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:30px;flex-wrap:wrap}
+.ro .sh h2{font-size:clamp(30px,4cqi,46px)}
+.ro .sh p{color:var(--mute);max-width:34em;margin-top:10px}
+.ro .kick{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--oak);margin-bottom:10px;display:block}
+.ro .svc{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.ro .sv{background:#fff;border-radius:18px;overflow:hidden;text-align:left;box-shadow:0 0 0 1px var(--line);transition:.2s;cursor:pointer;display:block;width:100%}
+.ro .sv:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--line),0 14px 30px -14px rgba(0,0,0,.25)}
+.ro .sv .im{aspect-ratio:4/3;overflow:hidden;background:#d9d6cc}.ro .sv .im svg,.ro .sv .im img,.ro .sv .im .fb{width:100%;height:100%;display:block;object-fit:cover;transition:transform .4s}.ro .sv:hover .im img{transform:scale(1.05)}
+.ro .sv div.t{padding:12px 14px 14px}
+.ro .sv b{font:700 17px Fraunces,serif;display:block}
+.ro .sv small{color:var(--mute);font-size:13px}
+.ro .alt{background:var(--stone)}
+.ro .gtools{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.ro .chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.ro .chips::-webkit-scrollbar{display:none}
+.ro .ch{padding:8px 14px;border-radius:999px;background:#fff;font-weight:600;font-size:14px;white-space:nowrap;box-shadow:inset 0 0 0 1px var(--line)}
+.ro .ch[aria-pressed=true]{background:var(--ink);color:#fff;box-shadow:none}
+.ro .ch small{opacity:.55;margin-left:4px}
+.ro .sw{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;white-space:nowrap}
+.ro .sw button{width:44px;height:26px;border-radius:99px;background:#c9c7bf;position:relative;transition:.2s}
+.ro .sw button:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.ro .sw button[aria-checked=true]{background:var(--moss)}.ro .sw button[aria-checked=true]:after{left:21px}
+.ro .gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:12px}
+.ro .ph{position:relative;border-radius:16px;overflow:hidden;cursor:zoom-in;background:#ccc;display:block;width:100%;height:100%}
+.ro .ph:nth-child(6n+1){grid-column:span 2;grid-row:span 2}
+.ro .ph svg,.ro .ph img,.ro .ph .fb{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.fb svg{width:100%;height:100%;display:block}
+.ro .ph .cap .b3{background:rgba(255,255,255,.92)!important;color:#1d221c!important;font-weight:800!important}
+.ro .ph .cap .b36{background:#55693a!important}
+.ro .tour{display:flex;align-items:center;gap:16px;background:#1d231c;color:#eef0e8;border-radius:20px;padding:14px 14px 14px 20px;margin-bottom:18px;flex-wrap:wrap}
+.ro .tour b{font-size:15.5px}.ro .tour p{font-size:14px;opacity:.75;flex:1;min-width:220px}
+.ro .tour .btn{padding:11px 18px;font-size:14px}
+.ro .ckb{display:flex!important;flex-direction:row!important;align-items:center;gap:8px;font-weight:600!important}
+.ro .ckb input{width:18px;height:18px;accent-color:#55693a}
+.ro .ph:hover svg,.ro .ph:hover img{transform:scale(1.04)}
+.ro .ph .cap{position:absolute;left:10px;bottom:10px;right:10px;display:flex;gap:6px;align-items:center}
+.ro .ph .cap span{background:rgba(0,0,0,.55);backdrop-filter:blur(6px);color:#fff;font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:999px}
+.ro .ph .new{background:var(--moss)!important}
+.ro .ph .del{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:16px;display:grid;place-items:center}
+.ro .gempty{grid-column:1/-1;grid-row:span 1;display:grid;place-items:center;color:var(--mute);background:#fff;border-radius:16px}
+.ro .owner{background:#fff;border-radius:20px;padding:18px;margin-bottom:18px;box-shadow:inset 0 0 0 1px var(--line);display:grid;grid-template-columns:1.4fr 1fr;gap:18px;animation:fd .2s}
+.ro .dz{border:2px dashed #bfbdb3;border-radius:16px;padding:26px;text-align:center;cursor:pointer;transition:.15s;display:grid;place-items:center;gap:6px}
+.ro .dz.over,.ro .dz:hover{border-color:var(--moss);background:#f3f6ee}
+.ro .dz b{font-size:16px}.ro .dz small{color:var(--mute)}
+.ro .dz .up{width:46px;height:46px;border-radius:14px;background:#eef2e6;color:var(--moss);display:grid;place-items:center;font-size:22px}
+.ro .of{display:grid;gap:10px;align-content:start}
+.ro .of label{display:grid;gap:5px;font-size:13px;font-weight:700}
+.ro .of select,.ro .of input{padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--paper)}
+.ro .of p{font-size:13px;color:var(--mute)}
+.ro .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ro .st{background:#fff;border-radius:20px;padding:24px;box-shadow:0 0 0 1px var(--line)}
+.ro .st em{font-style:normal;width:36px;height:36px;border-radius:12px;background:#f4e7e4;color:var(--oak);display:grid;place-items:center;font-weight:800;margin-bottom:16px}
+.ro .st h3{font-size:22px;margin-bottom:6px}.ro .st p{color:var(--mute);font-size:15px}
+.ro .revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ro .rv{background:#fff;border-radius:20px;padding:24px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:14px}
+.ro .rv .s{color:#d99a1e;letter-spacing:2px}
+.ro .rv q{font:500 19px/1.35 Fraunces,serif;quotes:none}
+.ro .rv small{color:var(--mute);margin-top:auto}
+.ro .two{display:grid;grid-template-columns:1fr 1.2fr;gap:56px}
+.ro details{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 0 0 1px var(--line)}
+.ro details+details{margin-top:10px}
+.ro summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.ro summary::-webkit-details-marker{display:none}
+.ro summary:after{content:"+";font-size:22px;line-height:1;color:var(--mute);transition:.2s}
+.ro details[open] summary:after{transform:rotate(45deg)}
+.ro details p{margin-top:10px;color:var(--mute)}
+.ro .cta{background:var(--oak);color:#fff;border-radius:28px;padding:48px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.ro .cta h2{font-size:clamp(30px,4cqi,44px);margin-bottom:12px}
+.ro .cta p{opacity:.85}
+.ro .cta .btn{background:#fff;color:var(--oak)}
+.ro .cta .info{background:rgba(0,0,0,.15);border-radius:20px;padding:22px;display:grid;gap:12px;font-size:15px}
+.ro .cta .info a{color:#fff;font-weight:700}
+.ro .cta .info span{opacity:.7;display:block;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em}
+.ro footer{background:var(--ink);color:#bfc3b6;padding:44px 0;font-size:14px}
+.ro footer .w{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.ro footer b{color:#fff;font:700 18px Fraunces,serif;display:block;margin-bottom:6px}
+.ro .mbar{display:none}
+/* lightbox + quote sheet */
+.rlb{position:absolute;inset:0;background:rgba(10,12,10,.94);display:flex;flex-direction:column;color:#fff;animation:fd .2s}
+.rlb .hd{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;font-size:14px}
+.rlb .hd{gap:10px;flex-wrap:wrap}
+.rlb .hd .x{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:18px;flex:none}
+.rlb .tools{display:flex;gap:6px;align-items:center;margin-left:auto;flex-wrap:wrap}
+.rlb .sg{display:inline-flex;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
+.rlb .sg button{padding:6px 13px;border-radius:999px;color:#ddd;font-size:13px;font-weight:600}
+.rlb .sg button[aria-pressed=true]{background:#fff;color:#111}
+.rlb .ai{padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;font-size:13px;font-weight:600}
+.rlb .ai:disabled{opacity:.6}
+.rlb .p360{padding:7px 12px;border-radius:999px;background:#55693a;color:#fff;font-size:13px;font-weight:700}
+.rlb .lbh{text-align:center;font-size:13px;color:#b9bcb4;padding:0 16px 16px;min-height:32px}
+.rlb .lbm{position:relative;border-radius:14px;overflow:hidden;background:#000;flex:none}
+.rlb .lbm canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+.rlb .lbm canvas:active{cursor:grabbing}
+.rlb .lbm>img,.rlb .lbm>svg,.rlb .lbm>div.fb{width:100%;height:100%;object-fit:contain;display:block}
+.rlb .ld{position:absolute;inset:0;display:grid;place-items:center;color:#ccc;font-size:14px;background:#0b0d0b}
+.rlb .bd{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 60px 20px;position:relative}
+.rlb .bd svg,.rlb .bd img{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+.rlb .nv{position:absolute;top:50%;margin-top:-22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px}
+.rlb .nv.p{left:10px}.rlb .nv.n{right:10px}
+.qz{padding:22px 24px 24px;font-family:Inter,sans-serif}
+.qz .qh{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.qz .qh b{font-size:13px;color:#6b6b73}
+.qz .qh button{width:32px;height:32px;border-radius:50%;background:#f4f4f5}
+.qz .pb{height:5px;background:#eee;border-radius:9px;overflow:hidden;margin-bottom:22px}
+.qz .pb i{display:block;height:100%;background:#8f2b20;transition:width .3s}
+.qz h3{font:700 26px/1.15 Fraunces,serif;margin-bottom:6px}
+.qz .sub{color:#6b6b73;margin-bottom:18px;font-size:15px}
+.qz .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qz .op{padding:13px 14px;border-radius:14px;box-shadow:inset 0 0 0 1px #e2e2e5;text-align:left;font-weight:600;font-size:14.5px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.qz .op[aria-pressed=true]{box-shadow:inset 0 0 0 2px #8f2b20;background:#fbf3f1}
+.qz .op[aria-pressed=true]:after{content:"✓";color:#8f2b20;font-weight:800}
+.qz .seg2{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#f4f4f5;padding:4px;border-radius:14px;margin-bottom:18px}
+.qz .seg2 button{padding:10px;border-radius:11px;font-weight:600;font-size:14px}
+.qz .seg2 button[aria-pressed=true]{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.qz .lbl{font-size:13px;font-weight:700;margin-bottom:8px;display:block}
+.qz .bud{font:700 30px Fraunces,serif;margin:4px 0 10px}
+.qz input[type=range]{width:100%;accent-color:#8f2b20}
+.qz .fi{display:grid;gap:10px}
+.qz .fi input{padding:13px 14px;border-radius:12px;border:1px solid #e2e2e5;outline:0}
+.qz .fi input:focus{border-color:#8f2b20}
+.qz .ft{display:flex;gap:8px;margin-top:22px}
+.qz .ft button{flex:1;padding:14px;border-radius:999px;font-weight:700}
+.qz .ft .bk{background:#f4f4f5;flex:0 0 auto;padding:14px 20px}
+.qz .ft .nx{background:#8f2b20;color:#fff}
+.qz .ft .nx:disabled{opacity:.35;cursor:not-allowed}
+.qz .done{text-align:center;padding:16px 0 6px}
+.qz .done .ck{width:64px;height:64px;border-radius:50%;background:#eaf3e2;color:#55693a;display:grid;place-items:center;font-size:30px;margin:0 auto 16px}
+@container f (max-width:1000px){.ro .svc{grid-template-columns:repeat(3,1fr)}.ro .steps{grid-template-columns:1fr 1fr}.ro .revs{grid-template-columns:1fr 1fr}.ro .revs .rv:last-child{display:none}}
+@container f (max-width:760px){
+ .ro .w{padding:0 18px}.ro .links,.ro .util{display:none}
+ .ro nav .btn{padding:10px 16px;font-size:14px}.ro .logo{font-size:18px;white-space:nowrap}.ro .logo i{width:24px;height:24px}
+ .ro .hero{padding:40px 0 48px}.ro .hero .w{grid-template-columns:1fr;gap:32px}
+ .ro .hero h1{font-size:40px}.ro .trust{gap:10px 18px;margin-top:24px}
+ .ro section{padding:56px 0}
+ .ro .svc{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -18px;padding:2px 18px 6px;scrollbar-width:none}
+ .ro .svc::-webkit-scrollbar{display:none}
+ .ro .sv{flex:0 0 62%;scroll-snap-align:start}
+ .ro .gal{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:8px}
+ .ro .owner{grid-template-columns:1fr}
+ .ro .steps,.ro .revs,.ro .two,.ro .cta{grid-template-columns:1fr}.ro .revs .rv:last-child{display:flex}
+ .ro .cta{padding:30px 22px;border-radius:22px}.ro .two{gap:32px}
+ .ro .mbar{display:flex;position:sticky;bottom:0;z-index:9;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(247,246,242,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+ .ro .mbar .btn{flex:1;padding:13px}
+ .rlb .bd{padding:0 0 20px}.rlb .nv{top:auto;bottom:24px}
+}
+
+/* =========================================================
+   PROJECT 2 — CRUST & CRAFT BAKERY
+   ========================================================= */
+.bk{background:#fbf6ee;color:#3a2614;min-height:100%;padding:18px}
+.bk .nv{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:999px;padding:10px 12px 10px 20px;box-shadow:0 2px 10px rgba(80,40,0,.06)}
+.bk .nv b{font:700 19px Fraunces,serif}
+.bk .open{font-size:12.5px;font-weight:700;color:#1d7a46;background:#e6f5ec;padding:5px 10px;border-radius:999px;margin-right:8px}
+.bk .b{background:#a4561c;color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;font-size:14px}
+.bk .bento{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin:18px 0}
+.bk .hero{background:linear-gradient(135deg,#f4d9b5,#e9b980);border-radius:26px;padding:34px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.bk .hero h2{font:700 clamp(32px,5cqi,54px)/1.02 Fraunces,serif;max-width:9em}
+.bk .hero p{max-width:26em;margin-top:10px;opacity:.8}
+.bk .hero .em{position:absolute;right:-10px;bottom:-30px;font-size:180px;opacity:.9;transform:rotate(-12deg)}
+.bk .tile{background:#fff;border-radius:26px;padding:24px;display:flex;flex-direction:column;justify-content:space-between}
+.bk .tile .r{font:700 40px Fraunces,serif}
+.bk .menu{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bk .it{background:#fff;border-radius:20px;padding:16px;display:flex;gap:12px;align-items:center}
+.bk .it span{font-size:34px;width:58px;height:58px;border-radius:16px;background:#fbf0e2;display:grid;place-items:center;flex:none}
+.bk .it b{display:block}.bk .it small{color:#8a6a4c}
+.bk .it button{margin-left:auto;width:34px;height:34px;border-radius:50%;background:#fbf0e2;font-size:18px;font-weight:700;flex:none}
+.bk .it button.on{background:#a4561c;color:#fff}
+.bk .ord{background:#fff;border-radius:26px;padding:24px;margin-top:14px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end}
+.bk .ord h3{grid-column:1/-1;font:700 24px Fraunces,serif}
+.bk .ord input,.bk .ord select{padding:12px 14px;border-radius:14px;border:1px solid #eadbc8;background:#fffaf3;width:100%}
+.bk .ok{grid-column:1/-1;background:#e6f5ec;color:#1d7a46;padding:14px;border-radius:14px;font-weight:600}
+@container f (max-width:700px){.bk .bento,.bk .menu,.bk .ord{grid-template-columns:1fr}.bk .open{display:none}.bk .hero{min-height:260px;padding:24px}}
+
+/* =========================================================
+   PROJECT 3 — AURA ATELIER (e-commerce)
+   ========================================================= */
+.au{background:#f5f2ed;color:#1f1c18;min-height:100%}
+.au .nv{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid #e4ded4}
+.au .nv b{font:700 20px Fraunces,serif;letter-spacing:.12em;text-transform:uppercase}
+.au .nv button{display:flex;gap:8px;align-items:center;background:#1f1c18;color:#fff;padding:9px 16px;border-radius:999px;font-weight:600;font-size:14px}
+.au .nv button i{font-style:normal;background:#fff;color:#1f1c18;border-radius:99px;min-width:20px;height:20px;display:grid;place-items:center;font-size:12px}
+.au .hero{padding:48px 28px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.au .hero h2{font:500 clamp(34px,5cqi,58px)/1 Fraunces,serif;max-width:10em}
+.au .fl{display:flex;gap:6px}
+.au .fl button{padding:8px 15px;border-radius:999px;background:#fff;font-weight:600;font-size:14px;text-transform:capitalize}
+.au .fl button[aria-pressed=true]{background:#1f1c18;color:#fff}
+.au .pg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 28px 40px}
+.au .pc .im{aspect-ratio:4/5;border-radius:18px;display:grid;place-items:center;font-size:70px;position:relative}
+.au .pc .im button{position:absolute;left:10px;right:10px;bottom:10px;background:#fff;padding:11px;border-radius:999px;font-weight:700;font-size:14px;opacity:0;transform:translateY(6px);transition:.2s}
+.au .pc:hover .im button{opacity:1;transform:none}
+.au .pc b{display:block;margin-top:10px;font-weight:600}.au .pc small{color:#7b7368}
+.au .ci{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #eee;align-items:center}
+.au .ci span{font-size:28px;width:54px;height:54px;border-radius:12px;background:#f5f2ed;display:grid;place-items:center}
+.au .qt{display:flex;align-items:center;gap:8px;margin-left:auto}
+.au .qt button{width:28px;height:28px;border-radius:50%;background:#f1efeb;font-weight:700}
+@container f (max-width:760px){.au .pg{grid-template-columns:1fr 1fr;padding:0 16px 30px;gap:12px}.au .hero{padding:30px 16px 20px}.au .nv{padding:14px 16px}.au .pc .im button{opacity:1;transform:none}}
+
+/* =========================================================
+   PROJECT 4 — FUTURE TECH SUMMIT
+   ========================================================= */
+.ev{background:#09090b;color:#fafafa;min-height:100%;padding:0 0 40px;position:relative;overflow:hidden}
+.ev:before{content:"";position:absolute;width:700px;height:700px;left:50%;top:-380px;margin-left:-350px;background:radial-gradient(circle,rgba(59,130,246,.35),transparent 65%);pointer-events:none}
+.ev .nv{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;position:relative}
+.ev .nv b{font-family:ui-monospace,monospace;font-size:13px;letter-spacing:.1em;color:#93b4ff}
+.ev .bt{background:#2563eb;color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;font-size:14px}
+.ev .hd{text-align:center;padding:50px 20px 20px;position:relative}
+.ev .tag{display:inline-block;font-family:ui-monospace,monospace;font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid #27324a;color:#93b4ff}
+.ev h2{font-size:clamp(36px,6cqi,72px);letter-spacing:-.04em;line-height:1;margin:16px auto 14px;max-width:12em;font-weight:800}
+.ev .hd p{color:#a1a1aa;max-width:32em;margin:0 auto}
+.ev .cd{display:flex;justify-content:center;gap:10px;margin-top:28px}
+.ev .cd div{background:#18181b;border:1px solid #27272a;border-radius:16px;padding:14px;min-width:78px}
+.ev .cd b{display:block;font:800 30px ui-monospace,monospace;color:#93b4ff}
+.ev .cd small{color:#71717a;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.ev .sc{max-width:760px;margin:40px auto 0;padding:0 20px;position:relative}
+.ev .sc .top2{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.ev .seg3{display:flex;background:#18181b;border-radius:999px;padding:3px}
+.ev .seg3 button{padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#a1a1aa}
+.ev .seg3 button[aria-pressed=true]{background:#2563eb;color:#fff}
+.ev .ss{display:flex;gap:14px;align-items:center;background:#111113;border:1px solid #232326;border-radius:16px;padding:14px 16px;margin-bottom:8px}
+.ev .ss code{color:#93b4ff;font-size:13px;min-width:72px}
+.ev .ss small{color:#71717a;display:block}
+.ev .ss i{margin-left:auto;font-style:normal;font-size:12px;color:#a1a1aa;background:#1c1c1f;padding:4px 9px;border-radius:99px;white-space:nowrap}
+.evs{padding:24px;font-family:Inter,sans-serif}
+.evs .tk{display:grid;gap:8px;margin:16px 0}
+.evs .tk button{display:flex;justify-content:space-between;padding:14px 16px;border-radius:14px;box-shadow:inset 0 0 0 1px #e4e4e7;text-align:left}
+.evs .tk button[aria-pressed=true]{box-shadow:inset 0 0 0 2px #2563eb;background:#f1f5ff}
+.evs input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #e4e4e7;margin-bottom:8px}
+.evs .go{width:100%;padding:14px;border-radius:999px;background:#2563eb;color:#fff;font-weight:700;margin-top:8px}
+
+/* =========================================================
+   PROJECT 5 — AEROX 3D
+   ========================================================= */
+.ax{background:#0b1020;color:#fff;min-height:100%;position:relative}
+.ax .nv{display:flex;justify-content:center;padding:16px}
+.ax .nv div{display:flex;gap:20px;align-items:center;justify-content:space-between;width:100%;max-width:620px;background:rgba(20,26,48,.75);border:1px solid #29304d;border-radius:999px;padding:9px 10px 9px 20px;backdrop-filter:blur(10px)}
+.ax .nv b{letter-spacing:.18em;font-size:13px}
+.ax .nv button{background:#7c3aed;padding:8px 16px;border-radius:999px;font-weight:700;font-size:13px}
+.ax .st{position:relative;height:520px;display:grid;place-items:center;text-align:center}
+.ax canvas{position:absolute;inset:0;width:100%;height:100%}
+.ax .st .tx{position:relative;pointer-events:none;padding:0 20px}
+.ax h2{font-size:clamp(36px,6cqi,70px);letter-spacing:-.04em;font-weight:800;line-height:1}
+.ax .st p{color:#b3bad1;margin-top:12px}
+.ax .ctl{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:6px;align-items:center;background:rgba(20,26,48,.8);border:1px solid #29304d;border-radius:999px;padding:5px;backdrop-filter:blur(10px)}
+.ax .ctl button{padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;color:#cdd3e8}
+.ax .ctl button[aria-pressed=true]{background:#7c3aed;color:#fff}
+.ax .ctl .dot{width:20px;height:20px;padding:0;border-radius:50%;margin:0 2px}
+.ax .ft{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:960px;margin:0 auto;padding:10px 20px 50px}
+.ax .ft div{background:#121933;border:1px solid #232b4a;border-radius:18px;padding:20px}
+.ax .ft small{color:#a78bfa;font-family:ui-monospace,monospace}
+.ax .ft p{color:#9aa3c0;font-size:14px;margin-top:4px}
+@container f (max-width:700px){.ax .ft{grid-template-columns:1fr}.ax .st{height:440px}.ax .ctl{flex-wrap:wrap;justify-content:center;width:calc(100% - 24px);border-radius:20px}}
+
+/* =========================================================
+   PROJECT 6 — FORMA3D
+   ========================================================= */
+.f3{background:#0c1412;color:#eafff6;min-height:100%;padding:22px}
+.f3 .nv{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.f3 .nv b{display:flex;gap:10px;align-items:center}
+.f3 .nv b i{font-style:normal;width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#10b981,#2dd4bf);color:#04140e;display:grid;place-items:center;font-size:11px;font-weight:800}
+.f3 .stp{display:flex;gap:4px;font-size:12.5px;font-weight:600}
+.f3 .stp span{padding:6px 12px;border-radius:999px;background:#15211d;color:#7aa597}
+.f3 .stp span.on{background:#10b981;color:#04140e}
+.f3 .up{max-width:640px;margin:50px auto;text-align:center}
+.f3 h2{font-size:clamp(30px,5cqi,52px);letter-spacing:-.035em;line-height:1.02;font-weight:800}
+.f3 .up p{color:#8fb5a8;margin-top:10px}
+.f3 .dz{margin-top:28px;border:2px dashed #24433a;border-radius:24px;padding:40px;cursor:pointer;display:grid;gap:8px;place-items:center;transition:.15s}
+.f3 .dz:hover{border-color:#10b981;background:#0f1c18}
+.f3 .dz div{width:56px;height:56px;border-radius:16px;background:#12302a;color:#34d399;display:grid;place-items:center;font-size:26px}
+.f3 .smp{margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.f3 .smp button{padding:9px 14px;border-radius:999px;background:#15211d;font-size:13.5px;font-weight:600}
+.f3 .stu{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-top:22px}
+.f3 .pv{background:#0f1c18;border:1px solid #1d332c;border-radius:22px;padding:16px;display:grid;gap:12px}
+.f3 .pv .vw{height:300px;border-radius:16px;background:radial-gradient(circle at 50% 40%,#173a30,#0c1412);display:grid;place-items:center;position:relative;overflow:hidden}
+.f3 .pv .vw img{width:42%;aspect-ratio:1;object-fit:cover;border-radius:50%;filter:grayscale(1) contrast(1.2);opacity:.85;box-shadow:0 0 0 6px var(--mc),0 30px 50px -10px var(--mc);transition:.3s}
+.f3 .pv .vw .em{font-size:90px;filter:drop-shadow(0 20px 30px var(--mc))}
+.f3 .sl{display:flex;gap:12px;align-items:center;font-size:13.5px;color:#8fb5a8}
+.f3 .sl input{flex:1;accent-color:#10b981}
+.f3 .mt{background:#0f1c18;border:1px solid #1d332c;border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.f3 .mt button{display:flex;align-items:center;gap:10px;padding:12px;border-radius:14px;background:#0c1412;text-align:left;box-shadow:inset 0 0 0 1px #1d332c}
+.f3 .mt button[aria-pressed=true]{box-shadow:inset 0 0 0 2px #10b981}
+.f3 .mt button i{width:18px;height:18px;border-radius:50%;flex:none}
+.f3 .mt button small{display:block;color:#7aa597}
+.f3 .tot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px;border-top:1px solid #1d332c}
+.f3 .tot b{font:800 26px ui-monospace,monospace;color:#34d399}
+.f3 .go{background:linear-gradient(90deg,#10b981,#2dd4bf);color:#04140e;padding:14px;border-radius:999px;font-weight:800}
+.f3 .dn{max-width:520px;margin:60px auto;text-align:center;background:#0f1c18;border:1px solid #1d332c;border-radius:26px;padding:36px}
+@container f (max-width:760px){.f3 .stu{grid-template-columns:1fr}.f3 .stp{display:none}.f3 .dz{padding:28px}}
+/* =========================================================
+   PROJECT 7 — RIDGELINE ROOFING  (job-site / trade-paper)
+   ========================================================= */
+.rf{--ink:#141414;--paper:#efebe1;--or:#ff5a1f;--mute:#5d5a52;--rule:#141414;background:var(--paper);color:var(--ink);font:16px/1.5 Archivo,system-ui,sans-serif}
+.rf .w{max-width:1240px;margin:0 auto;padding:0 32px}
+.rf .cx{font-stretch:62%;font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.005em}
+.rf .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;letter-spacing:.02em}
+.rf-mq{overflow:hidden;background:var(--ink);color:var(--or);white-space:nowrap;font:700 12.5px Archivo;letter-spacing:.12em}
+.rf-mq div{display:inline-block;padding:9px 0;animation:rfmq 38s linear infinite}
+@keyframes rfmq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.rf-mq div{animation:none}}
+.rf-nav{border-bottom:2px solid var(--rule);background:var(--paper);position:sticky;top:0;z-index:10}
+.rf-nav .w{display:flex;align-items:stretch;height:64px}
+.rf-logo{display:flex;align-items:center;gap:10px;font-stretch:125%;font-weight:800;font-size:18px;letter-spacing:.06em;margin-right:auto}
+.rf-logo svg{width:34px;height:22px}
+.rf-nav a{display:flex;align-items:center;padding:0 18px;font-weight:600;font-size:14px;border-left:2px solid var(--rule);cursor:pointer}
+.rf-nav a:hover{background:var(--ink);color:var(--paper)}
+.rf-nav .go{background:var(--or);color:var(--ink);font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:13px;border-right:2px solid var(--rule)}
+.rf-nav .go:hover{background:var(--ink);color:var(--or)}
+.rf-btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);padding:15px 22px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:13.5px;border:2px solid var(--ink)}
+.rf-btn:hover{background:var(--or);color:var(--ink)}
+.rf-btn.o{background:var(--or);color:var(--ink)}.rf-btn.o:hover{background:var(--ink);color:var(--or)}
+.rf-btn.ln{background:transparent;color:var(--ink)}
+.rf-hero{border-bottom:2px solid var(--rule)}
+.rf-hero .w{display:grid;grid-template-columns:7fr 5fr;gap:0}
+.rf-hero .l{padding:54px 40px 48px 0;border-right:2px solid var(--rule)}
+.rf-hero .tag{display:inline-block;border:2px solid var(--ink);padding:5px 9px;margin-bottom:26px}
+.rf-hero h1{font-size:clamp(58px,9.4cqi,132px)}
+.rf-hero h1 em{font-style:normal;color:var(--or);-webkit-text-stroke:2px var(--ink)}
+.rf-hero p{max-width:30em;font-size:17.5px;margin:26px 0 30px;color:#2b2a27}
+.rf-hero .r{position:relative;min-height:440px;overflow:hidden;background:#cfc9bc}
+.rf-hero .r img,.rf-hero .r .fb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(.9)}
+.rf-tape{position:absolute;left:-10px;bottom:34px;background:var(--or);color:var(--ink);padding:9px 18px 9px 26px;transform:rotate(-2.5deg);font-weight:700;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.rf-stamp{position:absolute;right:22px;top:22px;width:108px;height:108px;border:3px solid #fff;border-radius:50%;color:#fff;display:grid;place-items:center;text-align:center;font:800 12px/1.15 Archivo;letter-spacing:.1em;transform:rotate(9deg);text-transform:uppercase;background:rgba(20,20,20,.35)}
+.rf-facts{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid var(--rule)}
+.rf-facts div{padding:18px 24px;border-right:2px solid var(--rule)}.rf-facts div:last-child{border-right:0}
+.rf-facts b{display:block;font-stretch:75%;font-weight:800;font-size:22px;text-transform:uppercase}
+.rf-sec{padding:72px 0;border-bottom:2px solid var(--rule)}
+.rf-sh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+.rf-sh h2{font-size:clamp(44px,6cqi,78px)}
+.rf-svc{border-top:2px solid var(--rule)}
+.rf-row{display:grid;grid-template-columns:70px 1.1fr 1.6fr 40px;gap:20px;align-items:center;padding:20px 8px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background .12s}
+.rf-row:hover{background:var(--ink);color:var(--paper)}
+.rf-row b{font-stretch:75%;font-weight:800;font-size:26px;text-transform:uppercase}
+.rf-row span:last-child{font-size:22px;text-align:right}
+.rf-est{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:start}
+.rf-ctl{border:2px solid var(--rule);background:#f7f4ec}
+.rf-ctl>div{padding:18px 20px;border-bottom:2px solid var(--rule)}.rf-ctl>div:last-child{border-bottom:0}
+.rf-ctl label.h{display:flex;justify-content:space-between;font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.06em;margin-bottom:10px}
+.rf-ctl input[type=range]{width:100%;accent-color:#141414}
+.rf-opt{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid var(--rule)}
+.rf-opt button{padding:10px 6px;border-right:2px solid var(--rule);font-weight:700;font-size:13px;display:grid;gap:6px;justify-items:center}
+.rf-opt button:last-child{border-right:0}
+.rf-opt button[aria-pressed=true]{background:var(--ink);color:var(--or)}
+.rf-opt svg{width:46px;height:24px}
+.rf-opt.c3{grid-template-columns:repeat(3,1fr)}
+.rf-rc{background:#fffef9;font:14px/1.7 "IBM Plex Mono",monospace;padding:26px 24px 40px;transform:rotate(.7deg);box-shadow:0 18px 30px -18px rgba(0,0,0,.45);
+ -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 12px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 12px repeat-x;
+ mask:linear-gradient(#000 0 0) top/100% calc(100% - 12px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 12px repeat-x}
+.rf-rc .hd2{text-align:center;border-bottom:1px dashed #777;padding-bottom:12px;margin-bottom:12px}
+.rf-rc .hd2 b{font:900 22px Archivo;font-stretch:62%;letter-spacing:.06em;display:block}
+.rf-rc .ln{display:flex;gap:8px}.rf-rc .ln i{flex:1;border-bottom:1px dotted #8b8b8b;transform:translateY(-6px)}
+.rf-rc .tot{border-top:1px dashed #777;margin-top:12px;padding-top:12px}
+.rf-rc .big{font:900 44px/1 Archivo;font-stretch:62%;margin:6px 0 4px}
+.rf-rc small{display:block;color:#666;font-size:11.5px;line-height:1.5;margin-top:10px}
+.rf-chk{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--rule)}
+.rf-chk button{text-align:left;padding:18px;border-right:2px solid var(--rule);border-bottom:2px solid var(--rule);display:flex;gap:12px;align-items:flex-start;font-weight:600;min-height:96px}
+.rf-chk button:nth-child(3n){border-right:0}.rf-chk button:nth-last-child(-n+3){border-bottom:0}
+.rf-chk button i{width:22px;height:22px;border:2px solid var(--ink);flex:none;display:grid;place-items:center;font-style:normal;font-weight:900}
+.rf-chk button[aria-pressed=true]{background:#ffe3d6}.rf-chk button[aria-pressed=true] i{background:var(--ink);color:var(--or)}
+.rf-verdict{margin-top:16px;padding:16px 20px;border:2px solid var(--rule);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;font-weight:700}
+.rf-verdict.hot{background:var(--or)}
+.rf-strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-color:#141414 transparent}
+.rf-strip figure{flex:0 0 min(420px,78%);scroll-snap-align:start;margin:0}
+.rf-strip .im{aspect-ratio:4/3;overflow:hidden;border:2px solid var(--rule);background:#cfc9bc}
+.rf-strip img,.rf-strip .fb{width:100%;height:100%;object-fit:cover;display:block}
+.rf-strip figcaption{display:flex;justify-content:space-between;padding-top:8px}
+.rf-steps{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid var(--rule)}
+.rf-steps div{padding:22px;border-right:2px solid var(--rule)}.rf-steps div:last-child{border-right:0}
+.rf-steps b{display:block;font-stretch:62%;font-weight:900;font-size:54px;line-height:1;color:var(--or);-webkit-text-stroke:1.5px var(--ink)}
+.rf-steps h4{font-stretch:75%;font-weight:800;font-size:20px;text-transform:uppercase;margin:10px 0 6px}
+.rf-steps p{font-size:14.5px;color:#3a3935}
+.rf-foot{background:var(--ink);color:var(--paper);padding:56px 0 40px}
+.rf-foot .big{font-size:clamp(52px,10cqi,140px);color:var(--or)}
+.rf-foot .row2{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:28px;border-top:1px solid #444;padding-top:18px}
+.rf-mbar{display:none}
+@container f (max-width:860px){
+ .rf .w{padding:0 18px}.rf-nav a:not(.go){display:none}.rf-nav .go{border-left:2px solid var(--rule)}
+ .rf-hero .w{grid-template-columns:1fr}.rf-hero .l{border-right:0;padding:34px 0}.rf-hero .r{min-height:300px;margin:0 -18px;border-top:2px solid var(--rule)}
+ .rf-facts{grid-template-columns:1fr}.rf-facts div{border-right:0;border-bottom:2px solid var(--rule)}.rf-facts div:last-child{border-bottom:0}
+ .rf-row{grid-template-columns:44px 1fr 28px}.rf-row span:nth-child(3){display:none}.rf-row b{font-size:22px}
+ .rf-est{grid-template-columns:1fr}.rf-chk{grid-template-columns:1fr}.rf-chk button{border-right:0!important;border-bottom:2px solid var(--rule)!important;min-height:0}.rf-chk button:last-child{border-bottom:0!important}
+ .rf-steps{grid-template-columns:1fr 1fr}.rf-steps div:nth-child(2){border-right:0}.rf-steps div:nth-child(-n+2){border-bottom:2px solid var(--rule)}
+ .rf-sec{padding:48px 0}
+ .rf-mbar{display:grid;grid-template-columns:1fr 1fr;position:sticky;bottom:0;z-index:9;border-top:2px solid var(--rule)}
+ .rf-mbar a,.rf-mbar button{padding:16px;text-align:center;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:13.5px}
+ .rf-mbar a{background:var(--paper)}.rf-mbar button{background:var(--or)}
+}
+
+/* =========================================================
+   PROJECT 8 — GRAIN & PLANK FLOORING  (editorial showroom)
+   ========================================================= */
+.fp{--cream:#f3ece1;--esp:#2b1e16;--clay:#a9552f;--line:#d6c8b5;--mute:#7a6a5c;background:var(--cream);color:var(--esp);font:15.5px/1.6 "Instrument Sans",system-ui,sans-serif}
+.fp .w{max-width:1280px;margin:0 auto;padding:0 40px}
+.fp .se{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:.98}
+.fp .se i{font-style:italic}
+.fp .mn{font:500 11.5px/1.4 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
+.fp-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 40px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(243,236,225,.94);backdrop-filter:blur(8px);z-index:10}
+.fp-nav .lk{display:flex;gap:22px}.fp-nav .lk a{cursor:pointer}.fp-nav .lk a:hover{color:var(--clay)}
+.fp-nav .mark{text-align:center}.fp-nav .mark b{display:block;font:400 28px/1 "Instrument Serif",serif}
+.fp-nav .rt{display:flex;justify-content:flex-end;gap:10px;align-items:center}
+.fp-tray{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--esp);padding:8px 14px;border-radius:999px;font-weight:600;font-size:14px}
+.fp-tray i{font-style:normal;background:var(--esp);color:var(--cream);min-width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px}
+.fp-hero{padding:64px 0 40px}
+.fp-hero h1{font-size:clamp(54px,8.6cqi,128px);max-width:11.5em}
+.fp-hero h1 .dot{display:inline-block;width:.9em;height:.62em;border-radius:999px;vertical-align:.02em;overflow:hidden;margin:0 .06em;background:#b89a74}
+.fp-hero h1 .dot img,.fp-hero h1 .dot .fb{width:100%;height:100%;object-fit:cover;display:block}
+.fp-hero .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;border-top:1px solid var(--esp);padding-top:16px}
+.fp-hero .meta p{font-size:14.5px;color:#4a3a2e;margin-top:6px}
+.fp-full{position:relative;height:min(70cqi,620px);min-height:300px;overflow:hidden;background:#c9b79e}
+.fp-full img,.fp-full .fb{width:100%;height:100%;object-fit:cover;display:block}
+.fp-full .cap{position:absolute;left:40px;bottom:22px;background:var(--cream);padding:8px 12px}
+.fp-sec{padding:90px 0}
+.fp-sec .hd3{display:grid;grid-template-columns:200px 1fr;gap:30px;margin-bottom:40px}
+.fp-sec h2{font-size:clamp(40px,5.4cqi,74px)}
+.fp-vis{display:grid;grid-template-columns:1.45fr 1fr;gap:40px;align-items:start}
+.fp-room{position:relative;aspect-ratio:4/3.1;overflow:hidden;perspective:640px;background:#e9e2d6;border-radius:3px}
+.fp-room .wall{position:absolute;left:0;right:0;top:0;height:57%;background:linear-gradient(#ece6da,#e2dacb)}
+.fp-room .win{position:absolute;left:14%;top:9%;width:27%;height:40%;background:linear-gradient(160deg,#f9fbfc,#d9e5ea);border:6px solid #f7f3ec;box-shadow:inset 0 0 0 1px #d8d0c2}
+.fp-room .win:before,.fp-room .win:after{content:"";position:absolute;background:#f7f3ec}
+.fp-room .win:before{left:50%;top:0;bottom:0;width:5px;margin-left:-2.5px}.fp-room .win:after{top:50%;left:0;right:0;height:5px;margin-top:-2.5px}
+.fp-room .art{position:absolute;right:16%;top:14%;width:15%;height:24%;background:#a9552f;border:5px solid #2b1e16;opacity:.9}
+.fp-room .art:after{content:"";position:absolute;inset:18% 22%;border-radius:50%;background:#e8c9a0}
+.fp-room .floor{position:absolute;left:-70%;right:-70%;top:56%;height:190%;transform-origin:50% 0;transform:rotateX(74deg);background-size:170px;transition:background-image .2s}
+.fp-room .base{position:absolute;left:0;right:0;top:55.2%;height:2.4%;background:#f7f3ec;box-shadow:0 2px 3px rgba(0,0,0,.15)}
+.fp-room .shade{position:absolute;left:0;right:0;top:57%;bottom:0;background:linear-gradient(rgba(30,20,10,.28),rgba(30,20,10,0) 38%,rgba(30,20,10,.12));pointer-events:none}
+.fp-room .sun{position:absolute;left:4%;top:62%;width:46%;height:30%;background:radial-gradient(closest-side,rgba(255,244,214,.55),transparent);transform:skewX(-28deg);mix-blend-mode:soft-light;pointer-events:none}
+.fp-room .bench{position:absolute;left:52%;top:47%;width:30%;height:10%}
+.fp-room .bench b{position:absolute;left:0;right:0;top:0;height:28%;background:#2b1e16;border-radius:2px}
+.fp-room .bench i{position:absolute;top:28%;width:5%;height:72%;background:#2b1e16}.fp-room .bench i:first-of-type{left:6%}.fp-room .bench i:last-of-type{right:6%}
+.fp-room .bench:after{content:"";position:absolute;left:-6%;right:-6%;bottom:-24%;height:30%;background:radial-gradient(closest-side,rgba(0,0,0,.28),transparent);}
+.fp-room .lbl{position:absolute;left:14px;bottom:14px;background:var(--cream);padding:7px 11px}
+.fp-sw{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 14px}
+.fp-chip{text-align:left;transition:transform .2s}
+.fp-chip .t{aspect-ratio:1;border-radius:2px;background-size:120px;box-shadow:0 1px 0 rgba(0,0,0,.08),0 10px 18px -12px rgba(0,0,0,.5);outline:2px solid transparent;outline-offset:4px;transition:outline-color .15s}
+.fp-chip[aria-pressed=true] .t{outline-color:var(--esp)}
+.fp-chip:hover{transform:translateY(-3px) rotate(0deg)!important}
+.fp-chip span{display:block;margin-top:10px;font-weight:600;font-size:14px;line-height:1.25}
+.fp-spec{margin-top:26px;border-top:1px solid var(--esp)}
+.fp-spec div{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.fp-spec div span:first-child{color:var(--mute)}
+.fp-calc{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fp-calc label{display:grid;gap:4px}
+.fp-calc input{border:0;border-bottom:1px solid var(--esp);background:transparent;padding:6px 0;font:400 30px "Instrument Serif",serif;width:100%;outline:0}
+.fp-out{margin-top:16px;padding:16px;background:#e9dfd0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.fp-out b{display:block;font:400 26px/1.1 "Instrument Serif",serif}
+.fp-b{display:inline-flex;align-items:center;gap:10px;background:var(--esp);color:var(--cream);padding:14px 22px;border-radius:999px;font-weight:600}
+.fp-b:hover{background:var(--clay)}
+.fp-b.ol{background:transparent;color:var(--esp);box-shadow:inset 0 0 0 1px var(--esp)}
+.fp-proc{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--esp)}
+.fp-proc div{padding:22px 22px 0 0;border-right:1px solid var(--line);margin-right:22px}
+.fp-proc div:last-child{border-right:0}
+.fp-proc h4{font:400 32px/1 "Instrument Serif",serif;margin:14px 0 8px}
+.fp-proc p{font-size:14.5px;color:#4a3a2e}
+.fp-mos{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:260px 260px;gap:10px}
+.fp-mos figure{margin:0;position:relative;overflow:hidden;background:#c9b79e}
+.fp-mos figure:first-child{grid-row:span 2}
+.fp-mos img,.fp-mos .fb{width:100%;height:100%;object-fit:cover;display:block}
+.fp-mos figcaption{position:absolute;left:10px;bottom:10px;background:var(--cream);padding:5px 9px}
+.fp-show{display:grid;grid-template-columns:1fr 1fr;gap:60px;border-top:1px solid var(--esp);padding-top:30px}
+.fp-show table{width:100%;border-collapse:collapse;font-size:15px}
+.fp-show td{padding:9px 0;border-bottom:1px solid var(--line)}.fp-show td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.fp-foot{border-top:1px solid var(--esp);padding:28px 0 40px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.fps{padding:26px;font-family:"Instrument Sans",sans-serif;color:#2b1e16}
+.fps h3{font:400 34px/1 "Instrument Serif",serif;margin-bottom:6px}
+.fps .it{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #e6dccd}
+.fps .it i{width:44px;height:44px;border-radius:2px;background-size:70px;flex:none}
+.fps .it button{margin-left:auto;color:#a9552f;font-size:13px;font-weight:600}
+.fps input{width:100%;padding:12px 0;border:0;border-bottom:1px solid #2b1e16;margin-top:6px;background:transparent;outline:0}
+@container f (max-width:900px){
+ .fp .w{padding:0 20px}.fp-nav{grid-template-columns:auto 1fr;padding:14px 20px}.fp-nav .lk{display:none}.fp-nav .mark{text-align:left}.fp-nav .mark b{font-size:22px}.fp-nav .mark .mn{display:none}
+ .fp-hero{padding:40px 0 28px}.fp-hero .meta{grid-template-columns:1fr 1fr}
+ .fp-full .cap{left:20px}
+ .fp-sec{padding:56px 0}.fp-sec .hd3{grid-template-columns:1fr;gap:8px;margin-bottom:24px}
+ .fp-vis{grid-template-columns:1fr}.fp-proc{grid-template-columns:1fr 1fr}.fp-proc div:nth-child(2){border-right:0}
+ .fp-mos{grid-template-columns:1fr 1fr;grid-template-rows:200px 160px 160px}.fp-mos figure:first-child{grid-column:span 2;grid-row:auto}
+ .fp-show{grid-template-columns:1fr;gap:30px}
+}
+
+/* =========================================================
+   PROJECT 9 — HOLLIS & DAUGHTER  (kitchen & bath remodeling)
+   ========================================================= */
+.hm{--bg:#fbfaf7;--ink:#171717;--sage:#6f7d5c;--rule:rgba(23,23,23,.14);--mute:#6c6a64;background:var(--bg);color:var(--ink);font:15.5px/1.6 "Public Sans",system-ui,sans-serif}
+.hm .w{max-width:1240px;margin:0 auto;padding:0 36px}
+.hm .nr{font-family:Newsreader,Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:1.02}
+.hm .sc{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mute)}
+.hm-top{display:flex;justify-content:space-between;align-items:baseline;padding:22px 36px 16px;gap:20px;border-bottom:1px solid var(--ink);position:sticky;top:0;background:var(--bg);z-index:10}
+.hm-top .nm{font:500 24px/1 Newsreader,serif;letter-spacing:-.01em}
+.hm-top .nm i{font-style:italic}
+.hm-top nav{display:flex;gap:26px;font-size:14.5px;align-items:baseline}
+.hm-top nav a{cursor:pointer;background-image:linear-gradient(var(--ink),var(--ink));background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .25s}
+.hm-top nav a:hover{background-size:100% 1px}
+.hm-top nav .cta{font-weight:600;border:1px solid var(--ink);padding:8px 14px;background-image:none}
+.hm-top nav .cta:hover{background:var(--ink);color:var(--bg)}
+.hm-hero{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;padding:56px 0 72px}
+.hm-hero h1{grid-column:1/10;font-size:clamp(46px,6.8cqi,96px)}
+.hm-hero h1 i{color:var(--sage)}
+.hm-hero .sd{grid-column:10/13;align-self:end;font-size:15px;color:#3b3a36}
+.hm-hero .ph{grid-column:3/13;margin-top:44px;position:relative;aspect-ratio:16/8.5;overflow:hidden;background:#d6d2c8}
+.hm-hero .ph img,.hm-hero .ph .fb{width:100%;height:100%;object-fit:cover;display:block}
+.hm-hero .note{grid-column:1/3;margin-top:44px;align-self:end;font-size:13.5px;color:#3b3a36;border-top:1px solid var(--ink);padding-top:10px}
+.hm-sec{padding:80px 0;border-top:1px solid var(--ink)}
+.hm-sh{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-bottom:34px}
+.hm-sh .sc{grid-column:1/4;padding-top:10px}
+.hm-sh h2{grid-column:4/11;font-size:clamp(36px,4.6cqi,60px)}
+.hm-idx{position:relative}
+.hm-ir{display:grid;grid-template-columns:3fr 5fr 2fr 2fr 2fr;gap:24px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--rule);cursor:pointer}
+.hm-ir:first-child{border-top:1px solid var(--rule)}
+.hm-ir .t{font:400 30px/1.1 Newsreader,serif;letter-spacing:-.015em;transition:padding .25s}
+.hm-ir:hover .t{padding-left:14px;font-style:italic}
+.hm-ir span{font-size:14px;color:#3b3a36;font-variant-numeric:tabular-nums}
+.hm-peek{position:absolute;width:260px;aspect-ratio:4/5;pointer-events:none;opacity:0;transition:opacity .2s;z-index:3;overflow:hidden;background:#ddd;box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.hm-peek img,.hm-peek .fb{width:100%;height:100%;object-fit:cover}
+.hm-plan{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.hm-pc{grid-column:1/5}
+.hm-pr{grid-column:5/13;border-left:1px solid var(--ink);padding-left:28px}
+.hm-q{margin-bottom:22px}
+.hm-q .sc{display:block;margin-bottom:8px}
+.hm-tg{display:flex;flex-wrap:wrap;border:1px solid var(--ink)}
+.hm-tg button{flex:1 1 auto;padding:11px 12px;font-size:14px;border-right:1px solid var(--ink);text-align:center}
+.hm-tg button:last-child{border-right:0}
+.hm-tg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.hm-sw2{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+.hm-sw2 button{width:40px;height:22px;border:1px solid var(--ink);border-radius:99px;position:relative}
+.hm-sw2 button:after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--ink);transition:.2s}
+.hm-sw2 button[aria-checked=true]{background:var(--sage);border-color:var(--sage)}.hm-sw2 button[aria-checked=true]:after{left:20px;background:#fff}
+.hm-num{font:400 clamp(44px,6cqi,80px)/1 Newsreader,serif;letter-spacing:-.03em;font-variant-numeric:lining-nums tabular-nums}
+.hm-num small{font-size:.38em;color:var(--mute);letter-spacing:0}
+.hm-gt{margin-top:26px}
+.hm-wk{display:grid;margin-left:150px;font-size:11px;color:var(--mute);border-bottom:1px solid var(--rule);padding-bottom:4px}
+.hm-gr{display:grid;grid-template-columns:150px 1fr;align-items:center;height:34px;border-bottom:1px solid var(--rule);font-size:13.5px}
+.hm-gr .tr{position:relative;height:100%;background-image:linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:var(--cw) 100%}
+.hm-gr .br{position:absolute;top:8px;bottom:8px;background:var(--ink);transition:left .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1)}
+.hm-gr .br.s{background:var(--sage)}
+.hm-sum{display:flex;gap:30px;margin-top:18px;flex-wrap:wrap;font-size:14px}
+.hm-sum b{font:400 26px Newsreader,serif;display:block}
+.hm-pri{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.hm-pri div{border-top:1px solid var(--ink);padding-top:14px}
+.hm-pri b{font:400 64px/1 Newsreader,serif;color:var(--sage)}
+.hm-pri h4{font:500 22px Newsreader,serif;margin:10px 0 6px}
+.hm-pri p{color:#3b3a36;font-size:14.5px}
+.hm-foot{border-top:1px solid var(--ink);padding:40px 0 50px;display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.hm-foot .big{grid-column:1/8;font:400 clamp(34px,4cqi,52px)/1.05 Newsreader,serif}
+.hm-foot .big a{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.hm-foot .ad{grid-column:9/13;font-size:14px;color:#3b3a36}
+.hmj{display:grid;grid-template-columns:1fr 1fr;max-height:100%;background:#fbfaf7;color:#171717;font-family:"Public Sans",sans-serif}
+.hmj .im{min-height:100%;background:#ddd}.hmj .im img,.hmj .im .fb{width:100%;height:100%;object-fit:cover;display:block}
+.hmj .tx{padding:30px;overflow:auto}
+.hmj h3{font:400 38px/1.02 Newsreader,serif;letter-spacing:-.02em;margin:8px 0 18px}
+.hmj .en{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:12px 0;border-top:1px solid rgba(0,0,0,.12);font-size:14.5px}
+.hmj .en b{font:italic 400 17px Newsreader,serif;color:#6f7d5c}
+.hmj .x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:#fbfaf7;border:1px solid #171717;z-index:2}
+.hm-sheet{position:relative;width:100%;max-width:980px;height:min(640px,calc(100% - 40px));overflow:hidden;animation:up .28s cubic-bezier(.2,.8,.2,1)}
+@container f (max-width:860px){
+ .hm .w{padding:0 18px}.hm-top{padding:16px 18px 12px}.hm-top nav a:not(.cta){display:none}
+ .hm-hero{padding:34px 0 48px}.hm-hero h1,.hm-hero .sd,.hm-hero .ph,.hm-hero .note{grid-column:1/-1}.hm-hero .sd{margin-top:18px}.hm-hero .ph{margin-top:26px}.hm-hero .note{margin-top:18px}
+ .hm-sec{padding:52px 0}.hm-sh .sc,.hm-sh h2{grid-column:1/-1}.hm-sh{gap:6px}
+ .hm-ir{grid-template-columns:1fr auto}.hm-ir span:nth-child(2),.hm-ir span:nth-child(3),.hm-ir span:nth-child(4){display:none}.hm-ir .t{font-size:24px}
+ .hm-peek{display:none}
+ .hm-pc,.hm-pr{grid-column:1/-1}.hm-pr{border-left:0;padding-left:0;border-top:1px solid var(--ink);padding-top:22px}
+ .hm-wk{margin-left:96px}.hm-gr{grid-template-columns:96px 1fr;font-size:12px}
+ .hm-pri{grid-template-columns:1fr}.hm-foot .big,.hm-foot .ad{grid-column:1/-1}
+ .hmj{grid-template-columns:1fr;grid-template-rows:200px auto;overflow:auto}.hm-sheet{height:auto;max-height:92%;overflow:auto}
+}
+
+</style>
+</head>
+<body>
+
+<header class="top"><div class="in">
+ <div class="brand"><i>DC</i> websbyshreyan</div>
+ <label class="search">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+  <input id="q" placeholder="Search projects, industries, features…" aria-label="Search projects">
+ </label>
+ <a class="pill ghost" href="#studio">How we work</a>
+ <a class="pill dark" href="#contact">Start a project</a>
+</div></header>
+
+<main class="wrap">
+ <section class="intro">
+  <h1>Websites we've designed and built for growing businesses.</h1>
+  <p>Open any project to try the working prototype on desktop, tablet and phone, or read the case study and the key flows we designed.</p>
+ </section>
+ <div class="tabs" id="cats" role="toolbar" aria-label="Filter by industry"></div>
+ <div class="grid" id="grid"></div>
+</main>
+
+<section class="studio" id="studio"><div class="wrap cols">
+ <div>
+  <h2>One small team, from first sketch to launch.</h2>
+  <p class="m">We work like a product team: design the key screens first, prototype them so you can click through before we build, then ship a fast site you can update yourself.</p>
+  <div class="offer">
+   <div><b>Redesigns</b><span>Modernize an existing site without losing your search rankings.</span></div>
+   <div><b>Lead generation</b><span>Quote wizards, booking and forms that send leads straight to you.</span></div>
+   <div><b>Self-managed content</b><span>Upload photos and edit pages from your phone, no developer needed.</span></div>
+   <div><b>E-commerce and 3D</b><span>Storefronts, checkout and interactive product experiences.</span></div>
+  </div>
+ </div>
+ <form class="cform" id="contact" onsubmit="event.preventDefault();this.innerHTML='<div class=ok>Thanks! We&rsquo;ll reply within one business day with next steps.</div>'">
+  <h2 style="font-size:24px">Start a project</h2>
+  <label>Business name<input required placeholder="e.g. Red Oak Landscaping"></label>
+  <label>Email or phone<input required placeholder="you@company.com"></label>
+  <label>What do you need?<select><option>Website redesign</option><option>New website</option><option>Online store</option><option>Booking / quote system</option><option>Something else</option></select></label>
+  <label>Anything else?<textarea rows="3" placeholder="Current site, goals, timeline…"></textarea></label>
+  <button class="pill dark" style="justify-content:center;padding:13px">Send request</button>
+ </form>
+</div></section>
+<footer class="sf"><div class="wrap"><span>© 2026 websbyshreyan</span><span>Interactive prototypes. Imagery is illustrative.</span></div></footer>
+
+<!-- PROJECT VIEWER -->
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Project viewer">
+ <div class="vbar">
+  <button class="ib" id="vback" aria-label="Back to all work">←</button>
+  <div class="vtitle"><span class="ico" id="vico"></span><div><b id="vname"></b><small id="vcat"></small></div></div>
+  <div class="seg" id="vtabs"><button data-t="live" aria-pressed="true">Prototype</button><button data-t="case" aria-pressed="false">Case study</button></div>
+  <div class="seg" id="vdev"><button data-d="desk" aria-pressed="true">Desktop</button><button data-d="tab" aria-pressed="false">Tablet</button><button data-d="mob" aria-pressed="false">Mobile</button></div>
+  <div class="vnav" style="display:flex;gap:6px"><button class="ib" id="vprev" aria-label="Previous project">‹</button><button class="ib" id="vnext" aria-label="Next project">›</button></div>
+ </div>
+ <div class="vbody">
+  <div class="stage" id="stage"><div class="frame" id="frame"><div class="scr" id="scr"></div><div class="ovl" id="ovl"></div></div></div>
+  <div class="case" id="case"></div>
+ </div>
+</div>
+
+<script>
+/* ================================================================
+   HELPERS
+   ================================================================ */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let cleanup=[];
+const onCleanup=f=>cleanup.push(f);
+const ovl=()=>$('#ovl'), scr=()=>$('#scr');
+function openOv(html,cls='scrim'){const d=document.createElement('div');d.className=cls;d.innerHTML=html;ovl().appendChild(d);
+ if(cls==='scrim')d.addEventListener('click',e=>{if(e.target===d)d.remove()});return d}
+function closeOv(){[...ovl().children].forEach(c=>c._destroy&&c._destroy());ovl().innerHTML=''}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;ovl().appendChild(t);setTimeout(()=>t.remove(),2400)}
+function goTo(sel){const el=$(sel,scr());if(el)scr().scrollTo({top:el.offsetTop-70,behavior:'smooth'})}
+
+/* ================================================================
+   LANDSCAPE ILLUSTRATIONS (sample imagery for Red Oak)
+   ================================================================ */
+let gid=0;
+function scene(kind,v=0){
+ const id='g'+(gid++);
+ const skies=[['#cfe2ea','#f1f4ee'],['#f2d5b6','#f8eee2'],['#bcd2e5','#eaf0f3']];
+ const dusk=kind==='fire';
+ const sky=dusk?['#28314d','#a5707a']:skies[v%3];
+ const lawn=kind==='before'?'#9c9467':(v%2?'#7d9a52':'#86a35a');
+ let s=`<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sky[0]}"/><stop offset="1" stop-color="${sky[1]}"/></linearGradient><radialGradient id="${id}r"><stop offset="0" stop-color="#ffb347" stop-opacity=".7"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient></defs><rect width="400" height="300" fill="url(#${id})"/>`;
+ const tc=dusk?['#1f2b25','#25332b']:['#557049','#4a633f','#62804f'];
+ for(let i=0;i<9;i++){const x=i*50+((v*17+i*23)%30)-10,r=34+((i*13+v*7)%22);s+=`<ellipse cx="${x}" cy="${140-r*.35}" rx="${r}" ry="${r*1.05}" fill="${tc[i%tc.length]}"/>`}
+ s+=`<rect y="138" width="400" height="162" fill="${dusk?'#3c4a33':lawn}"/>`;
+ const shrub=(x,y,r,c='#4f6b3f')=>`<ellipse cx="${x}" cy="${y}" rx="${r}" ry="${r*.72}" fill="${c}"/><ellipse cx="${x-r*.3}" cy="${y-r*.25}" rx="${r*.45}" ry="${r*.3}" fill="#6e8f55" opacity=".7"/>`;
+ const flowers=(x,y,n,c)=>{let o='';for(let i=0;i<n;i++)o+=`<circle cx="${x+(i*11)%40-20}" cy="${y+(i*7)%14-7}" r="2.6" fill="${c}"/>`;return o};
+ const pavers=(top,c='#cbc2b0',l='#b2a994')=>{let o=`<polygon points="40,300 360,300 300,${top} 100,${top}" fill="${c}"/>`;
+   for(let k=1;k<7;k++){const y=top+(300-top)*(k/7)**1.25,f=(y-top)/(300-top),x1=100-60*f,x2=300+60*f;o+=`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="${l}" stroke-width="1.6"/>`}
+   for(let k=1;k<6;k++){const xt=100+200*k/6,xb=40+320*k/6;o+=`<line x1="${xt}" y1="${top}" x2="${xb}" y2="300" stroke="${l}" stroke-width="1.3"/>`}return o};
+ const chair=(x,y,c='#7a5638')=>`<rect x="${x}" y="${y}" width="34" height="8" rx="2" fill="${c}"/><rect x="${x+2}" y="${y-22}" width="6" height="24" fill="${c}"/><rect x="${x+2}" y="${y+8}" width="4" height="10" fill="${c}"/><rect x="${x+28}" y="${y+8}" width="4" height="10" fill="${c}"/>`;
+ switch(kind){
+  case 'before':
+   s+=`<ellipse cx="120" cy="220" rx="70" ry="22" fill="#8a7357"/><ellipse cx="290" cy="260" rx="90" ry="26" fill="#86704f"/><ellipse cx="300" cy="180" rx="40" ry="10" fill="#8f7a5c"/><polygon points="150,250 250,246 262,290 140,296" fill="#a8a59d"/><path d="M175 255 l20 18 l-8 16 M225 250 l-14 22" stroke="#7f7c75" stroke-width="2" fill="none"/>`;
+   for(let i=0;i<26;i++)s+=`<path d="M${(i*53)%400} ${160+(i*37)%130} l-3 -9 M${(i*53)%400} ${160+(i*37)%130} l4 -8" stroke="#6b7a3e" stroke-width="2"/>`;
+   s+=shrub(40,170,22,'#6b7442');break;
+  case 'patio':
+   s+=pavers(178)+shrub(40,190,28)+shrub(360,195,30)+flowers(40,188,8,'#e5a1b5')+flowers(360,192,8,'#f1d16a')+chair(130,236)+chair(240,236)+`<rect x="182" y="242" width="40" height="6" rx="3" fill="#5b4330"/><rect x="198" y="248" width="8" height="14" fill="#5b4330"/>`;break;
+  case 'wall':
+   for(let r=0;r<5;r++){const y=176+r*17;for(let c=-1;c<9;c++){const x=c*52+(r%2?26:0);s+=`<rect x="${x}" y="${y}" width="50" height="15" rx="2" fill="${(r+c)%3?'#a59f90':'#958f81'}"/>`}}
+   s+=`<rect y="168" width="400" height="10" fill="#7f796c"/><rect y="261" width="400" height="39" fill="${lawn}"/>`+shrub(70,160,26)+shrub(170,158,20,'#5a7a44')+shrub(280,160,28)+shrub(370,158,20)+flowers(170,154,7,'#c9a2e3')+flowers(280,154,7,'#f4c55c');break;
+  case 'walk':
+   s+=`<path d="M200 300 C 230 260, 120 230, 190 195 S 260 160, 215 140" stroke="#d6cdb9" stroke-width="64" fill="none" stroke-linecap="round"/><path d="M200 300 C 230 260, 120 230, 190 195 S 260 160, 215 140" stroke="#c4baa4" stroke-width="64" fill="none" stroke-dasharray="3 26"/>`+shrub(70,220,30)+shrub(330,210,32)+shrub(80,160,20)+shrub(320,160,20)+flowers(110,250,10,'#e57373')+flowers(300,250,10,'#ffd166');break;
+  case 'fire':
+   s+=`<ellipse cx="200" cy="245" rx="175" ry="52" fill="#8b8477"/><ellipse cx="200" cy="245" rx="175" ry="52" fill="none" stroke="#6e685d" stroke-width="5"/><ellipse cx="200" cy="215" rx="140" ry="80" fill="url(#${id}r)"/><ellipse cx="200" cy="236" rx="46" ry="15" fill="#5a5650"/><ellipse cx="200" cy="232" rx="36" ry="10" fill="#262422"/><path d="M185 232 q5 -34 15 -48 q2 22 12 26 q4 -12 2 -22 q14 18 4 44z" fill="#ff8a2a"/><path d="M193 232 q4 -20 9 -28 q2 14 8 16 q-2 8 -4 12z" fill="#ffd166"/>`+chair(95,240,'#3f2f22')+chair(275,240,'#3f2f22');
+   for(let i=0;i<14;i++)s+=`<circle cx="${(i*67)%400}" cy="${(i*29)%90+10}" r="1.2" fill="#fff" opacity=".7"/>`;break;
+  case 'kitchen':
+   s+=pavers(185)+`<line x1="70" y1="120" x2="70" y2="240" stroke="#6b4c34" stroke-width="7"/><line x1="330" y1="120" x2="330" y2="240" stroke="#6b4c34" stroke-width="7"/>`;
+   for(let i=0;i<8;i++)s+=`<rect x="${60+i*40}" y="112" width="8" height="10" fill="#6b4c34"/>`;
+   s+=`<rect x="58" y="120" width="284" height="8" fill="#5d412c"/><rect x="95" y="190" width="210" height="52" fill="#77736a"/><rect x="90" y="184" width="220" height="9" fill="#ddd6c7"/><rect x="185" y="170" width="54" height="16" rx="4" fill="#2e2e2e"/><rect x="110" y="202" width="40" height="30" fill="#5f5b53"/><rect x="250" y="202" width="40" height="30" fill="#5f5b53"/>`+shrub(30,200,24)+shrub(372,200,24);break;
+  case 'plant':
+   s+=`<ellipse cx="200" cy="235" rx="200" ry="62" fill="#6a4a33"/>`+shrub(70,205,30)+shrub(160,195,24,'#3f5f3a')+shrub(250,205,30,'#5c7d43')+shrub(340,200,26)+shrub(120,250,22,'#486a3c')+shrub(290,252,24,'#3f5f3a');
+   s+=flowers(70,200,10,'#e05d6f')+flowers(160,190,9,'#f0c34e')+flowers(250,200,10,'#b77fd0')+flowers(340,196,8,'#f7f2e8')+flowers(120,246,8,'#f39c4a')+flowers(290,248,9,'#e05d6f');break;
+  case 'house':
+   s+=`<rect x="110" y="88" width="180" height="88" fill="#efe9dd"/><polygon points="98,92 200,40 302,92" fill="#5b4a42"/><rect x="185" y="124" width="30" height="52" fill="#8f2b20"/><rect x="130" y="110" width="34" height="30" fill="#9fc3d6" stroke="#fff" stroke-width="3"/><rect x="236" y="110" width="34" height="30" fill="#9fc3d6" stroke="#fff" stroke-width="3"/><polygon points="185,176 215,176 260,300 140,300" fill="#d3c9b5"/><rect x="100" y="172" width="80" height="16" rx="8" fill="#6a4a33"/><rect x="220" y="172" width="80" height="16" rx="8" fill="#6a4a33"/>`+shrub(125,172,16)+shrub(160,174,14,'#3f5f3a')+shrub(240,174,14,'#3f5f3a')+shrub(278,172,16)+flowers(140,170,6,'#e05d6f')+flowers(260,170,6,'#f0c34e');break;
+  case 'pool':
+   s+=pavers(170,'#d9d1c0','#c6bda9')+`<polygon points="95,290 305,290 270,195 130,195" fill="#4fb3d0"/><polygon points="95,290 305,290 270,195 130,195" fill="none" stroke="#efe8da" stroke-width="7"/><path d="M130 225 q30 -8 60 0 t60 0 M115 255 q35 -8 70 0 t70 0" stroke="#a9e2f0" stroke-width="3" fill="none" opacity=".8"/>`+shrub(40,180,26)+shrub(365,182,26)+chair(318,240,'#ececec');break;
+  case 'steps':
+   s+=`<polygon points="0,180 400,150 400,300 0,300" fill="${lawn}" opacity=".9"/>`;
+   for(let i=0;i<6;i++){const w=170-i*16,y=278-i*22,x=200-w/2;s+=`<rect x="${x}" y="${y}" width="${w}" height="16" fill="${i%2?'#a39d8f':'#b3ad9f'}"/><rect x="${x}" y="${y}" width="${w}" height="4" fill="#cdc7b8"/>`}
+   s+=shrub(90,250,30)+shrub(310,245,30)+shrub(120,190,20,'#3f5f3a')+shrub(280,185,20,'#3f5f3a')+flowers(90,245,9,'#f0c34e')+flowers(310,240,9,'#e57373');break;
+  default: s+=pavers(180);
+ }
+ return s+'</svg>';
+}
+
+/* ================================================================
+   PROJECT 1 — RED OAK LANDSCAPING
+   ================================================================ */
+const RO_CATS=[['Front Yards','house'],['Back Yards','patio'],['Retaining Walls','wall'],['Steps','steps'],['Walkways','walk'],['Outdoor Kitchens','kitchen'],['Outdoor Living','patio'],['Fire Pits','fire'],['Pool Scapes','pool'],['Plantings','plant']];
+const U=(id,w=1200)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+// Free stock photos (Unsplash License) used as stand-ins for Red Oak's own project photos
+const RO_PHOTOS={'Front Yards':['1636301587190-88cbb412fea0','1608463123864-40a2961b7d00','1698133468646-0fc9f395330b'],
+ 'Back Yards':['1681853108586-f29b4ef5c0fb','1719324924230-63781a3f18b9','1729058015948-592a8e4a1772'],
+ 'Retaining Walls':['1761637822987-282e320d7ee9','1761637823941-0ffae96ec487','1779917748967-049bf828fbeb'],
+ 'Steps':['1775977337819-807a20465423','1701422052265-64f0ac28dcd6'],
+ 'Walkways':['1761637822930-fb1c1a3df94d','1761637823622-eaaaee0660db'],
+ 'Outdoor Kitchens':['1762117361035-5cd4f9c24795','1762117360868-d4e757073d45','1769503236428-7773271074cf'],
+ 'Outdoor Living':['1780838446281-9394772d07a8','1766603636766-1f4662469448','1715090576114-c07384af2069'],
+ 'Fire Pits':['1778869290979-6f09567a0eee'],
+ 'Pool Scapes':['1693949881527-6ace7f216806','1780571616416-e44643f9f427','1693949903903-64071abdf8c2'],
+ 'Plantings':['1727640500320-6a76103ca2e8','1779871566693-250f4a0348f8','1586175554766-77513ac248d0']};
+// CC0 360° panorama (Poly Haven, "Symmetrical Garden 02")
+const PANO_URLS=['https://cdn.polyhaven.com/asset_img/primary/symmetrical_garden_02.png?width=4096&quality=90','https://cdn.polyhaven.com/asset_img/primary/symmetrical_garden_02.png?height=760&quality=95'];
+function photoImg(id,kind,v,w=1000,cls=''){return `<img src="${U(id,w)}" alt="" loading="lazy" class="${cls}" data-k="${kind}" data-v="${v}" onerror="roFallback(this)">`}
+function roFallback(img){if(img.dataset.k==='plain'){const d=document.createElement('div');d.className='fb';d.style.cssText='width:100%;height:100%;background:repeating-linear-gradient(135deg,#d9d4c9 0 14px,#d2ccc0 14px 28px)';img.replaceWith(d);return}if(img.dataset.k==='pano'){if(!img.dataset.f){img.dataset.f=1;img.src=panoProcedural().toDataURL('image/jpeg',.8)}return}
+ const d=document.createElement('div');d.className='fb';d.innerHTML=scene(img.dataset.k||'patio',+img.dataset.v||0);img.replaceWith(d)}
+let _pano=null;
+function panoProcedural(){if(_pano)return _pano;const W=2048,H=1024,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+ let g=x.createLinearGradient(0,0,0,H/2);g.addColorStop(0,'#6fa6d6');g.addColorStop(1,'#dfeaf0');x.fillStyle=g;x.fillRect(0,0,W,H/2);
+ for(let i=0;i<14;i++){x.fillStyle='rgba(255,255,255,.75)';const cx=(i*311)%W,cy=80+(i*53)%220;for(let j=0;j<5;j++){x.beginPath();x.ellipse(cx+j*34,cy+(j%2)*10,60,22,0,0,7);x.fill()}}
+ g=x.createLinearGradient(0,H/2,0,H);g.addColorStop(0,'#7c9a52');g.addColorStop(1,'#4f6b33');x.fillStyle=g;x.fillRect(0,H/2,W,H/2);
+ const tc=['#3f5a32','#4a6a3a','#56763f','#334d2b'];for(let i=0;i<120;i++){const tx=(i*37.3)%W,r=26+(i*13)%40;x.fillStyle=tc[i%4];x.beginPath();x.arc(tx,H/2-r*.4,r,0,7);x.fill();if(tx<r){x.beginPath();x.arc(tx+W,H/2-r*.4,r,0,7);x.fill()}}
+ x.fillStyle='#ece5d6';x.fillRect(1650,410,260,105);x.fillStyle='#5b4a42';x.beginPath();x.moveTo(1630,415);x.lineTo(1780,350);x.lineTo(1930,415);x.fill();
+ x.fillStyle='#9fc3d6';x.fillRect(1680,440,40,34);x.fillRect(1840,440,40,34);x.fillStyle='#8f2b20';x.fillRect(1763,455,34,60);
+ x.fillStyle='#cdc4b1';x.fillRect(0,640,W,H-640);x.strokeStyle='#b3a991';x.lineWidth=3;
+ for(let y=640,k=0;y<H;k++,y+=22+k*9){x.beginPath();x.moveTo(0,y);x.lineTo(W,y);x.stroke()}
+ for(let i=0;i<64;i++){x.beginPath();x.moveTo(i*32,640);x.lineTo(i*32,H);x.stroke()}
+ x.fillStyle='#6a4a33';x.fillRect(0,600,W,42);const fc=['#e05d6f','#f0c34e','#b77fd0','#f7f2e8','#f39c4a'];
+ for(let i=0;i<500;i++){x.fillStyle=i%3?'#4f6b3f':fc[i%5];x.beginPath();x.arc((i*41.7)%W,598+(i*7)%40,i%3?9:4,0,7);x.fill()}
+ x.fillStyle='#5a5650';x.beginPath();x.ellipse(1024,760,120,34,0,0,7);x.fill();x.fillStyle='#262422';x.beginPath();x.ellipse(1024,752,92,22,0,0,7);x.fill();
+ x.fillStyle='#ff8a2a';x.beginPath();x.moveTo(980,752);x.quadraticCurveTo(1000,650,1030,620);x.quadraticCurveTo(1035,690,1060,700);x.quadraticCurveTo(1075,730,1060,752);x.fill();
+ x.fillStyle='#ffd166';x.beginPath();x.moveTo(1005,752);x.quadraticCurveTo(1015,700,1030,680);x.quadraticCurveTo(1040,720,1045,752);x.fill();
+ [[820,700],[1220,700],[720,780],[1330,780]].forEach(([a,b])=>{x.fillStyle='#7a5638';x.fillRect(a-40,b,80,16);x.fillRect(a-36,b-50,12,52)});
+ _pano=c;return c}
+function loadImg(src,cors){return new Promise((res,rej)=>{const i=new Image();if(cors)i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=()=>rej(new Error('load '+src));i.src=src})}
+function toCanvas(img,max){const r=Math.min(1,max/Math.max(img.naturalWidth||img.width,1));const c=document.createElement('canvas');c.width=Math.round((img.naturalWidth||img.width)*r);c.height=Math.round((img.naturalHeight||img.height)*r);c.getContext('2d').drawImage(img,0,0,c.width,c.height);return c}
+const rasterCache=new Map(),depthCache=new Map();
+async function rasterize(p){if(rasterCache.has(p.id))return rasterCache.get(p.id);let c=null;
+ try{if(p.url)c=toCanvas(await loadImg(p.url),1600);else if(p.photo)c=toCanvas(await loadImg(U(p.photo,1600),true),1600)}catch(e){c=null}
+ if(c){try{c.getContext('2d').getImageData(0,0,1,1)}catch(e){c=null}}
+ if(!c){const svg=scene(p.kind||'patio',p.v||0).replace('<svg ','<svg width="1600" height="1200" ');const u=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));try{c=toCanvas(await loadImg(u),1600)}finally{URL.revokeObjectURL(u)}c.fb=!!p.photo}
+ rasterCache.set(p.id,c);return c}
+function quickDepth(src){const w=256,h=Math.max(2,Math.round(256*src.height/src.width));const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.drawImage(src,0,0,w,h);
+ const im=x.getImageData(0,0,w,h),d=im.data;
+ for(let y=0;y<h;y++){const yy=y/(h-1);for(let i=0;i<w;i++){const k=(y*w+i)*4,r=d[k]/255,g=d[k+1]/255,b=d[k+2]/255,l=.3*r+.59*g+.11*b,mx=Math.max(r,g,b),sat=mx-Math.min(r,g,b);
+  let v=.1+.85*Math.pow(yy,1.15)+(sat-.2)*.18;if(yy<.62&&b>=r&&b>=g*.92&&l>.5&&sat<.38)v*=.25;d[k]=d[k+1]=d[k+2]=Math.max(0,Math.min(255,v*255));d[k+3]=255}}
+ x.putImageData(im,0,0);const o=document.createElement('canvas');o.width=w;o.height=h;const ox=o.getContext('2d');ox.filter='blur(5px)';ox.drawImage(c,0,0);return o}
+let aiPipe=null;
+async function aiDepth(src){
+ if(!aiPipe)aiPipe=(async()=>{const T=await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3');
+  for(const m of ['onnx-community/depth-anything-v2-small','Xenova/depth-anything-small-hf']){try{return await T.pipeline('depth-estimation',m)}catch(e){}}throw new Error('no model')})();
+ let est;try{est=await aiPipe}catch(e){aiPipe=null;throw e}
+ const small=toCanvas(src,518);const out=await est(small.toDataURL('image/jpeg',.92));
+ const dc=out.depth.toCanvas();const c=document.createElement('canvas');c.width=dc.width;c.height=dc.height;const x=c.getContext('2d');x.filter='blur(1px)';x.drawImage(dc,0,0);return c}
+function glSetup(canvas,fs){const gl=canvas.getContext('webgl',{premultipliedAlpha:false,antialias:true});if(!gl)return null;
+ const sh=(t,src)=>{const o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);return o};
+ const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;varying vec2 v;void main(){v=(a+1.0)*0.5;gl_Position=vec4(a,0.0,1.0);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);
+ if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return null;gl.useProgram(pr);
+ const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+ const l=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,2,gl.FLOAT,false,0,0);return {gl,pr,u:n=>gl.getUniformLocation(pr,n)}}
+function glTex(gl,unit,src,flip){gl.activeTexture(gl.TEXTURE0+unit);const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,flip);
+ gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,src);[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T].forEach(w=>gl.texParameteri(gl.TEXTURE_2D,w,gl.CLAMP_TO_EDGE));
+ gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);return t}
+function createTilt(box,img,depth){
+ const cv=document.createElement('canvas');box.appendChild(cv);
+ const G=glSetup(cv,'precision mediump float;varying vec2 v;uniform sampler2D im,dp;uniform vec2 m;uniform float s;void main(){vec2 uv=0.5+(v-0.5)*0.9;float d=texture2D(dp,uv).r;vec2 o=m*(d-0.45)*s;d=texture2D(dp,uv+o).r;o=m*(d-0.45)*s;gl_FragColor=texture2D(im,uv+o);}');
+ if(!G){cv.remove();const f=document.createElement('div');f.className='fb';f.appendChild(img);img.style.cssText='width:100%;height:100%;object-fit:contain';box.appendChild(f);return {setDepth(){},destroy(){}}}
+ const {gl,u}=G;glTex(gl,0,img,true);let dt=glTex(gl,1,depth,true);gl.uniform1i(u('im'),0);gl.uniform1i(u('dp'),1);gl.uniform1f(u('s'),0.07);
+ let tx=0,ty=0,cx=0,cy=0,last=0,raf;
+ const fit=()=>{cv.width=box.clientWidth*devicePixelRatio;cv.height=box.clientHeight*devicePixelRatio;gl.viewport(0,0,cv.width,cv.height)};fit();const ro=new ResizeObserver(fit);ro.observe(box);
+ const pm=e=>{const r=box.getBoundingClientRect();tx=((e.clientX-r.left)/r.width*2-1);ty=((e.clientY-r.top)/r.height*2-1);last=performance.now()};
+ box.addEventListener('pointermove',pm);
+ const or=e=>{if(e.gamma==null)return;tx=Math.max(-1,Math.min(1,e.gamma/25));ty=Math.max(-1,Math.min(1,(e.beta-40)/25));last=performance.now()};
+ addEventListener('deviceorientation',or);
+ box.addEventListener('click',()=>{if(window.DeviceOrientationEvent&&DeviceOrientationEvent.requestPermission)DeviceOrientationEvent.requestPermission().catch(()=>{})},{once:true});
+ const loop=t=>{if(t-last>2500){tx=Math.sin(t*.0007)*.8;ty=Math.cos(t*.0005)*.45}cx+=(tx-cx)*.07;cy+=(ty-cy)*.07;gl.uniform2f(u('m'),-cx,cy);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);raf=requestAnimationFrame(loop)};raf=requestAnimationFrame(loop);
+ return {setDepth(d){gl.deleteTexture(dt);dt=glTex(gl,1,d,true);gl.uniform1i(u('dp'),1)},destroy(){cancelAnimationFrame(raf);ro.disconnect();removeEventListener('deviceorientation',or);const e=gl.getExtension('WEBGL_lose_context');if(e)e.loseContext()}}}
+function createPano(box,src){
+ const cv=document.createElement('canvas');box.appendChild(cv);
+ const G=glSetup(cv,'precision highp float;varying vec2 v;uniform sampler2D t;uniform float yaw,pitch,fov,asp;void main(){vec2 p=v*2.0-1.0;float f=tan(fov*0.5);vec3 d=normalize(vec3(p.x*f*asp,p.y*f,-1.0));float cp=cos(pitch),sp=sin(pitch);d=vec3(d.x,d.y*cp-d.z*sp,d.y*sp+d.z*cp);float cy=cos(yaw),sy=sin(yaw);d=vec3(d.x*cy-d.z*sy,d.y,d.x*sy+d.z*cy);float lon=atan(d.x,-d.z);float lat=asin(clamp(d.y,-1.0,1.0));gl_FragColor=texture2D(t,vec2(fract(lon/6.2831853+0.5),0.5-lat/3.14159265));}');
+ if(!G){cv.remove();box.appendChild(src);src.style.cssText='width:100%;height:100%;object-fit:cover';return {destroy(){}}}
+ const {gl,u}=G;const mx=gl.getParameter(gl.MAX_TEXTURE_SIZE);let s2=src;if(src.width>mx)s2=toCanvas(src,mx);glTex(gl,0,s2,false);gl.uniform1i(u('t'),0);
+ let yaw=0,pitch=-.08,fov=1.35,idle=0,raf;const pts=new Map();let pd=0;
+ const fit=()=>{cv.width=box.clientWidth*devicePixelRatio;cv.height=box.clientHeight*devicePixelRatio;gl.viewport(0,0,cv.width,cv.height)};fit();const ro=new ResizeObserver(fit);ro.observe(box);
+ cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);idle=performance.now()+4000});
+ cv.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return;const [px,py]=pts.get(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);idle=performance.now()+4000;
+  if(pts.size===2){const [a,b]=[...pts.values()];const dd=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd)fov=Math.max(.5,Math.min(1.9,fov*pd/dd));pd=dd;return}
+  const k=fov/box.clientHeight;yaw-=(e.clientX-px)*k;pitch=Math.max(-1.4,Math.min(1.4,pitch+(e.clientY-py)*k))});
+ const up=e=>{pts.delete(e.pointerId);pd=0};cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+ cv.addEventListener('wheel',e=>{e.preventDefault();fov=Math.max(.5,Math.min(1.9,fov*(1+e.deltaY*.001)));idle=performance.now()+4000},{passive:false});
+ const loop=t=>{if(t>idle)yaw+=.0016;gl.uniform1f(u('yaw'),yaw);gl.uniform1f(u('pitch'),pitch);gl.uniform1f(u('fov'),fov);gl.uniform1f(u('asp'),cv.width/cv.height);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);raf=requestAnimationFrame(loop)};raf=requestAnimationFrame(loop);
+ return {destroy(){cancelAnimationFrame(raf);ro.disconnect();const e=gl.getExtension('WEBGL_lose_context');if(e)e.loseContext()}}}
+async function panoSource(p){if(p.url){try{return toCanvas(await loadImg(p.url),4096)}catch(e){}}
+ for(const u of PANO_URLS){try{const c=toCanvas(await loadImg(u,true),4096);c.getContext('2d').getImageData(0,0,1,1);return c}catch(e){}}return panoProcedural()}
+const RO_TOWNS=['Guilderland','Niskayuna','Clifton Park','Delmar','Saratoga Springs','Schenectady','Loudonville','Glenville','Colonie','Bethlehem'];
+const roDB={db:null,mem:[],
+ async open(){if(this.db)return this.db;try{this.db=await new Promise((res,rej)=>{const r=indexedDB.open('redoak-gallery-demo',1);r.onupgradeneeded=()=>r.result.createObjectStore('p',{keyPath:'id'});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}catch(e){this.db=null}return this.db},
+ async all(){const d=await this.open();if(!d)return this.mem;return new Promise(res=>{try{const q=d.transaction('p').objectStore('p').getAll();q.onsuccess=()=>res(q.result||[]);q.onerror=()=>res([])}catch(e){res([])}})},
+ async put(x){const d=await this.open();if(!d){this.mem.push(x);return}return new Promise(res=>{try{const t=d.transaction('p','readwrite');t.objectStore('p').put(x);t.oncomplete=res;t.onerror=res}catch(e){this.mem.push(x);res()}})},
+ async del(id){const d=await this.open();if(!d){this.mem=this.mem.filter(x=>x.id!==id);return}return new Promise(res=>{try{const t=d.transaction('p','readwrite');t.objectStore('p').delete(id);t.oncomplete=res;t.onerror=res}catch(e){res()}})}
+};
+
+function renderRedOak(root){
+ const samples=[{id:'pano1',cat:'Plantings',kind:'pano',town:'Sample 360° tour',pano:true,sample:true}];RO_CATS.forEach(([c,k],i)=>{RO_PHOTOS[c].forEach((ph,v)=>samples.push({id:'s'+i+v,cat:c,kind:k,v:v+i,photo:ph,town:RO_TOWNS[(i+v*3)%RO_TOWNS.length],sample:true}))});
+ let uploads=[],filter='All',owner=false,urls=[];
+ onCleanup(()=>urls.forEach(u=>URL.revokeObjectURL(u)));
+ root.innerHTML=`<div class="ro">
+ <div class="note">Design concept prepared for Red Oak Landscaping by websbyshreyan. Stock photos and reviews are placeholders.</div>
+ <div class="util"><div class="w"><span>+1 732-598-8690 · info@redoakLandscaping.com</span><span>Serving the Capital District, NJ</span></div></div>
+ <nav><div class="w"><div class="logo"><i></i>Red Oak Landscaping</div>
+  <div class="links"><a data-go="#ro-svc">Services</a><a data-go="#ro-gal">Our work</a><a data-go="#ro-proc">Process</a><a data-go="#ro-rev">Reviews</a><a data-go="#ro-faq">FAQ</a></div>
+  <button class="btn" data-quote>Free quote</button></div></nav>
+ <header class="hero"><div class="w">
+  <div><span class="eyebrow">Design · Build · Maintain</span>
+   <h1>Outdoor spaces designed, built and kept beautiful.</h1>
+   <p>Full-service landscape design, installation and maintenance across the Capital District, from plantings and walkways to patios, retaining walls, fire pits and outdoor kitchens.</p>
+   <div class="row"><button class="btn" data-quote>Get a free quote →</button><button class="btn lt" data-go="#ro-gal">See our work</button></div>
+   <div class="trust"><span>Free on-site consultation</span><span>Residential &amp; commercial</span><span>One team, design to care</span></div></div>
+  <div class="ba" id="ro-ba"><div class="l bf">${photoImg('1780838446281-9394772d07a8','patio',0,1400)}</div><div class="l af">${photoImg('1780838446281-9394772d07a8','patio',0,1400)}</div>
+   <span class="tg" style="left:14px">Before</span><span class="tg" style="right:14px">After</span>
+   <div class="bar"><b>⇆</b></div><input type="range" min="3" max="97" value="50" aria-label="Drag to compare before and after"></div>
+ </div></header>
+
+ <section id="ro-svc"><div class="w">
+  <div class="sh"><div><span class="kick">What we build</span><h2>Everything outside your door</h2><p>One team handles design, construction and care, so the plan and the finished yard match.</p></div></div>
+  <div class="svc">${RO_CATS.map(([c,k],i)=>`<button class="sv" data-cat="${c}"><div class="im">${photoImg(RO_PHOTOS[c][0],k,i,700)}</div><div class="t"><b>${c}</b><small>View projects →</small></div></button>`).join('')}</div>
+ </div></section>
+
+ <section id="ro-gal" class="alt"><div class="w">
+  <div class="sh"><div><span class="kick">Project gallery</span><h2>Recent work</h2><p>Filter by project type and tap any photo to view it full screen.</p></div>
+   <div class="sw"><span>Owner mode</span><button role="switch" aria-checked="false" id="ro-own" aria-label="Toggle owner mode"></button></div></div>
+  <div id="ro-owner"></div>
+  <div class="tour"><div><b>New: every photo opens in 3D</b></div><p>Tap any project to tilt through it in 3D, or step inside a finished garden with a 360° tour.</p><button class="btn" id="ro-tour">Take the 360° tour</button></div>
+  <div class="gtools"><div class="chips" id="ro-chips"></div></div>
+  <div class="gal" id="ro-grid"></div>
+ </div></section>
+
+ <section id="ro-proc"><div class="w">
+  <div class="sh"><div><span class="kick">How it works</span><h2>The same careful process, whatever the size</h2></div></div>
+  <div class="steps">
+   <div class="st"><em>1</em><h3>On-site consultation</h3><p>A designer visits to learn your goals, plant preferences and budget.</p></div>
+   <div class="st"><em>2</em><h3>Design &amp; proposal</h3><p>We measure and photograph the property, then draw a plan with clear pricing.</p></div>
+   <div class="st"><em>3</em><h3>Build</h3><p>Our crew installs walls, patios and plantings with close attention to detail.</p></div>
+   <div class="st"><em>4</em><h3>Maintain</h3><p>Seasonal care packages keep it looking like installation day.</p></div>
+  </div></div></section>
+
+ <section id="ro-rev" class="alt"><div class="w">
+  <div class="sh"><div><span class="kick">Reviews</span><h2>What clients say</h2><p>Placeholder reviews. These would be replaced with Red Oak's real testimonials or a live Google Reviews feed.</p></div></div>
+  <div class="revs">
+   <div class="rv"><span class="s">★★★★★</span><q>The crew treated our yard like their own. The patio is where we spend every evening.</q><small>Sample review · Guilderland</small></div>
+   <div class="rv"><span class="s">★★★★★</span><q>The design matched exactly what we pictured, and the retaining wall solved our drainage problem.</q><small>Sample review · Niskayuna</small></div>
+   <div class="rv"><span class="s">★★★★★</span><q>Clear pricing up front and they still maintain the plantings every season.</q><small>Sample review · Delmar</small></div>
+  </div></div></section>
+
+ <section id="ro-faq"><div class="w two">
+  <div><span class="kick">FAQ</span><h2 style="font-size:clamp(30px,4cqi,44px)">Common questions</h2><p style="color:var(--mute);margin-top:12px">Still curious? Call us at (518) 355-3951.</p></div>
+  <div>
+   <details open><summary>How do I start the landscaping process?</summary><p>Schedule an on-site consultation with one of our designers. We learn your goals, plant preferences and budget, then measure and photograph the property to begin your design.</p></details>
+   <details><summary>What should I bring to the consultation?</summary><p>A general idea of what you want and any specific trees, shrubs or perennials you love. A budget range helps but is optional.</p></details>
+   <details><summary>Do you also maintain what you build?</summary><p>Yes. Maintenance packages are available for new and existing landscapes.</p></details>
+   <details><summary>Do you work on commercial properties?</summary><p>Yes, we design, build and maintain both residential and commercial landscapes.</p></details>
+  </div></div></section>
+
+ <section style="padding-top:0"><div class="w"><div class="cta">
+  <div><h2>Let's plan your outdoor space.</h2><p>Answer four quick questions and we'll call to schedule your free on-site consultation.</p><div class="row" style="margin-top:22px"><button class="btn" data-quote>Start my free quote →</button></div></div>
+  <div class="info"><div><span>Call</span><a href="tel:+15183553951">+1 732-598-8690</a></div><div><span>Email</span><a href="mailto:info@redoaklandscaping.com">info@redoaklandscaping.com</a></div><div><span>Visit</span>1155 Test Ave., New Jersery, NJ</div></div>
+ </div></div></section>
+
+ <footer><div class="w"><div><b>Red Oak Landscaping</b>Custom landscaping, hardscapes, retaining walls &amp; patios</div><div>Front Yards · Back Yards · Walls · Patios · Fire Pits · Plantings</div></div></footer>
+ <div class="mbar"><a class="btn ol" href="tel:+15183553951">Call</a><button class="btn" data-quote>Free quote</button></div>
+ </div>`;
+
+ // before/after
+ const ba=$('#ro-ba',root);$('input',ba).oninput=e=>ba.style.setProperty('--p',e.target.value+'%');
+ // nav / quote / services
+ root.addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]');if(g){goTo(g.dataset.go)}
+  if(e.target.closest('[data-quote]'))openQuote();
+  const sv=e.target.closest('.sv');if(sv){filter=sv.dataset.cat;draw();goTo('#ro-gal')}
+ });
+ // gallery
+ const all=()=>[...uploads,...samples];
+ function chips(){const list=all();$('#ro-chips',root).innerHTML=['All',...RO_CATS.map(c=>c[0])].map(c=>{const n=c==='All'?list.length:list.filter(p=>p.cat===c).length;return `<button class="ch" data-f="${c}" aria-pressed="${c===filter}">${c}<small>${n}</small></button>`}).join('')}
+ function media(p){if(p.url)return `<img src="${p.url}" alt="${esc(p.cat)} project">`;if(p.pano)return `<img src="${PANO_URLS[1]}" alt="360° garden panorama" data-k="pano" onerror="roFallback(this)">`;if(p.photo)return photoImg(p.photo,p.kind,p.v,900);return scene(p.kind,p.v)}
+ function shown(){return all().filter(p=>filter==='All'||p.cat===filter)}
+ function draw(){chips();const list=shown();
+  $('#ro-grid',root).innerHTML=list.length?list.map((p,i)=>`<div class="ph" role="button" tabindex="0" data-i="${i}" aria-label="Open ${esc(p.cat)} photo">${media(p)}<div class="cap">${p.pano?'<span class="b36">360°</span>':'<span class="b3">3D</span>'}<span>${esc(p.cat)}</span>${p.town&&!p.pano?`<span>${esc(p.town)}</span>`:''}${p.url?'<span class="new">Uploaded</span>':''}</div>${owner&&p.url?`<button class="del" data-del="${p.id}" aria-label="Delete photo">✕</button>`:''}</div>`).join(''):`<div class="gempty">No photos in this category yet.</div>`;
+  const a=$(`.ch[aria-pressed=true]`,root),cc=$('#ro-chips',root);if(a&&cc)cc.scrollLeft=Math.max(0,a.offsetLeft-cc.offsetLeft-40)}
+ $('#ro-chips',root).onclick=e=>{const b=e.target.closest('.ch');if(b){filter=b.dataset.f;draw()}};
+ $('#ro-grid',root).onclick=async e=>{
+  const d=e.target.closest('[data-del]');if(d){e.stopPropagation();await roDB.del(d.dataset.del);uploads=uploads.filter(x=>x.id!==d.dataset.del);draw();toast('Photo removed');return}
+  const p=e.target.closest('.ph');if(p)lightbox(+p.dataset.i)};
+ $('#ro-grid',root).onkeydown=e=>{const p=e.target.closest('.ph');if(p&&(e.key==='Enter'||e.key===' ')){e.preventDefault();lightbox(+p.dataset.i)}};
+ // owner mode
+ $('#ro-own',root).onclick=e=>{owner=!owner;e.currentTarget.setAttribute('aria-checked',owner);ownerPanel();draw()};
+ function ownerPanel(){const box=$('#ro-owner',root);if(!owner){box.innerHTML='';return}
+  box.innerHTML=`<div class="owner"><div class="dz" id="ro-dz" tabindex="0"><div class="up">⇪</div><b>Drop project photos here</b><small>or tap to choose from your phone or computer · JPG, PNG, HEIC</small><input type="file" accept="image/*" multiple hidden id="ro-file"></div>
+   <div class="of"><label>Project type<select id="ro-cat">${RO_CATS.map(c=>`<option>${c[0]}</option>`).join('')}</select></label><label>Town (optional)<input id="ro-town" placeholder="e.g. Clifton Park"></label><label class="ckb"><input type="checkbox" id="ro-pano"> This is a 360° panorama</label><p>Every photo gets a 3D view automatically. Panoramas from a phone's panorama mode or a 360 camera (2:1) are detected and open as a 360° tour.</p><p>Demo: photos are saved in this browser so they're still here after you refresh. On the live site they'd upload to Red Oak's media library and show for every visitor.</p></div></div>`;
+  const dz=$('#ro-dz',root),fi=$('#ro-file',root);
+  dz.onclick=()=>fi.click();dz.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fi.click()}};
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add('over')};dz.ondragleave=()=>dz.classList.remove('over');
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove('over');add(e.dataTransfer.files)};
+  fi.onchange=()=>{add(fi.files);fi.value=''}}
+ $('#ro-tour',root).onclick=()=>openTour();
+ function openTour(){filter='All';draw();const i=shown().findIndex(p=>p.pano);lightbox(i<0?0:i)}
+ async function add(files){const cat=$('#ro-cat',root).value,town=$('#ro-town',root).value.trim(),forcePano=$('#ro-pano',root).checked;let n=0;
+  for(const f of files){if(!f.type.startsWith('image/'))continue;let pano=forcePano;try{const bm=await createImageBitmap(f);if(bm.width/bm.height>=1.9)pano=true;bm.close&&bm.close()}catch(e){}
+   const rec={id:'u'+Date.now()+Math.random().toString(36).slice(2,6),cat,town,blob:f,pano,at:Date.now()};await roDB.put(rec);const url=URL.createObjectURL(f);urls.push(url);uploads.unshift({...rec,url});n++}
+  if(n){filter=cat;draw();toast(`${n} photo${n>1?'s':''} added to ${cat}`)}}
+ (async()=>{const saved=(await roDB.all()).sort((a,b)=>b.at-a.at);uploads=saved.map(r=>{const url=URL.createObjectURL(r.blob);urls.push(url);return{...r,url}});draw()})();
+ draw();
+
+ function lightbox(i){const list=shown();if(!list.length)return;let k=Math.max(0,i),mode='3d',viewer=null,tok=0;
+  const el=openOv(`<div class="hd"><span id="lbc"></span><div class="tools" id="lbt"></div><button class="x" aria-label="Close">✕</button></div><div class="bd" id="lbb"><button class="nv p" aria-label="Previous">‹</button><div id="lbm" class="lbm"></div><button class="nv n" aria-label="Next">›</button></div><div class="lbh" id="lbh"></div>`,'rlb');
+  const box=$('#lbm',el),bd=$('#lbb',el);let ratio=4/3,full=false;
+  const fit=()=>{const w=bd.clientWidth-(bd.clientWidth>700?120:0),h=bd.clientHeight-20;if(full){box.style.width=Math.min(w,1200)+'px';box.style.height=Math.min(h,800)+'px';return}let bw=Math.min(w,1100,h*ratio);box.style.width=bw+'px';box.style.height=bw/ratio+'px'};
+  const ro=new ResizeObserver(fit);ro.observe(bd);
+  const kill=()=>{if(viewer){viewer.destroy();viewer=null}};
+  el._destroy=()=>{tok++;kill();ro.disconnect()};
+  const hint=t=>$('#lbh',el).textContent=t;
+  async function show(){const my=++tok;kill();const p=list[k];box.innerHTML='<div class="ld">Loading…</div>';
+   $('#lbc',el).textContent=`${p.cat}${p.town&&!p.pano?' · '+p.town:''}  ·  ${k+1} / ${list.length}`;
+   if(p.pano){full=true;fit();$('#lbt',el).innerHTML='<span class="p360">360° tour</span>';hint('Drag to look around · scroll or pinch to zoom');
+    const src=await panoSource(p);if(my!==tok)return;box.innerHTML='';viewer=createPano(box,src);return}
+   full=false;$('#lbt',el).innerHTML=`<div class="sg"><button data-m="3d" aria-pressed="${mode==='3d'}">3D view</button><button data-m="photo" aria-pressed="${mode==='photo'}">Photo</button></div>${mode==='3d'?`<button class="ai" id="lbai">${depthCache.get(p.id)?.ai?'✓ AI depth':'✨ Sharper AI depth'}</button>`:''}`;
+   if(mode==='photo'){ratio=4/3;fit();box.innerHTML=media(p);hint('');const im=$('img',box);if(im){const f=()=>{if(im.naturalWidth){ratio=im.naturalWidth/im.naturalHeight;fit()}};im.complete?f():im.onload=f}return}
+   const img=await rasterize(p);if(my!==tok)return;ratio=img.width/img.height;fit();
+   if(img.fb){ratio=4/3;fit();box.innerHTML=photoImg(p.photo,p.kind,p.v,1600);box.style.perspective='900px';const im=$('img',box);im.style.cssText='width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform .15s ease-out';
+    const mv=e=>{const r=box.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;im.style.transform=`scale(1.1) rotateY(${x*10}deg) rotateX(${-y*8}deg)`};box.onpointermove=mv;box.onpointerleave=()=>im.style.transform='scale(1.08)';
+    $('#lbt',el).querySelector('#lbai')?.remove();hint('Move your cursor to tilt');return}
+   let dep=depthCache.get(p.id);if(!dep){dep={c:quickDepth(img),ai:false};depthCache.set(p.id,dep)}
+   box.innerHTML='';viewer=createTilt(box,img,dep.c);hint('Move your cursor or tilt your phone to look around · auto-generated depth');
+   const ai=$('#lbai',el);if(ai&&!dep.ai)ai.onclick=async()=>{ai.disabled=true;ai.textContent='Loading AI model (~25 MB, first time only)…';
+    try{const c=await aiDepth(img);dep.c=c;dep.ai=true;if(my===tok&&viewer){viewer.setDepth(c);ai.textContent='✓ AI depth';hint('Depth estimated by an AI model running in your browser')}}
+    catch(e){ai.disabled=false;ai.textContent='✨ Sharper AI depth';hint('Couldn’t load the AI model here (needs an internet connection). Using quick depth.')}}}
+  $('#lbt',el).onclick=e=>{const b=e.target.closest('[data-m]');if(b&&b.dataset.m!==mode){mode=b.dataset.m;show()}};
+  $('.x',el).onclick=()=>{el._destroy();el.remove()};$('.p',el).onclick=()=>{k=(k-1+list.length)%list.length;show()};$('.n',el).onclick=()=>{k=(k+1)%list.length;show()};
+  let sx=0;$('.hd',el).ontouchstart=e=>sx=e.touches[0].clientX;
+  el._key=e=>{if(e.key==='ArrowRight')$('.n',el).click();if(e.key==='ArrowLeft')$('.p',el).click()};show()}
+
+ function openQuote(){const q={types:new Set(),size:'',when:'',budget:15000,name:'',phone:'',email:'',zip:''};let step=0;
+  const el=openOv(`<div class="sheet"><div class="qz" id="qz"></div></div>`);
+  const T=['Front Yards','Back Yards','Patios','Retaining Walls','Walkways & Steps','Fire Pits','Outdoor Kitchens','Pool Scapes','Plantings','Maintenance'];
+  const ok=()=>[q.types.size>0,q.size&&q.when,true,q.name&&q.phone][step];
+  function r(){const z=$('#qz',el);
+   if(step===4){z.innerHTML=`<div class="done"><div class="ck">✓</div><h3>Thanks, ${esc(q.name.split(' ')[0])}!</h3><p class="sub">We'll call ${esc(q.phone)} within one business day to schedule your free on-site consultation.</p><div class="ft"><button class="nx" id="qx">Done</button></div></div>`;$('#qx',z).onclick=()=>el.remove();return}
+   const head=`<div class="qh"><b>Step ${step+1} of 4</b><button aria-label="Close">✕</button></div><div class="pb"><i style="width:${(step+1)*25}%"></i></div>`;
+   let body='';
+   if(step===0)body=`<h3>What are you planning?</h3><p class="sub">Choose everything that applies.</p><div class="opts">${T.map(t=>`<button class="op" data-t="${t}" aria-pressed="${q.types.has(t)}">${t}</button>`).join('')}</div>`;
+   if(step===1)body=`<h3>Tell us about the property</h3><p class="sub">Rough answers are fine.</p><span class="lbl">Property size</span><div class="seg2" data-k="size">${['Small','Medium','Large'].map(s=>`<button aria-pressed="${q.size===s}">${s}</button>`).join('')}</div><span class="lbl">When would you like to start?</span><div class="seg2" data-k="when">${['ASAP','1–3 months','Just exploring'].map(s=>`<button aria-pressed="${q.when===s}">${s}</button>`).join('')}</div>`;
+   if(step===2)body=`<h3>Budget range</h3><p class="sub">Optional. It helps us shape the design.</p><span class="lbl">Up to</span><div class="bud" id="bv">$${q.budget.toLocaleString()}${q.budget>=100000?'+':''}</div><input type="range" min="2500" max="100000" step="2500" value="${q.budget}" id="br" aria-label="Budget">`;
+   if(step===3)body=`<h3>Where can we reach you?</h3><p class="sub">We'll call to book your free consultation.</p><div class="fi"><input placeholder="Full name" id="qn" value="${esc(q.name)}" autocomplete="name"><input placeholder="Phone" type="tel" id="qp" value="${esc(q.phone)}" autocomplete="tel"><input placeholder="Email (optional)" type="email" id="qe" value="${esc(q.email)}"><input placeholder="ZIP code" id="qzp" value="${esc(q.zip)}" inputmode="numeric"></div>`;
+   z.innerHTML=head+body+`<div class="ft">${step?'<button class="bk">Back</button>':''}<button class="nx" ${ok()?'':'disabled'}>${step===3?'Request consultation':'Continue'}</button></div>`;
+   $('.qh button',z).onclick=()=>el.remove();
+   const nx=$('.nx',z);const upd=()=>nx.disabled=!ok();
+   $$('.op',z).forEach(b=>b.onclick=()=>{const t=b.dataset.t;q.types.has(t)?q.types.delete(t):q.types.add(t);b.setAttribute('aria-pressed',q.types.has(t));upd()});
+   $$('.seg2',z).forEach(g=>g.onclick=e=>{const b=e.target.closest('button');if(!b)return;q[g.dataset.k]=b.textContent;$$('button',g).forEach(x=>x.setAttribute('aria-pressed',x===b));upd()});
+   const br=$('#br',z);if(br)br.oninput=()=>{q.budget=+br.value;$('#bv',z).textContent='$'+q.budget.toLocaleString()+(q.budget>=100000?'+':'')};
+   [['qn','name'],['qp','phone'],['qe','email'],['qzp','zip']].forEach(([i,k])=>{const f=$('#'+i,z);if(f)f.oninput=()=>{q[k]=f.value.trim();upd()}});
+   const bk=$('.bk',z);if(bk)bk.onclick=()=>{step--;r()};nx.onclick=()=>{if(ok()){step++;r()}};
+  }r()}
+ return {quote:openQuote,owner:()=>{if(!owner)$('#ro-own',root).click();goTo('#ro-gal')},filter:c=>{filter=c;draw();goTo('#ro-gal')},lightbox:()=>{goTo('#ro-gal');setTimeout(()=>lightbox(1),350)},tilt:()=>{filter='Retaining Walls';draw();goTo('#ro-gal');setTimeout(()=>lightbox(0),350)},tour:()=>{goTo('#ro-gal');setTimeout(openTour,350)}};
+}
+
+/* ================================================================
+   PROJECT 2 — CRUST & CRAFT BAKERY
+   ================================================================ */
+function renderBakery(root){
+ const items=[['🍞','Country Sourdough','$8.50 · 36-hr ferment'],['🥐','Butter Croissant','$4.25 · laminated daily'],['🧁','Cardamom Bun','$4.75 · Swedish style'],['🥖','Seeded Baguette','$5.00 · crisp crust'],['🍪','Brown Butter Cookie','$3.50 · sea salt'],['🥧','Seasonal Galette','$6.25 · local fruit']];
+ const sel=new Set();
+ root.innerHTML=`<div class="bk"><div class="nv"><b>🥖 Crust &amp; Craft</b><div style="display:flex;align-items:center"><span class="open">● Open until 3pm</span><button class="b" data-go=".ord">Order pickup</button></div></div>
+ <div class="bento"><div class="hero"><div><small style="font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px">Artisan bakery &amp; café</small><h2>Fresh sourdough &amp; pastries daily</h2><p>Baked at 5am with stone-ground local flour. Reserve before we sell out.</p></div><div><button class="b" data-go=".ord">Reserve for pickup →</button></div><span class="em">🥐</span></div>
+ <div class="tile"><div><div style="color:#d99a1e;letter-spacing:2px">★★★★★</div><div class="r">Google reviews</div><small style="color:#8a6a4c">Live reviews widget</small></div><p style="font-style:italic;color:#6b4a2c">Rating and reviews pulled straight from the bakery's Google profile.</p></div></div>
+ <h3 style="font:700 22px Fraunces,serif;margin:6px 0 12px">This morning's bake</h3>
+ <div class="menu">${items.map((it,i)=>`<div class="it"><span>${it[0]}</span><div><b>${it[1]}</b><small>${it[2]}</small></div><button data-i="${i}" aria-label="Add ${it[1]}">+</button></div>`).join('')}</div>
+ <form class="ord"><h3>Quick pickup reservation <small id="bkc" style="font:600 14px Inter;color:#a4561c"></small></h3><input required placeholder="Your name"><input required type="tel" placeholder="Phone"><select><option>Pickup 7:30am</option><option>Pickup 9:00am</option><option>Pickup 11:00am</option></select><button class="b" style="padding:13px 22px">Reserve</button></form></div>`;
+ root.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)goTo('.bk '+g.dataset.go);
+  const b=e.target.closest('.it button');if(b){const i=b.dataset.i;sel.has(i)?sel.delete(i):sel.add(i);b.classList.toggle('on');b.textContent=sel.has(i)?'✓':'+';$('#bkc',root).textContent=sel.size?`· ${sel.size} item${sel.size>1?'s':''}`:''}});
+ $('.ord',root).onsubmit=e=>{e.preventDefault();e.target.innerHTML='<div class="ok">✓ Reserved! Your order will be packed and waiting at the counter.</div>'};
+ return {order:()=>goTo('.bk .ord')};
+}
+
+/* ================================================================
+   PROJECT 3 — AURA ATELIER
+   ================================================================ */
+function renderAura(root){
+ const P=[{id:1,n:'Velvet Vanilla & Amber',p:34,c:'candles',e:'🕯️',bg:'#ead9c4'},{id:2,n:'Wild Cedar & Eucalyptus',p:38,c:'candles',e:'🌿',bg:'#d6e0cf'},{id:3,n:'Botanical Hand Wash',p:26,c:'apothecary',e:'🧴',bg:'#e7dfd3'},{id:4,n:'Linen & Mist Spray',p:28,c:'apothecary',e:'✨',bg:'#dfe3ea'},{id:5,n:'Fig Leaf Diffuser',p:44,c:'home',e:'🍃',bg:'#dde4d6'},{id:6,n:'Stoneware Vessel',p:52,c:'home',e:'🏺',bg:'#e8d8cb'},{id:7,n:'Rose Clay Soap',p:14,c:'apothecary',e:'🌸',bg:'#f0dede'},{id:8,n:'Smoked Oud Candle',p:42,c:'candles',e:'🔥',bg:'#e2d6cc'}];
+ let f='all',cart=[{...P[0],q:1}];
+ root.innerHTML=`<div class="au"><div class="nv"><b>Aura Atelier</b><button id="auc">Bag <i>1</i></button></div>
+ <div class="hero"><h2>Small-batch botanicals for slow living.</h2><div class="fl">${['all','candles','apothecary','home'].map(c=>`<button data-f="${c}" aria-pressed="${c==='all'}">${c}</button>`).join('')}</div></div><div class="pg" id="aug"></div></div>`;
+ const grid=()=>{$('#aug',root).innerHTML=P.filter(p=>f==='all'||p.c===f).map(p=>`<div class="pc"><div class="im" style="background:${p.bg}">${p.e}<button data-a="${p.id}">Add to bag · $${p.p}</button></div><b>${p.n}</b><small>$${p.p} · ${p.c}</small></div>`).join('')};
+ const count=()=>$('#auc i',root).textContent=cart.reduce((a,c)=>a+c.q,0);
+ root.addEventListener('click',e=>{const fb=e.target.closest('[data-f]');if(fb){f=fb.dataset.f;$$('[data-f]',root).forEach(x=>x.setAttribute('aria-pressed',x===fb));grid()}
+  const a=e.target.closest('[data-a]');if(a){const p=P.find(x=>x.id==a.dataset.a);const ex=cart.find(x=>x.id===p.id);ex?ex.q++:cart.push({...p,q:1});count();bag()}
+  if(e.target.closest('#auc'))bag()});
+ function bag(){closeOv();const el=openOv(`<div class="drawer"></div>`);const d=$('.drawer',el);
+  const r=()=>{const sub=cart.reduce((a,c)=>a+c.p*c.q,0);d.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid #eee"><b style="font-size:17px">Your bag</b><button class="ib" style="width:32px;height:32px" id="x">✕</button></div><div style="flex:1;overflow:auto;padding:0 20px">${cart.length?cart.map(c=>`<div class="ci"><span>${c.e}</span><div><b style="font-size:14px">${c.n}</b><small style="display:block;color:#7b7368">$${c.p}</small></div><div class="qt"><button data-m="${c.id}">−</button>${c.q}<button data-p="${c.id}">+</button></div></div>`).join(''):'<p style="text-align:center;color:#999;padding:40px 0">Your bag is empty.</p>'}</div>${cart.length?`<div style="padding:20px;border-top:1px solid #eee"><div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:12px"><span>Subtotal</span><span>$${sub}.00</span></div><button id="co" style="width:100%;padding:15px;border-radius:999px;background:#1f1c18;color:#fff;font-weight:700"> Pay · Checkout $${sub}.00</button><small style="display:block;text-align:center;color:#999;margin-top:8px">Stripe test mode</small></div>`:''}`;
+   $('#x',d).onclick=()=>el.remove();const co=$('#co',d);if(co)co.onclick=()=>{cart=[];count();el.remove();toast('✓ Order placed (test mode)')}};
+  d.onclick=e=>{const m=e.target.closest('[data-m]'),p=e.target.closest('[data-p]');if(m){const c=cart.find(x=>x.id==m.dataset.m);c.q--;if(!c.q)cart=cart.filter(x=>x!==c)}if(p)cart.find(x=>x.id==p.dataset.p).q++;if(m||p){count();r()}};r()}
+ grid();return {bag};
+}
+
+/* ================================================================
+   PROJECT 4 — FUTURE TECH SUMMIT
+   ================================================================ */
+function renderSummit(root){
+ const target=new Date('2027-03-18T09:00:00');
+ const S={1:[['09:00','Keynote: Next-gen web architecture','Main stage'],['11:30','Interactive 3D graphics with WebGL','Hall B'],['14:00','Design systems at scale','Hall A'],['16:30','Panel: AI-native products','Main stage']],2:[['10:00','E-commerce conversion engineering','Hall A'],['13:00','Building scalable full-stack systems','Main stage'],['15:30','Accessibility as a growth lever','Hall B']]};
+ root.innerHTML=`<div class="ev"><div class="nv"><b>● SUMMIT 2027</b><button class="bt" data-book>Get passes</button></div>
+ <div class="hd"><span class="tag">MAR 18–19 · CONVENTION CENTER</span><h2>Future Tech &amp; Design Summit</h2><p>Two days of keynotes and workshops for engineers, designers and product leaders.</p><div class="cd" id="cd"></div><div style="margin-top:26px"><button class="bt" data-book style="padding:14px 26px">Reserve your pass →</button></div></div>
+ <div class="sc"><div class="top2"><b>Schedule</b><div class="seg3"><button data-d="1" aria-pressed="true">Day 1</button><button data-d="2" aria-pressed="false">Day 2</button></div></div><div id="ss"></div></div></div>`;
+ const tick=()=>{let d=Math.max(0,target-new Date());const u=[[86400000,'Days'],[3600000,'Hours'],[60000,'Mins'],[1000,'Secs']];$('#cd',root).innerHTML=u.map(([m,l])=>{const v=Math.floor(d/m);d-=v*m;return `<div><b>${String(v).padStart(2,'0')}</b><small>${l}</small></div>`}).join('')};
+ tick();const iv=setInterval(tick,1000);onCleanup(()=>clearInterval(iv));
+ const day=n=>{$('#ss',root).innerHTML=S[n].map(s=>`<div class="ss"><code>${s[0]}</code><div><b>${s[1]}</b><small>Speaker TBA</small></div><i>${s[2]}</i></div>`).join('')};day(1);
+ root.addEventListener('click',e=>{const d=e.target.closest('[data-d]');if(d){$$('[data-d]',root).forEach(x=>x.setAttribute('aria-pressed',x===d));day(d.dataset.d)}if(e.target.closest('[data-book]'))book()});
+ function book(){let t='Standard';const el=openOv(`<div class="sheet"><div class="evs"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:20px">Reserve your pass</b><button class="ib" style="width:32px;height:32px" id="x">✕</button></div><div class="tk">${[['Standard','$199'],['VIP + workshops','$449'],['Virtual','$49']].map((k,i)=>`<button data-t="${k[0]}" aria-pressed="${i===0}"><span><b>${k[0]}</b></span><b>${k[1]}</b></button>`).join('')}</div><form><input required placeholder="Full name"><input required type="email" placeholder="Work email"><button class="go">Confirm reservation</button></form></div></div>`);
+  $('#x',el).onclick=()=>el.remove();$('.tk',el).onclick=e=>{const b=e.target.closest('button');if(!b)return;t=b.dataset.t;$$('.tk button',el).forEach(x=>x.setAttribute('aria-pressed',x===b))};
+  $('form',el).onsubmit=e=>{e.preventDefault();$('.evs',el).innerHTML=`<div style="text-align:center;padding:20px 0"><div style="font-size:44px">🎟️</div><b style="font-size:20px;display:block;margin:10px 0 6px">${t} pass reserved</b><p style="color:#71717a">Your ticket and calendar invite are on the way.</p><button class="go" id="x2">Done</button></div>`;$('#x2',el).onclick=()=>el.remove()}}
+ return {book};
+}
+
+/* ================================================================
+   PROJECT 5 — AEROX 3D
+   ================================================================ */
+function renderAeroX(root){
+ let wire=false,auto=true,col='#8b5cf6';
+ root.innerHTML=`<div class="ax"><div class="nv"><div><b>AEROX 3D</b><button>Pre-order</button></div></div>
+ <div class="st"><canvas id="axc"></canvas><div class="tx"><h2>AeroX Spatial<br>Audio Core</h2><p>Drag or move your cursor to explore the product in real time.</p></div>
+ <div class="ctl"><button data-w aria-pressed="false">Wireframe</button><button data-r aria-pressed="true">Auto-rotate</button>${['#8b5cf6','#3b82f6','#10b981','#f59e0b'].map(c=>`<button class="dot" data-c="${c}" style="background:${c};box-shadow:${c===col?'0 0 0 2px #fff':'none'}" aria-label="Colour ${c}"></button>`).join('')}</div></div>
+ <div class="ft"><div><small>01</small><b style="display:block;margin-top:6px">Acoustic chamber</b><p>Interactive hotspot explains the titanium chassis.</p></div><div><small>02</small><b style="display:block;margin-top:6px">Live configurator</b><p>Finish and colour update instantly in 3D.</p></div><div><small>03</small><b style="display:block;margin-top:6px">60 fps on mobile</b><p>Lightweight canvas renderer, no heavy plugins.</p></div></div></div>`;
+ const cv=$('#axc',root),ctx=cv.getContext('2d');let ax=0,ay=0,mx=0,my=0,raf;
+ const fit=()=>{const r=cv.parentElement.getBoundingClientRect();cv.width=r.width*devicePixelRatio;cv.height=r.height*devicePixelRatio};fit();
+ const ro=new ResizeObserver(fit);ro.observe(cv.parentElement);
+ cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=(e.clientX-r.left-r.width/2)*.006;my=(e.clientY-r.top-r.height/2)*.006});
+ const t=(1+Math.sqrt(5))/2,V=[[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]];
+ const F=[[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
+ const draw=()=>{const W=cv.width,H=cv.height;ctx.clearRect(0,0,W,H);if(auto){ax+=.006;ay+=.01}else{ax+=(my-ax)*.06;ay+=(mx-ay)*.06}
+  const cx=Math.cos(ax),sx=Math.sin(ax),cy=Math.cos(ay),sy=Math.sin(ay),S=Math.min(W,H)*.2,X=W/2,Y=H/2;
+  const R=V.map(([x,y,z])=>{const x1=x*cy-z*sy,z1=z*cy+x*sy,y2=y*cx-z1*sx,z2=z1*cx+y*sx;return[x1*S+X,y2*S+Y,z2]});
+  F.map(f=>({f,z:(R[f[0]][2]+R[f[1]][2]+R[f[2]][2])/3})).sort((a,b)=>a.z-b.z).forEach(({f,z})=>{ctx.beginPath();ctx.moveTo(...R[f[0]].slice(0,2));ctx.lineTo(...R[f[1]].slice(0,2));ctx.lineTo(...R[f[2]].slice(0,2));ctx.closePath();
+   if(wire){ctx.strokeStyle=col;ctx.lineWidth=1.5*devicePixelRatio;ctx.stroke()}else{ctx.globalAlpha=Math.max(.15,Math.min(.9,(z+2)/4));ctx.fillStyle=col;ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle='rgba(255,255,255,.18)';ctx.stroke()}});
+  const tm=Date.now()*.0012;ctx.fillStyle=col;for(let i=0;i<24;i++){const a=tm+i*.3;ctx.beginPath();ctx.arc(X+Math.cos(a)*S*1.7,Y+Math.sin(a*1.3)*S*1.2,2*devicePixelRatio,0,7);ctx.fill()}
+  raf=requestAnimationFrame(draw)};draw();
+ onCleanup(()=>{cancelAnimationFrame(raf);ro.disconnect()});
+ root.addEventListener('click',e=>{if(e.target.closest('[data-w]')){wire=!wire;e.target.setAttribute('aria-pressed',wire)}if(e.target.closest('[data-r]')){auto=!auto;e.target.setAttribute('aria-pressed',auto);e.target.textContent=auto?'Auto-rotate':'Follow cursor'}
+  const c=e.target.closest('[data-c]');if(c){col=c.dataset.c;$$('[data-c]',root).forEach(x=>x.style.boxShadow=x===c?'0 0 0 2px #fff':'none')}});
+ return {};
+}
+
+/* ================================================================
+   PROJECT 6 — FORMA3D
+   ================================================================ */
+function renderForma(root){
+ const M={resin:['Matte tough resin',1,'#0ea5e9','2 days'],alu:['Anodized aluminium',2.2,'#94a3b8','3 days'],pla:['Obsidian PLA+',.85,'#64748b','2 days'],bronze:['Cast bronze',3.5,'#d97706','5 days']};
+ let img=null,em=null,mat='resin',sc=100,step=1,url=null;onCleanup(()=>url&&URL.revokeObjectURL(url));
+ const price=()=>(38*(sc/100)*M[mat][1]).toFixed(2);
+ function r(){const nav=`<div class="nv"><b><i>F3D</i>Forma3D</b><div class="stp">${['Upload','Studio','Deliver'].map((s,i)=>`<span class="${step===i+1?'on':''}">${i+1}. ${s}</span>`).join('')}</div></div>`;
+  let b='';
+  if(step===1)b=`<div class="up"><h2>Turn any photo into a physical 3D print</h2><p>Upload a portrait, product or sketch. We generate a print-ready model and ship it to your door.</p><div class="dz" id="fdz"><div>⇪</div><b>Drop a photo or tap to browse</b><small style="color:#7aa597">JPG, PNG or WEBP up to 25MB</small><input type="file" accept="image/*" hidden id="ffi"></div><div class="smp"><span style="color:#7aa597;font-size:13px;align-self:center">or try:</span>${[['👤','Portrait bust'],['👟','Sneaker'],['🎧','Headphones']].map(s=>`<button data-s="${s[0]}">${s[0]} ${s[1]}</button>`).join('')}</div></div>`;
+  if(step===2)b=`<div class="stu"><div class="pv"><div class="vw" style="--mc:${M[mat][2]}">${img?`<img src="${img}" alt="Uploaded photo" style="transform:scale(${sc/100})">`:`<span class="em" style="transform:scale(${sc/100})">${em}</span>`}</div><div class="sl">Scale<input type="range" min="50" max="200" value="${sc}" id="fsc"><b id="fsv" style="color:#34d399">${Math.round(120*sc/100)} mm</b></div><button id="fre" style="justify-self:start;color:#7aa597;font-size:13px">← Use a different photo</button></div>
+   <div class="mt"><b style="margin-bottom:4px">Material</b>${Object.entries(M).map(([k,m])=>`<button data-m="${k}" aria-pressed="${k===mat}"><i style="background:${m[2]}"></i><span><b style="font-size:14px">${m[0]}</b><small>Ships in ${m[3]}</small></span><b style="margin-left:auto;font-family:ui-monospace;font-size:13px;color:#34d399">${m[1]}×</b></button>`).join('')}<div class="tot"><span style="color:#8fb5a8">Total</span><b id="fpr">$${price()}</b></div><button class="go" id="fgo">Continue to delivery →</button></div></div>`;
+  if(step===3)b=`<div class="dn"><div style="font-size:48px">📦</div><h2 style="font-size:28px;margin:10px 0">Sent to production</h2><p style="color:#8fb5a8">${M[mat][0]}, ${Math.round(120*sc/100)} mm, $${price()} + shipping. Tracking details are on their way to your inbox.</p><button class="go" id="fag" style="margin-top:20px;padding:13px 24px">Print another</button></div>`;
+  root.innerHTML=`<div class="f3">${nav}${b}</div>`;
+  if(step===1){const dz=$('#fdz',root),fi=$('#ffi',root);dz.onclick=()=>fi.click();fi.onchange=()=>{const f=fi.files[0];if(!f)return;if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(f);img=url;em=null;step=2;r()};$$('[data-s]',root).forEach(b=>b.onclick=()=>{em=b.dataset.s;img=null;step=2;r()})}
+  if(step===2){$('#fsc',root).oninput=e=>{sc=+e.target.value;$('#fsv',root).textContent=Math.round(120*sc/100)+' mm';$('#fpr',root).textContent='$'+price();const v=$('.vw img,.vw .em',root);v.style.transform=`scale(${sc/100})`};
+   $$('[data-m]',root).forEach(b=>b.onclick=()=>{mat=b.dataset.m;$$('[data-m]',root).forEach(x=>x.setAttribute('aria-pressed',x===b));$('.vw',root).style.setProperty('--mc',M[mat][2]);$('#fpr',root).textContent='$'+price()});
+   $('#fre',root).onclick=()=>{step=1;r()};$('#fgo',root).onclick=()=>{step=3;r()}}
+  if(step===3)$('#fag',root).onclick=()=>{step=1;r()}}
+ r();return {sample:()=>{em='👤';img=null;step=2;r()}};
+}
+
+
+/* ================================================================
+   PROJECT 7 — RIDGELINE ROOFING
+   ================================================================ */
+function plainImg(id,w=1200,cls=''){return `<img src="${U(id,w)}" alt="" loading="lazy" class="${cls}" data-k="plain" onerror="roFallback(this)">`}
+function renderRoofing(root){
+ const P={hero:'1643225523483-e2c434191bba',strip:[['1635424824849-1b09bdcc55b1','Deck repair before re-shingling'],['1763665814538-8ba04597286c','Tile install, new build'],['1633759593085-1eaeb724fc88','Tear-off down to the deck'],['1779941373840-a93f6e0d5db0','Standing-seam metal + dormer'],['1635424709961-f3a150459ad4','Two-day crew, full replacement'],['1518736346281-76873166a64a','Finished architectural shingle']]};
+ const pitches=[['Low','4/12',1.054,4],['Medium','6/12',1.118,6],['Steep','9/12',1.25,9],['Very steep','12/12',1.414,12]];
+ const mats=[['Architectural shingle',450,650,'30-yr'],['Standing-seam metal',950,1400,'50-yr'],['Synthetic slate',1100,1600,'50-yr']];
+ let st={area:1800,stories:1,pitch:1,mat:0,layers:1};
+ const pitchSvg=r=>{const h=Math.min(20,r*1.6);return `<svg viewBox="0 0 46 24"><path d="M3 22 L23 ${22-h} L43 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter"/><path d="M1 22.5h44" stroke="currentColor" stroke-width="1"/></svg>`};
+ const mq='STORM DAMAGE? 24/7 TARP-UP LINE (555) 014-2290 &nbsp;/&nbsp; FREE DRONE INSPECTIONS &nbsp;/&nbsp; INSURANCE CLAIMS HANDLED START TO FINISH &nbsp;/&nbsp; FINANCING AVAILABLE &nbsp;/&nbsp; ';
+ const svc=[['Full replacement','Tear-off to the deck, new underlayment, ice & water shield, ridge vent. Most homes done in 1–2 days.'],['Storm & hail repair','Same-week tarping, photo-documented damage report your adjuster can actually use.'],['Metal roofing','Standing-seam and exposed-fastener panels, roll-formed on site to your exact lengths.'],['Gutters & guards','Seamless 5" and 6" aluminum, hidden hangers, guards that survive a ladder.'],['Skylights & flashing','Replace leaky curb skylights, re-flash chimneys and walls the right way.'],['Low-slope & flat','TPO and modified bitumen for porches, additions and small commercial.']];
+ root.innerHTML=`<div class="rf">
+ <div class="rf-mq" aria-hidden="true"><div>${mq.repeat(4)}</div></div>
+ <div class="rf-nav"><div class="w"><div class="rf-logo"><svg viewBox="0 0 34 22"><path d="M2 20 L17 4 L32 20" fill="none" stroke="#141414" stroke-width="4"/><path d="M10 20 L17 12 L24 20" fill="none" stroke="#ff5a1f" stroke-width="4"/></svg>RIDGELINE</div>
+  <a data-go=".rf-svc">Services</a><a data-go="#rf-est">Estimate</a><a data-go="#rf-storm">Storm damage</a><a data-go="#rf-work">Work</a><a class="go" data-go="#rf-est">Get a price →</a></div></div>
+ <section class="rf-hero"><div class="w">
+  <div class="l"><span class="tag mono">LICENSED · BONDED · INSURED &nbsp;—&nbsp; RESIDENTIAL &amp; LIGHT COMMERCIAL</span>
+   <h1 class="cx">Roofs built<br>for the <em>worst</em><br>day of the year.</h1>
+   <p>Replacement, storm repair and metal roofing from a crew that answers its own phone. Get a ballpark price in under a minute, then we'll confirm it on your roof.</p>
+   <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="rf-btn o" data-go="#rf-est">Price my roof</button><a class="rf-btn ln" href="tel:+15550142290">Call (555) 014-2290</a></div></div>
+  <div class="r">${plainImg(P.hero,1400)}<div class="rf-stamp">Free<br>drone<br>inspection</div><div class="rf-tape mono">JOB #2291 — TEAR-OFF + ARCHITECTURAL SHINGLE</div></div>
+ </div></section>
+ <div class="rf-facts"><div><b>Same-week tarping</b><span class="mono">STORM LINE ANSWERED 24/7</span></div><div><b>Photo damage reports</b><span class="mono">BUILT FOR YOUR ADJUSTER</span></div><div><b>Workmanship warranty</b><span class="mono">IN WRITING, TRANSFERABLE</span></div></div>
+ <section class="rf-sec"><div class="w"><div class="rf-sh"><h2 class="cx">What we do</h2><span class="mono">06 SERVICES — TAP ONE TO PRICE IT</span></div>
+  <div class="rf-svc">${svc.map((s,i)=>`<div class="rf-row" data-go="#rf-est"><span class="mono">0${i+1}</span><b>${s[0]}</b><span>${s[1]}</span><span>→</span></div>`).join('')}</div></div></section>
+ <section class="rf-sec" id="rf-est"><div class="w"><div class="rf-sh"><h2 class="cx">Ballpark your roof</h2><span class="mono">NO EMAIL REQUIRED</span></div>
+  <div class="rf-est"><div class="rf-ctl">
+   <div><label class="h"><span>Home footprint</span><span id="rfa"></span></label><input type="range" min="800" max="4500" step="50" value="${st.area}" id="rfA" aria-label="Home footprint in square feet"><span class="mono" style="color:var(--mute)">GROUND-FLOOR AREA, INCL. GARAGE IF IT SHARES THE ROOF</span></div>
+   <div><label class="h"><span>Roof pitch</span><span id="rfp"></span></label><div class="rf-opt" id="rfP">${pitches.map((p,i)=>`<button data-i="${i}" aria-pressed="${i===st.pitch}">${pitchSvg(p[3])}${p[0]}</button>`).join('')}</div></div>
+   <div><label class="h"><span>Material</span></label><div class="rf-opt c3" id="rfM">${mats.map((m,i)=>`<button data-i="${i}" aria-pressed="${i===st.mat}">${m[0]}</button>`).join('')}</div></div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div><label class="h"><span>Stories</span></label><div class="rf-opt c3" id="rfS">${[1,2,3].map(n=>`<button data-n="${n}" aria-pressed="${n===st.stories}">${n}</button>`).join('')}</div></div>
+    <div><label class="h"><span>Old layers</span></label><div class="rf-opt c3" id="rfL">${[1,2,3].map(n=>`<button data-n="${n}" aria-pressed="${n===st.layers}">${n}</button>`).join('')}</div></div></div>
+  </div><div class="rf-rc" id="rfR"></div></div></div></section>
+ <section class="rf-sec" id="rf-storm"><div class="w"><div class="rf-sh"><h2 class="cx">Storm last night?</h2><span class="mono">CHECK WHAT YOU CAN SEE FROM THE GROUND</span></div>
+  <div class="rf-chk" id="rfC">${['Shingles in the yard or driveway','Dark patches or missing granules','Dents on gutters, vents or AC unit','Water stains on a ceiling','Lifted or curled shingle edges','A tree limb touched the roof'].map(t=>`<button aria-pressed="false"><i></i>${t}</button>`).join('')}</div>
+  <div class="rf-verdict" id="rfV"></div></div></section>
+ <section class="rf-sec" id="rf-work"><div class="w"><div class="rf-sh"><h2 class="cx">From the job site</h2><span class="mono">SCROLL →</span></div>
+  <div class="rf-strip">${P.strip.map((s,i)=>`<figure><div class="im">${plainImg(s[0],900)}</div><figcaption class="mono"><span>${String(i+1).padStart(2,'0')} — ${s[1]}</span></figcaption></figure>`).join('')}</div></div></section>
+ <section class="rf-sec"><div class="w"><div class="rf-sh"><h2 class="cx">Insurance, handled</h2></div>
+  <div class="rf-steps"><div><b>01</b><h4>Inspect</h4><p>Drone and on-roof inspection with dated, labeled photos.</p></div><div><b>02</b><h4>File</h4><p>We help you open the claim and send the report straight to your adjuster.</p></div><div><b>03</b><h4>Meet</h4><p>We're on the roof with the adjuster so nothing gets missed.</p></div><div><b>04</b><h4>Build</h4><p>You pay your deductible. We handle the rest with the carrier.</p></div></div></div></section>
+ <footer class="rf-foot"><div class="w"><span class="mono" style="color:#aaa">CALL OR TEXT — A PERSON PICKS UP</span><div class="cx big">(555) 014-2290</div>
+  <div class="row2 mono"><span>RIDGELINE ROOFING CO. — DEMO CONCEPT BY  websbyshreyan</span><span>PHOTOS: UNSPLASH (STAND-INS)</span></div></div></footer>
+ <div class="rf-mbar"><a href="tel:+15550142290">Call now</a><button data-go="#rf-est">Get a price</button></div>
+ </div>`;
+ const fmt=n=>'$'+(Math.round(n/100)*100).toLocaleString();
+ function calc(){const p=pitches[st.pitch],m=mats[st.mat];const area=st.area*p[2]*1.12,sq=area/100*1.1;const lab=1+.08*(st.stories-1);
+  const lo=sq*m[1]*lab+sq*100*(st.layers-1),hi=sq*m[2]*lab+sq*150*(st.layers-1);
+  $('#rfa',root).textContent=st.area.toLocaleString()+' sq ft';$('#rfp',root).textContent=p[1];
+  const d=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  $('#rfR',root).innerHTML=`<div class="hd2"><b>RIDGELINE ROOFING</b>BALLPARK ESTIMATE · ${d.toUpperCase()}</div>
+   <div class="ln"><span>Roof area</span><i></i><span>${Math.round(area).toLocaleString()} sf</span></div>
+   <div class="ln"><span>Squares (+10% waste)</span><i></i><span>${sq.toFixed(1)}</span></div>
+   <div class="ln"><span>Pitch</span><i></i><span>${p[1]}</span></div>
+   <div class="ln"><span>Material</span><i></i><span>${m[0]}</span></div>
+   <div class="ln"><span>Warranty</span><i></i><span>${m[3]} mfr.</span></div>
+   <div class="ln"><span>Tear-off layers</span><i></i><span>${st.layers}</span></div>
+   <div class="ln"><span>Stories</span><i></i><span>${st.stories}</span></div>
+   <div class="tot"><div class="ln"><span>INSTALLED, ALL-IN</span></div><div class="big">${fmt(lo)} – ${fmt(hi)}</div></div>
+   <button class="rf-btn o" style="width:100%;justify-content:center;margin-top:12px" data-book>Book free inspection</button>
+   <small>Ballpark from typical regional pricing. Final price is set after we measure your roof and check the deck. Doesn't include rotted decking replacement ($75–$110/sheet).</small>`}
+ calc();
+ $('#rfA',root).oninput=e=>{st.area=+e.target.value;calc()};
+ const seg=(id,key,attr)=>$(id,root).onclick=e=>{const b=e.target.closest('button');if(!b)return;st[key]=+b.dataset[attr];$$(id+' button',root).forEach(x=>x.setAttribute('aria-pressed',x===b));calc()};
+ seg('#rfP','pitch','i');seg('#rfM','mat','i');seg('#rfS','stories','n');seg('#rfL','layers','n');
+ function verdict(){const n=$$('#rfC button[aria-pressed=true]',root).length;const v=$('#rfV',root);v.classList.toggle('hot',n>=2);
+  v.innerHTML=n===0?'<span>Tick anything you’ve noticed. We’ll tell you if it’s worth a look.</span>':n===1?'<span>One sign is worth keeping an eye on. Free inspection if it gets worse.</span><button class="rf-btn ln" data-book>Book anyway</button>':`<span>${n} signs of damage. Get it inspected before the next rain. Most claims have a filing deadline.</span><button class="rf-btn" data-book>Send a crew</button>`}
+ $('#rfC',root).onclick=e=>{const b=e.target.closest('button');if(!b)return;b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');b.querySelector('i').textContent=b.getAttribute('aria-pressed')==='true'?'✕':'';verdict()};verdict();
+ root.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)goTo(g.dataset.go.startsWith('#')?g.dataset.go:'.rf '+g.dataset.go);if(e.target.closest('[data-book]'))book()});
+ function book(){const el=openOv(`<div class="sheet" style="border-radius:0;border:2px solid #141414;font-family:Archivo,sans-serif"><div style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-stretch:62%;font-weight:900;font-size:34px;text-transform:uppercase;line-height:1">Book a free inspection</b><button id="x" style="font-size:20px">✕</button></div>
+  <form style="display:grid;gap:10px;margin-top:16px"><input required placeholder="Name" style="padding:13px;border:2px solid #141414"><input required type="tel" placeholder="Phone" style="padding:13px;border:2px solid #141414"><input required placeholder="Street address" style="padding:13px;border:2px solid #141414">
+  <select style="padding:13px;border:2px solid #141414;background:#fff"><option>Morning (8–12)</option><option>Afternoon (12–5)</option><option>First available</option></select><button class="rf-btn o" style="justify-content:center">Request inspection</button></form></div></div>`);
+  $('#x',el).onclick=()=>el.remove();$('form',el).onsubmit=e=>{e.preventDefault();e.target.outerHTML='<p style="margin-top:16px;padding:16px;background:#ff5a1f;font-weight:700">Booked. A crew lead will text you within the hour to confirm a time.</p>';setTimeout(()=>el.remove(),2600)}}
+ return {estimate:()=>goTo('#rf-est'),storm:()=>goTo('#rf-storm'),book};
+}
+
+/* ================================================================
+   PROJECT 8 — GRAIN & PLANK FLOORING
+   ================================================================ */
+function rng(seed){let s=seed>>>0;return()=>((s=Math.imul(s^s>>>15,1|s)+0x6D2B79F5|0,(s^s>>>13)>>>0)%100000)/100000}
+const texCache=new Map();
+function floorTex(m){if(texCache.has(m.id))return texCache.get(m.id);const S=512,c=document.createElement('canvas');c.width=c.height=S;const x=c.getContext('2d'),r=rng(m.seed||7);
+ const hsl=(h,s,l,a=1)=>`hsla(${h},${s}%,${l}%,${a})`;const[h0,s0,l0]=m.base;
+ const grain=(x0,y0,w,h,l)=>{for(let g=0;g<m.grain;g++){x.strokeStyle=hsl(h0,s0,l-10-r()*8,.18+r()*.2);x.lineWidth=.6+r()*1.2;x.beginPath();const yy=y0+r()*h;x.moveTo(x0,yy);
+   for(let k=1;k<=6;k++)x.quadraticCurveTo(x0+w*(k-.5)/6,yy+(r()-.5)*h*.35,x0+w*k/6,yy+(r()-.5)*h*.2);x.stroke()}
+  if(m.knots&&r()<m.knots){const kx=x0+r()*w,ky=y0+h*(.3+r()*.4);x.fillStyle=hsl(h0,s0,l-22,.55);x.beginPath();x.ellipse(kx,ky,4+r()*6,2+r()*3,0,0,7);x.fill();x.strokeStyle=hsl(h0,s0,l-16,.35);x.beginPath();x.ellipse(kx,ky,10+r()*6,4+r()*3,0,0,7);x.stroke()}};
+ const plank=(x0,y0,w,h)=>{const l=l0+(r()-.5)*m.v;const g=x.createLinearGradient(x0,y0,x0,y0+h);g.addColorStop(0,hsl(h0,s0,l+2));g.addColorStop(1,hsl(h0,s0,l-2));x.fillStyle=g;x.fillRect(x0,y0,w,h);
+  x.save();x.beginPath();x.rect(x0,y0,w,h);x.clip();grain(x0,y0,w,h,l);x.restore();x.fillStyle=hsl(h0,s0,l0-24,.55);x.fillRect(x0,y0,w,1.2);x.fillRect(x0,y0,1.2,h)};
+ if(m.type==='plank'){const rows=m.rows,H=S/rows;for(let i=0;i<rows;i++){const lens=[];let tot=0;while(tot<S){const L=Math.min(S-tot,m.len[0]+r()*(m.len[1]-m.len[0]));lens.push(L);tot+=L}
+   if(S-tot>0)lens[lens.length-1]+=S-tot;const off=r()*S;let xx=off;lens.forEach(L=>{plank(xx,i*H,L,H);if(xx+L>S)plank(xx-S,i*H,L,H);xx=(xx+L)%S})}}
+ else if(m.type==='basket'){const C=128;for(let i=0;i<S/C;i++)for(let j=0;j<S/C;j++){const hz=(i+j)%2===0;for(let k=0;k<3;k++){if(hz)plank(j*C,i*C+k*C/3,C,C/3);else plank(j*C+k*C/3,i*C,C/3,C)}}}
+ else if(m.type==='tile'){const C=S/m.n;for(let i=0;i<m.n;i++)for(let j=0;j<m.n;j++){const l=l0+(r()-.5)*m.v;x.fillStyle=hsl(h0,s0,l);x.fillRect(j*C,i*C,C,C);
+   for(let v=0;v<3;v++){x.strokeStyle=hsl(h0,s0,l-12,.25);x.lineWidth=.6+r();x.beginPath();let px=j*C+r()*C,py=i*C;x.moveTo(px,py);for(let k=0;k<5;k++){px+=(r()-.5)*C*.5;py+=C/5;x.lineTo(px,py)}x.stroke()}}
+  x.fillStyle=m.grout;for(let k=0;k<=m.n;k++){x.fillRect(k*C-2,0,4,S);x.fillRect(0,k*C-2,S,4)}}
+ const u=c.toDataURL('image/jpeg',.86);texCache.set(m.id,u);return u}
+const FLOORS=[
+ {id:'oak',name:'White oak, wide plank',type:'plank',rows:6,len:[200,420],base:[33,42,68],v:8,grain:7,knots:.15,seed:3,species:'European white oak',width:'7½″',finish:'Matte hardwax oil',price:[7.5,11]},
+ {id:'walnut',name:'Smoked walnut',type:'plank',rows:8,len:[160,340],base:[22,32,30],v:7,grain:6,knots:.05,seed:9,species:'American black walnut',width:'5″',finish:'Satin polyurethane',price:[10,14.5]},
+ {id:'hickory',name:'Rustic hickory',type:'plank',rows:7,len:[120,300],base:[30,38,52],v:20,grain:8,knots:.5,seed:21,species:'Hickory, character grade',width:'6″',finish:'Wire-brushed, oiled',price:[6.5,9.5]},
+ {id:'basket',name:'Oak basketweave',type:'basket',base:[34,40,60],v:10,grain:5,knots:0,seed:5,species:'White oak parquet',width:'3″ × 9″ blocks',finish:'Natural lacquer',price:[12,18]},
+ {id:'lvp',name:'Coastal grey LVP',type:'plank',rows:8,len:[220,480],base:[34,8,62],v:6,grain:5,knots:0,seed:13,species:'Rigid-core vinyl plank',width:'7″',finish:'20 mil wear layer',price:[3.75,6]},
+ {id:'tile',name:'Limestone-look porcelain',type:'tile',n:4,base:[38,14,82],v:4,grout:'#c9c2b6',seed:17,species:'Rectified porcelain',width:'24″ × 24″',finish:'Honed',price:[8,13]}];
+function renderFlooring(root){
+ let cur=0,tray=new Set(),L=16,Wd=14;
+ const rot=[-2.2,1.6,-.8,2.4,-1.4,1];
+ root.innerHTML=`<div class="fp">
+ <div class="fp-nav"><div class="lk"><a data-go="#fp-vis">Visualizer</a><a data-go="#fp-proc">Process</a><a data-go="#fp-show">Showroom</a></div>
+  <div class="mark"><b>Grain &amp; Plank</b><span class="mn">Flooring studio · supply &amp; install</span></div>
+  <div class="rt"><button class="fp-tray" id="fpT">Samples <i>0</i></button></div></div>
+ <section class="w fp-hero"><span class="mn" style="color:var(--clay)">Hardwood · LVP · Tile · Refinishing</span>
+  <h1 class="se" style="margin-top:18px">Floors you’ll <i>notice</i> <span class="dot">${plainImg('1607403219525-6c60fa4f20fa',300)}</span> every single morning.</h1>
+  <div class="meta"><div><span class="mn">01 — Measure</span><p>Free in-home measure with moisture readings, not a guess from photos.</p></div><div><span class="mn">02 — Sample</span><p>Up to three free samples, delivered. Live with them for a week.</p></div><div><span class="mn">03 — Install</span><p>Our own installers, never subcontracted. Furniture moved for you.</p></div><div><span class="mn">04 — Care</span><p>One free maintenance visit at 12 months. Scuffs happen.</p></div></div></section>
+ <div class="fp-full">${plainImg('1783125127010-04a506ad3c12',1800)}<span class="cap mn">Wide-plank oak, matte finish — open-plan living, 1,140 sq ft</span></div>
+ <section class="fp-sec" id="fp-vis"><div class="w"><div class="hd3"><span class="mn">Visualizer</span><h2 class="se">Try a floor <i>in the room</i> before it’s in your house.</h2></div>
+  <div class="fp-vis"><div><div class="fp-room" id="fpRoom"><div class="wall"></div><div class="win"></div><div class="art"></div><div class="floor" id="fpF"></div><div class="shade"></div><div class="sun"></div><div class="base"></div><div class="bench"><b></b><i></i><i></i></div><span class="lbl mn" id="fpLbl"></span></div>
+   <div class="fp-calc"><label><span class="mn">Room length (ft)</span><input type="number" min="4" max="80" value="${L}" id="fpL"></label><label><span class="mn">Room width (ft)</span><input type="number" min="4" max="80" value="${Wd}" id="fpW"></label></div>
+   <div class="fp-out" id="fpO"></div></div>
+   <div><div class="fp-sw" id="fpS">${FLOORS.map((f,i)=>`<button class="fp-chip" data-i="${i}" aria-pressed="${i===0}" style="transform:rotate(${rot[i]}deg)"><div class="t" style="background-image:url(${floorTex(f)})"></div><span>${f.name}</span></button>`).join('')}</div>
+    <div class="fp-spec" id="fpSp"></div>
+    <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap"><button class="fp-b" id="fpAdd">Add free sample</button><button class="fp-b ol" data-go="#fp-show">Book a measure</button></div></div></div></div></section>
+ <section class="fp-sec" id="fp-proc" style="padding-top:0"><div class="w"><div class="hd3"><span class="mn">How it goes</span><h2 class="se">Two weeks, <i>start to finish</i>.</h2></div>
+  <div class="fp-proc"><div><span class="mn">Day 0</span><h4>Measure</h4><p>Laser measure, subfloor check, moisture readings. Written quote the same day.</p></div><div><span class="mn">Days 1–5</span><h4>Acclimate</h4><p>Wood sits in your home so it moves now, not after it’s nailed down.</p></div><div><span class="mn">Days 6–8</span><h4>Install</h4><p>Dust-contained cutting outside. Baseboards reset or replaced.</p></div><div><span class="mn">Day 9</span><h4>Walk-through</h4><p>We walk every room with you and fix anything on the spot.</p></div></div></div></section>
+ <section class="fp-sec" style="padding-top:0"><div class="w"><div class="hd3"><span class="mn">Recent floors</span><h2 class="se">Lately, <i>around town</i>.</h2></div>
+  <div class="fp-mos">${[['1773578978637-c9771e7a9913','Oak, herringbone hall'],['1585128792020-803d29415281','Refinish, 1920s bungalow'],['1598718544285-7180f670198b','Parquet restoration'],['1770736158887-9a0f3702416e','Hickory, family room'],['1697462247834-7d55761daea3','LVP, basement + stairs']].map(p=>`<figure>${plainImg(p[0],1000)}<figcaption class="mn">${p[1]}</figcaption></figure>`).join('')}</div></div></section>
+ <section class="fp-sec" id="fp-show" style="padding-top:0"><div class="w fp-show"><div><span class="mn">Showroom</span><h2 class="se" style="margin-top:12px">Come <i>walk on</i> them.</h2><p style="margin:16px 0 22px;max-width:28em;color:#4a3a2e">Forty full-size boards laid out on the floor, not glued to a wall. Bring a cabinet door or paint chip and we’ll match it.</p><button class="fp-b" id="fpBk">Book a free measure</button></div>
+  <table><tr><td>Monday – Friday</td><td>9:00 – 6:00</td></tr><tr><td>Saturday</td><td>10:00 – 4:00</td></tr><tr><td>Sunday</td><td>By appointment</td></tr><tr><td>Phone</td><td>(555) 018-4410</td></tr><tr><td>Address</td><td>214 Mill Street</td></tr></table></div></section>
+ <div class="w fp-foot"><span class="mn">Grain &amp; Plank — demo concept by websbyshreyan</span><span class="mn">Room photos: Unsplash (stand-ins) · floor textures generated in-browser</span></div>
+ </div>`;
+ const money=n=>'$'+Math.round(n).toLocaleString();
+ function sel(i){cur=i;const f=FLOORS[i];$('#fpF',root).style.backgroundImage=`url(${floorTex(f)})`;$('#fpF',root).style.backgroundSize=(f.type==='tile'?260:200)+'px';$('#fpLbl',root).textContent=f.name;
+  $$('#fpS .fp-chip',root).forEach((b,k)=>b.setAttribute('aria-pressed',k===i));
+  $('#fpSp',root).innerHTML=`<div><span>Material</span><span>${f.species}</span></div><div><span>Size</span><span>${f.width}</span></div><div><span>Finish</span><span>${f.finish}</span></div><div><span>Installed</span><span>$${f.price[0].toFixed(2)} – $${f.price[1].toFixed(2)} / sq ft</span></div>`;
+  $('#fpAdd',root).textContent=tray.has(f.id)?'✓ Sample in your tray':'Add free sample';calc()}
+ function calc(){const f=FLOORS[cur];const a=Math.max(0,L*Wd),waste=f.type==='plank'?1.1:1.15,need=a*waste;
+  $('#fpO',root).innerHTML=`<div><span class="mn">Floor area</span><b>${Math.round(a)} sq ft</b></div><div><span class="mn">Order (+${Math.round((waste-1)*100)}%)</span><b>${Math.ceil(need/20)} boxes</b></div><div><span class="mn">Installed</span><b>${money(a*f.price[0])}–${money(a*f.price[1])}</b></div>`}
+ $('#fpS',root).onclick=e=>{const b=e.target.closest('.fp-chip');if(b)sel(+b.dataset.i)};
+ $('#fpL',root).oninput=e=>{L=+e.target.value||0;calc()};$('#fpW',root).oninput=e=>{Wd=+e.target.value||0;calc()};
+ const count=()=>$('#fpT i',root).textContent=tray.size;
+ $('#fpAdd',root).onclick=()=>{const f=FLOORS[cur];if(tray.has(f.id)){samples();return}if(tray.size>=3){toast('Three free samples max. Remove one first.');samples();return}tray.add(f.id);count();sel(cur);toast(`${f.name} added to your sample tray`)};
+ $('#fpT',root).onclick=samples;
+ function samples(){closeOv();const el=openOv(`<div class="sheet" style="border-radius:4px"><div class="fps" id="fpsb"></div></div>`);
+  const r=()=>{const b=$('#fpsb',el);const items=FLOORS.filter(f=>tray.has(f.id));
+   b.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:start"><h3>Your <i>samples</i></h3><button id="x" style="font-size:18px">✕</button></div><p class="mn" style="color:#7a6a5c;margin-bottom:10px">${items.length} of 3 · free, delivered in 2–3 days</p>
+    ${items.length?items.map(f=>`<div class="it"><i style="background-image:url(${floorTex(f)})"></i><div><b style="font-weight:600">${f.name}</b><div class="mn" style="color:#7a6a5c">${f.width}</div></div><button data-rm="${f.id}">Remove</button></div>`).join('')+`<form style="margin-top:14px"><input required placeholder="Name"><input required placeholder="Delivery address"><button class="fp-b" style="margin-top:16px;width:100%;justify-content:center">Send my samples</button></form>`:'<p style="padding:20px 0;color:#7a6a5c">No samples yet. Pick a floor in the visualizer and tap “Add free sample”.</p>'}`;
+   $('#x',b).onclick=()=>el.remove();$$('[data-rm]',b).forEach(x=>x.onclick=()=>{tray.delete(x.dataset.rm);count();sel(cur);r()});
+   const fm=$('form',b);if(fm)fm.onsubmit=e=>{e.preventDefault();tray.clear();count();sel(cur);b.innerHTML='<h3>On their <i>way</i>.</h3><p style="margin:10px 0 18px">Your samples ship tomorrow. Leave them in the room for a few days and look at them morning and evening.</p><button class="fp-b" id="x2">Close</button>';$('#x2',b).onclick=()=>el.remove()}};r()}
+ $('#fpBk',root).onclick=()=>{const el=openOv(`<div class="sheet" style="border-radius:4px"><div class="fps"><div style="display:flex;justify-content:space-between"><h3>Free <i>measure</i></h3><button id="x" style="font-size:18px">✕</button></div><form><input required placeholder="Name"><input required type="tel" placeholder="Phone"><input placeholder="Rooms (e.g. living, hall, 2 bedrooms)"><button class="fp-b" style="margin-top:16px;width:100%;justify-content:center">Request a time</button></form></div></div>`);
+  $('#x',el).onclick=()=>el.remove();$('form',el).onsubmit=e=>{e.preventDefault();e.target.outerHTML='<p style="margin-top:12px">Thanks! We’ll call within one business day to set a time.</p>';setTimeout(()=>el.remove(),2400)}};
+ root.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)goTo(g.dataset.go)});
+ sel(0);
+ return {visualize:()=>{goTo('#fp-vis');setTimeout(()=>sel(3),400)},samples:()=>{tray.add('oak');tray.add('walnut');count();sel(cur);samples()}};
+}
+
+/* ================================================================
+   PROJECT 9 — HOLLIS & DAUGHTER (kitchen & bath remodeling)
+   ================================================================ */
+function renderRemodel(root){
+ const J=[
+  {t:'Green-cabinet kitchen',town:'Westfield',wk:'11 weeks',bud:'$60–75k',img:'1765959990052-fab57c043979',ent:[['Wk 1','Demo. Found a 1960s soffit full of old ductwork, rerouted it into the new wall so we gained 14″ of cabinet height.'],['Wk 3','Rough plumbing moved the sink under the window. Inspection passed first visit.'],['Wk 6','Cabinets in. Painted on site in a muted sage the client picked from a dish towel.'],['Wk 9','Quartz templated, installed 6 days later. Tile backsplash run to the ceiling.'],['Wk 11','Punch list: 9 items, closed in two days. Client cooked Sunday dinner.']]},
+  {t:'Primary bath with soaking tub',town:'Maple Ridge',wk:'7 weeks',bud:'$38–46k',img:'1763802854657-4bdd26dfe950',ent:[['Wk 1','Gutted to studs. Subfloor had soft spots by the old tub, so we sistered two joists.'],['Wk 2','Curbless shower framed with a linear drain. Heated floor mat laid.'],['Wk 4','Waterproofing flood-tested for 24 hours before any tile went up.'],['Wk 7','Freestanding tub set, glass installed, final walk-through.']]},
+  {t:'Mint double-vanity bath',town:'Oak Hollow',wk:'5 weeks',bud:'$24–30k',img:'1762418362644-a4daad168fb9',ent:[['Wk 1','Kept the layout, swapped the single vanity for a 72″ double. No plumbing moves.'],['Wk 3','Tile wainscot, mint limewash above. Lighting moved to the sides of the mirrors.'],['Wk 5','Done ahead of the family’s holiday guests, which was the whole point.']]},
+  {t:'Marble-island kitchen',town:'Brookside',wk:'13 weeks',bud:'$85–110k',img:'1755316388093-faff473ffdfb',ent:[['Wk 1','Removed a bearing wall. Engineer-stamped LVL beam, two-day install.'],['Wk 5','Island plumbing and power trenched through the slab.'],['Wk 10','Book-matched slab arrived; we chose the cut with the client at the yard.'],['Wk 13','Final clean, appliance training, warranty binder handed over.']]},
+  {t:'Basement family room',town:'Westfield',wk:'9 weeks',bud:'$48–60k',img:'1765959617888-30837a158667',ent:[['Wk 1','Moisture test, then rigid foam on the walls before framing.'],['Wk 4','Egress window cut in. It’s a legal bedroom now, too.'],['Wk 9','Built-in shelving and a gas insert. Kids moved the TV down the same night.']]}];
+ const ROOMS={Kitchen:[45000,[3,2,1,2,3,2]],'Primary bath':[28000,[2,2,1,2,2,1]],'Guest bath':[16000,[2,1,1,1,2,1]],Basement:[52000,[3,2,1,3,2,2]]};
+ const PH=['Design','Permits','Demo','Rough-in','Cabinets & tile','Finish'];
+ let st={room:'Kitchen',size:'Medium',fin:'Mid-range',plumb:false,wall:false};
+ root.innerHTML=`<div class="hm">
+ <header class="hm-top"><span class="nm">Hollis <i>&amp;</i> Daughter</span><nav><a data-go="#hm-work">Work</a><a data-go="#hm-plan">Plan &amp; price</a><a data-go="#hm-how">How we work</a><a class="cta" data-go="#hm-plan">Plan your remodel</a></nav></header>
+ <div class="w"><section class="hm-hero"><h1 class="nr">We remodel kitchens and baths the way we’d want <i>our own</i> done.</h1>
+  <p class="sd">A father-and-daughter design-build firm. One fixed-price contract, one person you call, and a crew that sweeps up before they leave every day.</p>
+  <div class="note"><span class="sc">Now booking</span><br>Design consults for spring starts</div>
+  <div class="ph">${plainImg('1772016608838-d8d467da27e8',1800)}</div></section></div>
+ <section class="hm-sec" id="hm-work"><div class="w"><div class="hm-sh"><span class="sc">Selected rooms, 05</span><h2 class="nr">Recent work, with the notes we kept on site.</h2></div>
+  <div class="hm-idx" id="hmIdx">${J.map((j,i)=>`<div class="hm-ir" data-j="${i}"><span class="t">${j.t}</span><span>${j.town}</span><span>${j.wk}</span><span>${j.bud}</span><span style="text-align:right">Journal →</span></div>`).join('')}<div class="hm-peek" id="hmPk"></div></div></div></section>
+ <section class="hm-sec" id="hm-plan"><div class="w"><div class="hm-sh"><span class="sc">Plan &amp; price</span><h2 class="nr">What your remodel costs, and how long you’ll be eating takeout.</h2></div>
+  <div class="hm-plan"><div class="hm-pc">
+   <div class="hm-q"><span class="sc">Room</span><div class="hm-tg" data-k="room">${Object.keys(ROOMS).map(r=>`<button aria-pressed="${r===st.room}">${r}</button>`).join('')}</div></div>
+   <div class="hm-q"><span class="sc">Size</span><div class="hm-tg" data-k="size">${['Small','Medium','Large'].map(r=>`<button aria-pressed="${r===st.size}">${r}</button>`).join('')}</div></div>
+   <div class="hm-q"><span class="sc">Finish level</span><div class="hm-tg" data-k="fin">${['Builder','Mid-range','Custom'].map(r=>`<button aria-pressed="${r===st.fin}">${r}</button>`).join('')}</div></div>
+   <div class="hm-q"><div class="hm-sw2"><span>Moving plumbing</span><button role="switch" aria-checked="false" data-s="plumb" aria-label="Moving plumbing"></button></div><div class="hm-sw2"><span>Removing a wall</span><button role="switch" aria-checked="false" data-s="wall" aria-label="Removing a wall"></button></div></div>
+  </div><div class="hm-pr"><span class="sc">Typical range in our area</span><div class="hm-num" id="hmN"></div><div class="hm-gt" id="hmG"></div><div class="hm-sum" id="hmSum"></div>
+   <button class="cta" id="hmBk" style="margin-top:26px;border:1px solid #171717;padding:13px 20px;font-weight:600">Book a design consult →</button></div></div></div></section>
+ <section class="hm-sec" id="hm-how"><div class="w"><div class="hm-sh"><span class="sc">How we work</span><h2 class="nr">Three promises, written into every contract.</h2></div>
+  <div class="hm-pri"><div><b>1</b><h4>One point of contact</h4><p>Whoever designs your room runs it on site. You won’t be passed between a salesperson, a PM and a sub.</p></div><div><b>2</b><h4>Fixed price, fixed scope</h4><p>The number you sign is the number you pay, unless you change the plan. Hidden-condition allowances are spelled out up front.</p></div><div><b>3</b><h4>A clean house at 5 pm</h4><p>Dust walls, floor protection, and a broom-clean site every day, because you still live there.</p></div></div></div></section>
+ <div class="w"><footer class="hm-foot"><div class="big">Tell us about the room. <a data-go="#hm-plan" style="cursor:pointer">Start with a plan</a>.</div><div class="ad"><span class="sc">Hollis &amp; Daughter Builders</span><br>(555) 019-7730 · hello@hollisanddaughter.example<br><span style="color:#8a877f">Demo concept by websbyshreyan. Photos: Unsplash stand-ins. Journal entries are sample copy.</span></div></footer></div>
+ </div>`;
+ const r500=n=>'$'+(Math.round(n/500)*500).toLocaleString();
+ function calc(){const [base,wks]=ROOMS[st.room];const sm={Small:.75,Medium:1,Large:1.4}[st.size],fm={Builder:.75,'Mid-range':1,Custom:1.6}[st.fin];
+  let c=base*sm*fm*(st.plumb?1.12:1)*(st.wall?1.1:1);$('#hmN',root).innerHTML=`${r500(c*.9)}<small> to </small>${r500(c*1.15)}`;
+  const sc=Math.pow(sm,.6)*(st.fin==='Custom'?1.3:1);const w=wks.map((x,i)=>Math.max(1,Math.round(x*(i===0||i===4?sc:Math.pow(sm,.5))+(i===1&&st.wall?1:0)+(i===3&&st.plumb?1:0))));
+  const total=w.reduce((a,b)=>a+b,0)-1;const cw=100/total;let at=0;
+  $('#hmG',root).innerHTML=`<div class="hm-wk" style="grid-template-columns:repeat(${total},1fr)">${Array.from({length:total},(_,i)=>`<span>${i%2===0?'W'+(i+1):''}</span>`).join('')}</div>`+PH.map((p,i)=>{const s=i===2?at-0:at;const left=s*cw,wid=w[i]*cw;at+=w[i]-(i===0?1:0);return `<div class="hm-gr"><span>${p}</span><div class="tr" style="--cw:${cw}%"><div class="br ${i<2?'s':''}" style="left:${left}%;width:${Math.min(wid,100-left)}%"></div></div></div>`}).join('');
+  const onsite=w.slice(2).reduce((a,b)=>a+b,0);$('#hmSum',root).innerHTML=`<div><b>${total} weeks</b>start to finish</div><div><b>${onsite} weeks</b>of construction</div><div><b>${w[0]+w[1]-1} weeks</b>design &amp; permits (you’re still cooking)</div>`}
+ $$('.hm-tg',root).forEach(g=>g.onclick=e=>{const b=e.target.closest('button');if(!b)return;st[g.dataset.k]=b.textContent;$$('button',g).forEach(x=>x.setAttribute('aria-pressed',x===b));calc()});
+ $$('[data-s]',root).forEach(b=>b.onclick=()=>{st[b.dataset.s]=!st[b.dataset.s];b.setAttribute('aria-checked',st[b.dataset.s]);calc()});calc();
+ const idx=$('#hmIdx',root),pk=$('#hmPk',root);let pi=-1;
+ idx.onmousemove=e=>{const row=e.target.closest('.hm-ir');const r=idx.getBoundingClientRect();if(!row){pk.style.opacity=0;return}const i=+row.dataset.j;if(i!==pi){pi=i;pk.innerHTML=plainImg(J[i].img,600)}pk.style.opacity=1;pk.style.left=(e.clientX-r.left+24)+'px';pk.style.top=(e.clientY-r.top-120)+'px'};
+ idx.onmouseleave=()=>{pk.style.opacity=0};
+ idx.onclick=e=>{const row=e.target.closest('.hm-ir');if(row)journal(+row.dataset.j)};
+ function journal(i){const j=J[i];const el=openOv(`<div class="hm-sheet"><button class="x" aria-label="Close" style="position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:#fbfaf7;border:1px solid #171717;z-index:2">✕</button><div class="hmj" style="height:100%"><div class="im">${plainImg(j.img,1200)}</div><div class="tx"><span class="sc">${j.town} · ${j.wk} · ${j.bud}</span><h3>${j.t}</h3>${j.ent.map(x=>`<div class="en"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}<p class="sc" style="margin-top:18px;color:#8a877f">Sample journal copy for this concept</p></div></div></div>`);
+  $('.x',el).onclick=()=>el.remove()}
+ $('#hmBk',root).onclick=()=>{const el=openOv(`<div class="sheet" style="border-radius:0;border:1px solid #171717;background:#fbfaf7"><div style="padding:26px;font-family:'Public Sans',sans-serif"><div style="display:flex;justify-content:space-between"><span style="font:400 32px/1 Newsreader,serif">Design consult</span><button id="x" style="font-size:18px">✕</button></div>
+  <p style="color:#6c6a64;margin:8px 0 14px">${st.room}, ${st.size.toLowerCase()}, ${st.fin.toLowerCase()} finishes</p><form style="display:grid;gap:12px">${['Name','Phone or email','Address'].map(p=>`<input required placeholder="${p}" style="padding:12px 0;border:0;border-bottom:1px solid #171717;background:transparent;outline:0">`).join('')}<button style="margin-top:8px;padding:14px;background:#171717;color:#fbfaf7;font-weight:600">Request a consult</button></form></div></div>`);
+  $('#x',el).onclick=()=>el.remove();$('form',el).onsubmit=e=>{e.preventDefault();e.target.outerHTML='<p style="font:400 22px/1.3 Newsreader,serif">Thank you. We’ll call this week to find a time that works.</p>';setTimeout(()=>el.remove(),2600)}};
+ root.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)goTo(g.dataset.go)});
+ return {plan:()=>goTo('#hm-plan'),journal:()=>{goTo('#hm-work');setTimeout(()=>journal(0),350)}};
+}
+
+/* ================================================================
+   PROJECT DATA
+   ================================================================ */
+const PROJECTS=[
+ {id:'redoak',name:'Red Oak Landscaping',cat:'Home services',sub:'Landscaping · Website redesign',color:'#8f2b20',badge:'Concept for you',render:renderRedOak,
+  tags:'landscaping redesign gallery upload quote wizard lead generation wordpress',
+  lede:'A modern redesign concept for an established Capital District design-build landscaper. The goal: let the work sell itself, make getting a quote effortless on a phone, and let the team add project photos without calling a developer.',
+  feats:['Before/after slider in the hero that shows the transformation straight away','Ten service cards that open the matching gallery filter','Filterable project gallery with full-screen, swipeable lightbox','Owner mode: drag-and-drop photo upload, tagged by project type and town','Four-step quote wizard in a mobile bottom sheet that captures qualified leads','Every photo opens in a 3D view: depth is generated automatically, with an optional sharper AI depth model that runs in the browser','360° tours: panoramas from a phone or 360 camera open in a drag-to-look-around viewer','Sticky Call / Free quote bar on phones, plus FAQ and service-area content kept for SEO'],
+  flows:[['Request a free quote','4-step wizard · bottom sheet','quote'],['Browse work by category','Service card → filtered gallery','filter'],['View a project full screen','Lightbox with swipe and arrows','lightbox'],['See a photo in 3D','Auto depth · tilt or move cursor','tilt'],['Take a 360° tour','Drag to look around','tour'],['Upload new project photos','Owner mode · drag and drop','owner']],
+  stack:['Responsive HTML/CSS','Container queries','WebGL','Depth Anything (AI depth)','WordPress REST API (live)','IndexedDB (demo storage)'],how:true},
+ {id:'roofing',name:'Ridgeline Roofing',cat:'Home services',sub:'Roofing · Lead generation',color:'#ff5a1f',render:renderRoofing,tags:'roofing roofer storm hail insurance estimate contractor shingles metal',
+  lede:'A no-nonsense site for a storm-response roofing crew. Built to turn a worried homeowner into a booked inspection in one visit, with a price on screen before they ever pick up the phone.',
+  feats:['Ballpark roof estimator: footprint, pitch, material, stories and tear-off layers in, a printed-receipt style price range out','Storm damage checklist that tells homeowners whether it’s worth an inspection','Insurance claim walkthrough written for homeowners, not adjusters','Job-site photo strip, 24/7 storm line ticker and a sticky Call / Price bar on phones'],
+  flows:[['Price a roof','Estimator → receipt → book','estimate'],['Check storm damage','Checklist → verdict → send a crew','storm'],['Book a free inspection','Short form, no account','book']],
+  stack:['Archivo variable (wdth axis)','IBM Plex Mono','Container queries','Vanilla JS']},
+ {id:'flooring',name:'Grain & Plank',cat:'Home services',sub:'Flooring studio · Visualizer',color:'#2b1e16',render:renderFlooring,tags:'flooring hardwood lvp tile refinishing visualizer samples showroom contractor',
+  lede:'An editorial showroom site for a flooring installer. Homeowners can see each floor in a room, work out boxes and installed cost, and order free samples, all before booking a measure.',
+  feats:['Room visualizer: six floors with plank, parquet and tile textures generated in the browser, so no two boards repeat','Square-footage calculator with the right waste factor per pattern, box count and installed price','Free sample tray (max three) with delivery form','Day-by-day install timeline and showroom hours'],
+  flows:[['Try a floor in the room','Swatch → room updates live','visualize'],['Order free samples','Tray → address → confirmation','samples']],
+  stack:['Instrument Serif / Sans','Canvas-generated textures','CSS 3D perspective','Vanilla JS']},
+ {id:'remodel',name:'Hollis & Daughter',cat:'Home services',sub:'Kitchen & bath remodeling',color:'#6f7d5c',render:renderRemodel,tags:'remodel remodeling kitchen bath bathroom basement renovation contractor interior budget timeline',
+  lede:'A quiet, magazine-style site for a family design-build remodeler. It sells trust: real-feeling site journals, a planner that sets honest budget and timeline expectations, and three promises in plain words.',
+  feats:['Project index with photo preview that follows the cursor, opening week-by-week site journals','Budget planner: room, size, finish level, plumbing and wall changes, giving a price range','Live Gantt timeline of design, permits, demo, rough-in, cabinets/tile and finish','Fixed-price, one-contact, clean-site promises as the core sales pitch'],
+  flows:[['Plan and price a remodel','Choices → range + timeline','plan'],['Read a project journal','Index → journal sheet','journal']],
+  stack:['Newsreader / Public Sans','12-column grid','CSS-only Gantt','Vanilla JS']},
+ {id:'bakery',name:'Crust & Craft',cat:'Local services',sub:'Bakery & café · Lead generation',color:'#a4561c',render:renderBakery,tags:'bakery cafe restaurant preorder pickup local food',
+  lede:'A mobile-first site for a neighbourhood bakery that replaces phone orders with a simple pickup reservation.',
+  feats:['Bento-style hero with open hours and live review highlight','Tap-to-add menu of this morning\'s bake','One-screen pickup reservation form with time slots'],
+  flows:[['Reserve a pickup','Menu → form → confirmation','order']],stack:['HTML/CSS','Google Business reviews','Form to email/SMS']},
+ {id:'aura',name:'Aura Atelier',cat:'E-commerce',sub:'Botanical goods · Online store',color:'#3f3a33',render:renderAura,tags:'ecommerce shop store cart checkout stripe candles',
+  lede:'An editorial micro-store for a small-batch fragrance brand, built to convert social traffic into orders.',
+  feats:['Category filter chips with instant results','Slide-over bag with quantity controls','Stripe-ready checkout (test mode)'],
+  flows:[['Add to bag and check out','Product → bag drawer → pay','bag']],stack:['HTML/CSS/JS','Stripe Checkout','Headless product data']},
+ {id:'summit',name:'Future Tech Summit',cat:'Events',sub:'Conference · Ticketing',color:'#2563eb',render:renderSummit,tags:'event conference tickets booking countdown schedule',
+  lede:'A high-energy event site with a live countdown, two-day schedule and a fast pass-booking sheet.',
+  feats:['Live countdown timer','Day-by-day schedule with segmented control','Ticket tier picker in a bottom sheet'],
+  flows:[['Reserve a pass','Tier → details → confirmation','book']],stack:['HTML/CSS/JS','Ticketing integration']},
+ {id:'aerox',name:'AeroX 3D',cat:'3D & interactive',sub:'Product launch · Real-time 3D',color:'#7c3aed',render:renderAeroX,tags:'3d webgl canvas product launch interactive',
+  lede:'A product launch page with a real-time 3D hero that follows the cursor and responds to configuration changes.',
+  feats:['Real-time 3D canvas renderer','Wireframe, rotation and colour controls','Feature hotspots below the fold'],
+  flows:[],stack:['Canvas 2D / WebGL','Pointer events','ResizeObserver']},
+ {id:'forma',name:'Forma3D',cat:'SaaS',sub:'Photo-to-print · Upload flow',color:'#10b981',render:renderForma,tags:'saas upload 3d print configurator pricing',
+  lede:'A three-step upload-to-order flow: upload a photo, choose material and size with live pricing, then order.',
+  feats:['Drag-and-drop photo upload with instant preview','Material picker with live price calculation','Clear three-step progress'],
+  flows:[['Upload and configure a print','Upload → studio → order','sample']],stack:['HTML/CSS/JS','File API','Pricing engine']}
+];
+
+/* ================================================================
+   THUMBNAILS (Mobbin-style cards)
+   ================================================================ */
+function thumb(p){
+ const inner={
+  redoak:{desk:`<div style="position:absolute;inset:0;background:#1d231c"></div><div class="mk-t" style="left:7%;top:22%;width:40%;color:#f1efe8;font:700 clamp(11px,1.6vw,17px)/1.05 Fraunces,serif">Outdoor spaces designed, built and kept beautiful.</div><div class="mk-b" style="left:7%;top:66%;width:20%;background:#8f2b20;border-radius:9px"></div><div style="position:absolute;right:5%;top:14%;width:44%;height:70%;border-radius:8px;overflow:hidden">${photoImg('1780838446281-9394772d07a8','patio',0,700)}</div>`,
+          phone:`<div style="position:absolute;inset:0;background:#f7f6f2"></div><div style="position:absolute;left:0;right:0;top:0;height:46%">${photoImg('1778869290979-6f09567a0eee','fire',0,400)}</div><div style="position:absolute;left:6%;right:6%;top:52%;display:grid;grid-template-columns:1fr 1fr;gap:4px">${[['Retaining Walls','wall'],['Plantings','plant'],['Walkways','walk'],['Pool Scapes','pool']].map(([c,k])=>`<div style="aspect-ratio:1;border-radius:4px;overflow:hidden">${photoImg(RO_PHOTOS[c][0],k,1,200)}</div>`).join('')}</div><div style="position:absolute;left:6%;right:6%;bottom:4%;height:8%;border-radius:9px;background:#8f2b20"></div>`},
+  roofing:{desk:`<div style="position:absolute;inset:0;background:#efebe1"></div><div style="position:absolute;left:0;right:0;top:0;height:7%;background:#141414"></div><div style="position:absolute;left:4%;top:1.6%;color:#ff5a1f;font:700 6px Archivo;letter-spacing:.1em">STORM DAMAGE? 24/7 TARP-UP LINE</div><div style="position:absolute;left:0;right:0;top:7%;height:9%;border-bottom:2px solid #141414"></div><div class="mk-t" style="left:5%;top:24%;width:52%;color:#141414;font:900 clamp(13px,1.9vw,21px)/.86 Archivo;font-stretch:62%;text-transform:uppercase">Roofs built for the <span style="color:#ff5a1f">worst</span> day of the year.</div><div style="position:absolute;left:5%;top:78%;width:20%;height:9%;background:#ff5a1f"></div><div style="position:absolute;right:0;top:16%;bottom:0;width:38%;border-left:2px solid #141414;overflow:hidden">${plainImg('1643225523483-e2c434191bba',500)}</div>`,
+          phone:`<div style="position:absolute;inset:0;background:#efebe1"></div><div style="position:absolute;left:8%;right:8%;top:8%;bottom:14%;background:#fffef9;transform:rotate(1.5deg);box-shadow:0 6px 10px -6px #0006;padding:10% 8%;font:6px/1.9 'IBM Plex Mono',monospace;color:#333">ESTIMATE<br>SQUARES....23.4<br>PITCH.......6/12<br>MATERIAL....ARCH<br><b style="font:900 13px Archivo;font-stretch:62%">$11,900–16,400</b></div><div style="position:absolute;left:0;right:0;bottom:0;height:9%;background:#ff5a1f"></div>`},
+  flooring:{desk:`<div style="position:absolute;inset:0;background:#f3ece1"></div><div style="position:absolute;left:0;right:0;top:0;height:11%;border-bottom:1px solid #d6c8b5;display:grid;place-items:center;font:400 10px 'Instrument Serif',serif;color:#2b1e16">Grain &amp; Plank</div><div class="mk-t" style="left:6%;top:18%;width:60%;color:#2b1e16;font:400 clamp(14px,2.1vw,23px)/1 'Instrument Serif',serif">Floors you’ll <i>notice</i> every single morning.</div><div style="position:absolute;left:6%;right:6%;bottom:9%;height:30%;display:flex;gap:4%">${FLOORS.slice(0,5).map((f,i)=>`<div style="flex:1;background:url(${floorTex(f)}) center/60px;transform:rotate(${[-3,2,-1,3,-2][i]}deg);box-shadow:0 4px 8px -4px #0007"></div>`).join('')}</div>`,
+          phone:`<div style="position:absolute;inset:0;background:#e6ded1"></div><div style="position:absolute;left:0;right:0;top:0;height:45%;background:#ebe5d9"></div><div style="position:absolute;left:18%;top:10%;width:30%;height:26%;background:#f4f7f8;border:2px solid #f7f3ec"></div><div style="position:absolute;left:-60%;right:-60%;top:45%;height:120%;transform-origin:50% 0;transform:perspective(120px) rotateX(70deg);background:url(${floorTex(FLOORS[0])}) 0 0/60px"></div><div style="position:absolute;left:0;right:0;top:44%;height:2%;background:#f7f3ec"></div>`},
+  remodel:{desk:`<div style="position:absolute;inset:0;background:#fbfaf7"></div><div style="position:absolute;left:5%;right:5%;top:10%;border-bottom:1px solid #171717;font:500 8px Newsreader,serif;padding-bottom:3px">Hollis <i>&amp;</i> Daughter</div><div class="mk-t" style="left:5%;top:22%;width:58%;color:#171717;font:400 clamp(11px,1.55vw,17px)/1.02 Newsreader,serif;letter-spacing:-.02em">We remodel kitchens and baths the way we’d want <i style="color:#6f7d5c">our own</i> done.</div><div style="position:absolute;left:5%;width:54%;top:70%">${[[0,30],[24,22],[44,8],[50,18],[66,22],[86,14]].map(([l,w],i)=>`<div style="height:6px;margin:0 0 4px ${l}%;width:${w}%;background:${i<2?'#6f7d5c':'#171717'}"></div>`).join('')}</div><div style="position:absolute;right:5%;top:22%;width:30%;bottom:10%;overflow:hidden">${plainImg('1772016608838-d8d467da27e8',500)}</div>`,
+          phone:`<div style="position:absolute;inset:0;background:#fbfaf7"></div><div style="position:absolute;left:0;right:0;top:0;height:40%;overflow:hidden">${plainImg('1763802854657-4bdd26dfe950',300)}</div>${['Green-cabinet kitchen','Primary bath','Mint vanity bath','Marble island'].map((t,i)=>`<div style="position:absolute;left:8%;right:8%;top:${46+i*11}%;border-top:1px solid #1717172a;padding-top:4px;font:400 8px Newsreader,serif;color:#171717">${t}</div>`).join('')}`},
+  bakery:{desk:`<div style="position:absolute;inset:0;background:#fbf6ee"></div><div style="position:absolute;left:5%;top:8%;width:60%;height:58%;border-radius:8px;background:linear-gradient(135deg,#f4d9b5,#e9b980)"></div><div class="mk-t" style="left:9%;top:18%;color:#3a2614;font:700 clamp(11px,1.5vw,16px)/1.05 Fraunces,serif;width:36%">Fresh sourdough &amp; pastries</div><div style="position:absolute;left:44%;top:30%;font-size:clamp(30px,5vw,54px)">🥐</div><div style="position:absolute;right:5%;top:8%;width:27%;height:58%;border-radius:8px;background:#fff"></div><div style="position:absolute;left:5%;right:5%;bottom:8%;height:18%;display:flex;gap:4%">${'🍞🧁🥖'.match(/./gu).map(e=>`<div style="flex:1;background:#fff;border-radius:6px;display:grid;place-items:center">${e}</div>`).join('')}</div>`,
+          phone:`<div style="position:absolute;inset:0;background:#fbf6ee"></div><div style="position:absolute;left:6%;right:6%;top:6%;height:42%;border-radius:8px;background:linear-gradient(135deg,#f4d9b5,#e9b980);display:grid;place-items:center;font-size:26px">🥐</div>${[0,1,2].map(i=>`<div style="position:absolute;left:6%;right:6%;top:${53+i*13}%;height:10%;border-radius:6px;background:#fff"></div>`).join('')}`},
+  aura:{desk:`<div style="position:absolute;inset:0;background:#f5f2ed"></div><div class="mk-t" style="left:6%;top:12%;font:500 clamp(11px,1.5vw,16px)/1 Fraunces,serif;color:#1f1c18;width:50%">Small-batch botanicals</div><div style="position:absolute;left:6%;right:6%;top:38%;bottom:10%;display:grid;grid-template-columns:repeat(4,1fr);gap:4%">${[['🕯️','#ead9c4'],['🌿','#d6e0cf'],['🧴','#e7dfd3'],['✨','#dfe3ea']].map(([e,c])=>`<div style="background:${c};border-radius:6px;display:grid;place-items:center;font-size:clamp(14px,2vw,22px)">${e}</div>`).join('')}</div>`,
+          phone:`<div style="position:absolute;inset:0;background:#fff"></div><div style="position:absolute;left:8%;right:8%;top:6%;height:6%;border-bottom:1px solid #eee;font-size:8px;font-weight:700">Your bag</div>${[['🕯️','#ead9c4'],['🌿','#d6e0cf']].map(([e,c],i)=>`<div style="position:absolute;left:8%;top:${16+i*14}%;width:22%;aspect-ratio:1;border-radius:5px;background:${c};display:grid;place-items:center;font-size:11px">${e}</div>`).join('')}<div style="position:absolute;left:8%;right:8%;bottom:6%;height:8%;border-radius:9px;background:#1f1c18"></div>`},
+  summit:{desk:`<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% -10%,rgba(59,130,246,.5),#09090b 60%)"></div><div class="mk-t" style="left:0;right:0;top:24%;text-align:center;color:#fff;font-size:clamp(12px,1.8vw,19px)">Future Tech &amp; Design Summit</div><div style="position:absolute;left:30%;right:30%;top:52%;display:flex;gap:6%">${['28','14','32','09'].map(n=>`<div style="flex:1;background:#18181b;border:1px solid #27272a;border-radius:5px;color:#93b4ff;font:800 clamp(9px,1.2vw,13px) ui-monospace;text-align:center;padding:4% 0">${n}</div>`).join('')}</div><div class="mk-b" style="left:42%;width:16%;top:76%;background:#2563eb;border-radius:9px"></div>`,
+          phone:`<div style="position:absolute;inset:0;background:rgba(0,0,0,.6)"></div><div style="position:absolute;inset:0;background:#09090b;opacity:.5"></div><div style="position:absolute;left:0;right:0;bottom:0;height:62%;background:#fff;border-radius:12px 12px 0 0"></div>${[0,1,2].map(i=>`<div style="position:absolute;left:8%;right:8%;top:${46+i*11}%;height:8%;border-radius:5px;box-shadow:inset 0 0 0 1px ${i?'#e4e4e7':'#2563eb'}"></div>`).join('')}<div style="position:absolute;left:8%;right:8%;bottom:6%;height:8%;border-radius:9px;background:#2563eb"></div>`},
+  aerox:{desk:`<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#2a1d5c,#0b1020 70%)"></div><svg viewBox="0 0 100 100" style="position:absolute;left:35%;top:16%;width:30%;height:auto"><polygon points="50,5 93,30 93,70 50,95 7,70 7,30" fill="#7c3aed" opacity=".85"/><polygon points="50,5 93,30 50,50 7,30" fill="#a78bfa" opacity=".8"/><polygon points="50,50 93,70 50,95" fill="#5b21b6"/><polygon points="7,30 50,50 7,70" fill="#6d28d9"/></svg><div class="mk-t" style="left:0;right:0;bottom:12%;text-align:center;color:#fff;font-size:clamp(11px,1.5vw,16px)">AeroX Spatial Audio Core</div>`,
+          phone:`<div style="position:absolute;inset:0;background:#0b1020"></div><svg viewBox="0 0 100 100" style="position:absolute;left:18%;top:22%;width:64%"><polygon points="50,5 93,30 93,70 50,95 7,70 7,30" fill="none" stroke="#a78bfa" stroke-width="2"/><path d="M50 5 50 95 M7 30 93 70 M93 30 7 70" stroke="#a78bfa" stroke-width="1.4"/></svg><div style="position:absolute;left:10%;right:10%;bottom:8%;height:8%;border-radius:9px;background:#1b2140"></div>`},
+  forma:{desk:`<div style="position:absolute;inset:0;background:#0c1412"></div><div style="position:absolute;left:5%;top:10%;width:56%;bottom:10%;border-radius:8px;background:radial-gradient(circle at 50% 40%,#173a30,#0f1c18);display:grid;place-items:center;font-size:clamp(26px,4vw,44px)">👤</div><div style="position:absolute;right:5%;top:10%;width:30%;bottom:10%;display:grid;gap:6%">${['#0ea5e9','#94a3b8','#64748b','#d97706'].map((c,i)=>`<div style="border-radius:5px;background:#0f1c18;box-shadow:inset 0 0 0 1px ${i?'#1d332c':'#10b981'};display:flex;align-items:center;padding-left:8%"><span style="width:8px;height:8px;border-radius:50%;background:${c}"></span></div>`).join('')}</div>`,
+          phone:`<div style="position:absolute;inset:0;background:#0c1412"></div><div style="position:absolute;left:8%;right:8%;top:18%;height:40%;border:2px dashed #24433a;border-radius:10px;display:grid;place-items:center;color:#34d399;font-size:18px">⇪</div><div style="position:absolute;left:8%;right:8%;bottom:8%;height:8%;border-radius:9px;background:linear-gradient(90deg,#10b981,#2dd4bf)"></div>`}
+ }[p.id];
+ return `<div class="mk-desk"><div class="mk-bar"><i></i><i></i><i></i></div><div class="mk-body">${inner.desk}</div></div><div class="mk-phone"><div>${inner.phone}</div></div>`;
+}
+
+/* ================================================================
+   BROWSE GRID
+   ================================================================ */
+let cat='All',query='';
+const CATS=['All',...new Set(PROJECTS.map(p=>p.cat))];
+function drawCats(){$('#cats').innerHTML=CATS.map(c=>`<button class="chip" data-c="${c}" aria-pressed="${c===cat}">${c}<small>${c==='All'?PROJECTS.length:PROJECTS.filter(p=>p.cat===c).length}</small></button>`).join('')}
+function drawGrid(){const q=query.toLowerCase();const list=PROJECTS.filter(p=>(cat==='All'||p.cat===cat)&&(!q||(p.name+' '+p.sub+' '+p.cat+' '+p.tags).toLowerCase().includes(q)));
+ $('#grid').innerHTML=list.length?list.map(p=>`<button class="card" data-id="${p.id}"><div class="thumb">${thumb(p)}</div><div class="meta"><span class="ico" style="background:${p.color}">${p.name[0]}</span><div><b>${p.name}</b><small>${p.sub}</small></div>${p.badge?`<span class="badge">${p.badge}</span>`:''}</div></button>`).join(''):`<div class="empty">No projects match “${esc(query)}”.</div>`}
+$('#cats').onclick=e=>{const b=e.target.closest('.chip');if(b){cat=b.dataset.c;drawCats();drawGrid()}};
+$('#q').oninput=e=>{query=e.target.value.trim();drawGrid()};
+$('#grid').onclick=e=>{const c=e.target.closest('.card');if(c)openProject(c.dataset.id)};
+
+/* ================================================================
+   VIEWER
+   ================================================================ */
+let cur=null,api={};
+function teardown(){cleanup.forEach(f=>{try{f()}catch(e){}});cleanup=[];closeOv();scr().innerHTML=''}
+function openProject(id,tab='live'){
+ teardown();cur=PROJECTS.find(p=>p.id===id);
+ $('#vico').style.background=cur.color;$('#vico').textContent=cur.name[0];$('#vname').textContent=cur.name;$('#vcat').textContent=cur.sub;
+ api=cur.render(scr())||{};scr().scrollTop=0;caseStudy();setTab(tab);
+ $('#viewer').classList.add('on');document.body.style.overflow='hidden';
+ if(location.hash!=='#'+id)history.replaceState(null,'','#'+id);
+}
+function closeViewer(){teardown();$('#viewer').classList.remove('on');document.body.style.overflow='';history.replaceState(null,'',location.pathname)}
+function setTab(t){$$('#vtabs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));$('#case').classList.toggle('on',t==='case');$('.vbody').classList.toggle('cs-on',t==='case');$('#vdev').style.visibility=t==='case'?'hidden':'visible'}
+function setDev(d){$$('#vdev button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.d===d));$('#frame').className='frame'+(d==='desk'?'':' '+d);$('#stage').classList.toggle('dev',d!=='desk')}
+function caseStudy(){const p=cur;
+ $('#case').innerHTML=`<div class="cs"><div class="hd"><span class="ico" style="background:${p.color}">${p.name[0]}</span><div><h2>${p.name}</h2><span style="color:var(--mute)">${p.sub}</span></div></div>
+ <p class="lede">${p.lede}</p>
+ <div class="cols"><div>
+  <div class="box"><h3>What we built</h3><ul class="feat">${p.feats.map(f=>`<li>${f}</li>`).join('')}</ul></div>
+  ${p.how?`<div class="box how"><h3>How gallery uploads work</h3><ol><li>A team member signs in to the site's admin from a phone or computer.</li><li>They upload photos and tag each one with a project type (Patios, Retaining Walls…) and, optionally, a town.</li><li>The gallery reads those photos through the site's API, so new uploads appear for every visitor automatically, already filed under the right filter.</li></ol><p>Red Oak's current site runs on WordPress, so photos can go straight into its existing Media Library with a "Project type" category, with no new software to learn. Toggle <b>Owner mode</b> in the prototype's gallery to try the upload experience.</p></div>
+  <div class="box how"><h3>How the 3D views work</h3><ol><li><b>3D tilt:</b> when a photo is uploaded, a depth map is created for it (near vs. far). The viewer uses it to give a parallax 3D effect as visitors move the mouse or tilt their phone. On the live site an AI depth model would run once at upload, so every photo is ready instantly.</li><li><b>360° tours:</b> the crew takes a panorama on a phone or a 360 camera. Uploads with a 2:1 shape are detected automatically and open in a drag-to-look-around viewer.</li></ol><p>Sample photos are free stock images (Unsplash) and a CC0 panorama (Poly Haven), stand-ins for Red Oak's own project photos.</p></div>`:''}
+ </div><div>
+  ${p.flows.length?`<div class="box"><h3>Key flows · tap to try</h3><div class="flows">${p.flows.map((f,i)=>`<button class="flow" data-a="${f[2]}"><em>${i+1}</em><span>${f[0]}<small>${f[1]}</small></span><i>→</i></button>`).join('')}</div></div>`:''}
+  <div class="box"><h3>Built with</h3><div class="stack">${p.stack.map(s=>`<span>${s}</span>`).join('')}</div></div>
+  <div class="box"><h3>Try it</h3><button class="pill dark" id="tryit" style="width:100%;justify-content:center;padding:13px">Open the live prototype →</button></div>
+ </div></div></div>`;
+ $('#tryit').onclick=()=>setTab('live');
+ $$('#case .flow').forEach(b=>b.onclick=()=>{setTab('live');const a=b.dataset.a;setTimeout(()=>{if(a==='filter'&&api.filter)api.filter('Retaining Walls');else if(api[a])api[a]()},60)});
+}
+$('#vtabs').onclick=e=>{const b=e.target.closest('button');if(b)setTab(b.dataset.t)};
+$('#vdev').onclick=e=>{const b=e.target.closest('button');if(b)setDev(b.dataset.d)};
+$('#vback').onclick=closeViewer;
+const step=d=>{const i=PROJECTS.indexOf(cur);openProject(PROJECTS[(i+d+PROJECTS.length)%PROJECTS.length].id,$('#case').classList.contains('on')?'case':'live')};
+$('#vprev').onclick=()=>step(-1);$('#vnext').onclick=()=>step(1);
+addEventListener('keydown',e=>{if(!$('#viewer').classList.contains('on'))return;const top=ovl().lastElementChild;
+ if(e.key==='Escape'){if(top&&!top.classList.contains('toast')){top._destroy&&top._destroy();top.remove()}else closeViewer()}
+ else if(top&&top._key)top._key(e)});
+
+drawCats();drawGrid();
+const h=location.hash.slice(1);if(PROJECTS.some(p=>p.id===h))openProject(h);
+</script>
+</body>
+</html>
